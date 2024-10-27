@@ -12,5 +12,6 @@ export default withNuxt({
         // ...prettierPlugin.configs.recommended.rules,
         ...eslintConfigPrettier.rules,
         ...eslintPluginPrettierRecommended.rules,
+        'vue/v-slot-style': ['error', 'shorthand'],
     },
 });
