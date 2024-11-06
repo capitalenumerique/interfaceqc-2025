@@ -1,8 +1,7 @@
 <template>
     <header>
-        This is the header
+        {{ t('Entête') }}
         <LanguageSwitcher />
-        <p>{{ t('Bienvenue') }}</p>
     </header>
 </template>
 
@@ -13,7 +12,7 @@ const { t } = useI18n();
 <i18n lang="json">
 {
     "en": {
-        "Bienvenue": "Welcome"
+        "Entête": "Header"
     }
 }
 </i18n>

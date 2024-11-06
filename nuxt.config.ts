@@ -54,7 +54,6 @@ export default defineNuxtConfig({
     },
 
     i18n: {
-        // TODO: Add seo
         baseUrl: 'https://interfaceqc.com',
         strategy: 'prefix_except_default',
         defaultLocale: 'fr',
