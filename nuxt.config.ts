@@ -9,6 +9,8 @@ export default defineNuxtConfig({
         enabled: true,
     },
 
+    css: ['normalize.css/normalize.css', '@/assets/css/app.css'],
+
     runtimeConfig: {
         public: {
             commitTag: process.env.COMMIT_TAG || process.env.NUXT_ENV_CURRENT_GIT_TAG,
@@ -42,6 +44,11 @@ export default defineNuxtConfig({
                 defaultImport: 'url',
             }),
         ],
+    },
+    postcss: {
+        plugins: {
+            'postcss-nested': {},
+        },
     },
 
     eslint: {

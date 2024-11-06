@@ -8,7 +8,7 @@ const availableLocales = computed(() => {
 </script>
 
 <template>
-    <NuxtLink v-for="locale in availableLocales" :key="locale.code" :to="switchLocalePath(locale.code)">
-        {{ locale.name }}
+    <NuxtLink v-for="l in availableLocales" :key="l.code" :to="switchLocalePath(l.code)">
+        {{ l.name }}
     </NuxtLink>
 </template>

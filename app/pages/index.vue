@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="test">
         <h1>{{ t('Accueil') }}</h1>
         <NuxtImg
             :placeholder="img(`/patate.jpg`, { h: 10, f: 'png', q: 50 })"
@@ -19,6 +19,14 @@ import IconLibeo from '@/assets/svg/libeo-logo.svg?component';
 const img = useImage();
 const { t } = useI18n();
 </script>
+
+<style lang="postcss" scoped>
+.test {
+    h1 {
+        color: var(--primary-color);
+    }
+}
+</style>
 
 <i18n lang="json">
 {
