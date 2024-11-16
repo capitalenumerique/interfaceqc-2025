@@ -19,17 +19,17 @@
     "vue": "latest"
   },
   "devDependencies": {
-    "@nuxt/eslint": "^0.6.1",
+    "@nuxt/eslint": "^0.6.2",
     "@nuxt/image": "^1.8.1",
     "@nuxtjs/i18n": "^9.0.0",
     "@nuxtjs/prismic": "^3.4.3",
-    "@slicemachine/adapter-nuxt": "^0.3.56",
+    "@slicemachine/adapter-nuxt": "^0.3.57",
     "@types/eslint-config-prettier": "^6.11.3",
-    "eslint": "^9.14.0",
+    "eslint": "9.14.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "postcss-nested": "^7.0.2",
-    "slice-machine-ui": "^2.10.2",
+    "slice-machine-ui": "^2.10.3",
     "typescript": "^5.6.3",
     "vite-plugin-eslint2": "^5.0.2",
     "vite-svg-loader": "^5.1.0"
