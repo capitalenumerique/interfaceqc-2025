@@ -5,7 +5,8 @@
   "scripts": {
     "get-git-env": "NUXT_ENV_CURRENT_GIT_SHA=`git rev-parse --short HEAD` NUXT_ENV_CURRENT_GIT_TAG=`git describe --tags $(git rev-list --tags --max-count=1)`",
     "build": "pnpm run get-git-env nuxt build",
-    "dev": "pnpm run get-git-env nuxt dev",
+    "dev": "concurrently \"pnpm:nuxt:dev\" \"pnpm:slicemachine\" --names \"nuxt,slicemachine\" --prefix-colors green,magenta",
+    "nuxt:dev": "pnpm run get-git-env nuxt dev",
     "generate": "pnpm run get-git-env nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
@@ -20,11 +21,12 @@
   },
   "devDependencies": {
     "@nuxt/eslint": "^0.6.2",
-    "@nuxt/image": "^1.8.1",
+    "@nuxt/image": "^1.9.0",
     "@nuxtjs/i18n": "^9.0.0",
     "@nuxtjs/prismic": "^3.4.3",
     "@slicemachine/adapter-nuxt": "^0.3.57",
     "@types/eslint-config-prettier": "^6.11.3",
+    "concurrently": "^9.1.2",
     "eslint": "9.14.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",

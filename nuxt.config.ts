@@ -17,7 +17,6 @@ export default defineNuxtConfig({
             commitShortSha: process.env.COMMIT_SHORT_SHA || process.env.NUXT_ENV_CURRENT_GIT_SHA,
         },
     },
-
     future: {
         compatibilityVersion: 4,
     },
@@ -45,6 +44,7 @@ export default defineNuxtConfig({
             }),
         ],
     },
+
     postcss: {
         plugins: {
             'postcss-nested': {},
@@ -81,6 +81,12 @@ export default defineNuxtConfig({
             cookieKey: 'i18n_redirected',
             redirectOn: 'root', // recommended
         },
+    },
+
+    image: {
+        provider: 'prismic',
+        quality: 70,
+        format: ['webp'],
     },
 
     prismic: {
