@@ -42,15 +42,10 @@ defineProps(getSliceComponentProps<Content.AlternateGridSlice>(['slice', 'index'
                     >
                         {{ slice.primary.eyebrowHeadline }}
                     </div>
-                    <PrismicRichText
-                        v-if="isFilled.richText(slice.primary.title)"
-                        :field="slice.primary.title"
-                        class="es-alternate-grid__primary-content__intro__headline"
-                    />
+                    <PrismicRichText v-if="isFilled.richText(slice.primary.title)" :field="slice.primary.title" />
                     <PrismicRichText
                         v-if="isFilled.richText(slice.primary.description)"
                         :field="slice.primary.description"
-                        class="es-alternate-grid__primary-content__intro__description"
                     />
                 </div>
                 <div
@@ -58,16 +53,8 @@ defineProps(getSliceComponentProps<Content.AlternateGridSlice>(['slice', 'index'
                     class="es-alternate-grid__primary-content__items"
                 >
                     <div v-for="(item, i) in slice.primary.items" :key="i" class="es-alternate-grid__item">
-                        <PrismicRichText
-                            v-if="isFilled.richText(item.title)"
-                            :field="item.title"
-                            class="es-alternate-grid__item__heading"
-                        />
-                        <PrismicRichText
-                            v-if="isFilled.richText(item.description)"
-                            :field="item.description"
-                            class="es-alternate-grid__item__description"
-                        />
+                        <PrismicRichText v-if="isFilled.richText(item.title)" :field="item.title" />
+                        <PrismicRichText v-if="isFilled.richText(item.description)" :field="item.description" />
                     </div>
                 </div>
             </div>
