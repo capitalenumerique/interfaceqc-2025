@@ -7,6 +7,7 @@ export default defineNuxtConfig({
 
     devtools: {
         enabled: true,
+        componentInspector: false,
     },
 
     css: ['normalize.css/normalize.css', '@/assets/css/app.css'],
