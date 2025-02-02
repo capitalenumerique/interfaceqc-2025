@@ -9,16 +9,12 @@
             width="200"
             height="150"
         />
-        <IconLibeo width="200" />
-        <img src="@/assets/svg/libeo-logo.svg" width="200" />
         <SliceZone :slices="page?.data?.slices ?? []" :components="components" />
     </div>
 </template>
 
 <script setup>
 import { components } from '~/slices';
-
-import IconLibeo from '@/assets/svg/libeo-logo.svg?component';
 
 const img = useImage();
 const { t } = useI18n();

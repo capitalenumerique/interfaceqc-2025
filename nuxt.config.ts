@@ -9,7 +9,7 @@ export default defineNuxtConfig({
         enabled: true,
     },
 
-    css: ['normalize.css/normalize.css', '@/assets/css/app.css'],
+    css: ['normalize.css/normalize.css', '@/assets/css/colors.css', '@/assets/css/app.css'],
 
     runtimeConfig: {
         public: {
@@ -48,6 +48,21 @@ export default defineNuxtConfig({
     postcss: {
         plugins: {
             'postcss-nested': {},
+            'postcss-custom-media': {},
+            'postcss-global-data': {
+                files: ['@/assets/css/custom-media.css'],
+            },
+            'postcss-functions': {
+                functions: {
+                    rem: (pxValue: number | string) => {
+                        if (typeof pxValue === 'string') {
+                            pxValue = pxValue.replace('px', '');
+                        }
+                        const value = Number(pxValue);
+                        return `${value / 16}rem`;
+                    },
+                },
+            },
         },
     },
 
