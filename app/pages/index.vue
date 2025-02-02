@@ -30,9 +30,10 @@ const { data: page } = useAsyncData('index', () => {
 </script>
 
 <style lang="postcss" scoped>
-.test {
-    h1 {
-        color: var(--primary-color);
+h1 {
+    color: var(--primary-color);
+    @media (--small-viewport) {
+        background: yellow;
     }
 }
 </style>

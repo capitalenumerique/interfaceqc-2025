@@ -48,6 +48,10 @@ export default defineNuxtConfig({
 
     postcss: {
         plugins: {
+            '@csstools/postcss-global-data': {
+                files: ['./app/assets/css/variables.css'],
+            },
+            'postcss-preset-env': {},
             'postcss-nested': {},
         },
     },
