@@ -5,8 +5,19 @@
 html,
 body {
     font-family: ui-sans-serif, system-ui, sans-serif;
-    background: red;
-    @media (--small-viewport) {
-        background: blue;
-    }
+    background-color: #f3eee7;
+}
+
+svg {
+    fill: currentColor;
+}
+
+.sr-only {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
 }
