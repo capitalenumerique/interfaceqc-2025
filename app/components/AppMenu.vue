@@ -1,5 +1,11 @@
 <template>
-    <OnClickOutside class="menu" :class="{ 'menu-opened': isAnimating }" @trigger="isOpen = false">
+    <OnClickOutside
+        ref="menu"
+        class="menu"
+        :class="{ 'menu-opened': isAnimating }"
+        @keydown.esc="onEscape"
+        @trigger="isOpen = false"
+    >
         <div class="menu-wrapper">
             <div class="logo-wrapper">
                 <button class="btn-menu" type="button" :class="{ 'is-open': isOpen }" @click="isOpen = !isOpen">
@@ -31,6 +37,7 @@
 
 <script lang="ts" setup>
 import { OnClickOutside } from '@vueuse/components';
+import { useFocusTrap } from '@vueuse/integrations/useFocusTrap';
 import IconInterfaceH from '@/assets/svg/interface-logo.svg?component';
 import IconInterfaceV from '@/assets/svg/interface-logo-v.svg?component';
 import IconStar from '@/assets/svg/star.svg?component';
@@ -39,14 +46,27 @@ import IconDiamond from '@/assets/svg/diamond.svg?component';
 const isOpen = ref(false);
 const isAnimating = ref(false);
 const maxHeight = ref('0px');
+const menu = useTemplateRef('menu');
 const menuList = useTemplateRef('menuList');
 const items = ref(['billetterie', 'programmation', 'participer', 'médiathèque', 'à propos', 'contact', 'faq']);
 
+const { activate, deactivate } = useFocusTrap(menu);
+watch(isOpen, (value) => {
+    if (value) {
+        activate();
+    } else {
+        deactivate();
+    }
+});
+
 const onEnter = () => {
-    isAnimating.value = true;
     const { height } = useElementSize(menuList);
-    console.log(menuList.value, height, menuList.value?.clientHeight);
+    isAnimating.value = true;
     maxHeight.value = `${height.value}px`;
+};
+
+const onEscape = () => {
+    isOpen.value = false;
 };
 </script>
 
@@ -60,7 +80,7 @@ const onEnter = () => {
     flex-direction: column;
     overflow: hidden;
     border-bottom: 1px solid #333230;
-    transition: background 0.5s ease;
+    transition: background 500ms ease;
     background-color: #f3eee7;
     @media (--md) {
         flex-direction: row;
@@ -143,7 +163,7 @@ const onEnter = () => {
         height: 1px;
         width: 32px;
         background: currentColor;
-        transition: all 0.15s ease;
+        transition: all 150ms ease;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -199,6 +219,51 @@ const onEnter = () => {
         padding: calc(32px - 20px + 50px + 50px) 28px 32px;
     }
 }
+.menu-item {
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
+    .menu-opened & {
+        &:nth-child(1) {
+            opacity: 1;
+        }
+        &:nth-child(2) {
+            opacity: 1;
+            transition-delay: 100ms;
+        }
+        &:nth-child(3) {
+            opacity: 1;
+            transition-delay: 200ms;
+        }
+        &:nth-child(4) {
+            opacity: 1;
+            transition-delay: 300ms;
+        }
+        &:nth-child(5) {
+            opacity: 1;
+            transition-delay: 400ms;
+        }
+        &:nth-child(6) {
+            opacity: 1;
+            transition-delay: 500ms;
+        }
+        &:nth-child(7) {
+            opacity: 1;
+            transition-delay: 600ms;
+        }
+        &:nth-child(8) {
+            opacity: 1;
+            transition-delay: 700ms;
+        }
+        &:nth-child(9) {
+            opacity: 1;
+            transition-delay: 800ms;
+        }
+        &:nth-child(10) {
+            opacity: 1;
+            transition-delay: 900ms;
+        }
+    }
+}
 .menu-link {
     position: relative;
     display: inline-block;
@@ -206,15 +271,15 @@ const onEnter = () => {
     text-decoration: none;
     color: #000;
     font-weight: 500;
-    transition: padding 0.3s ease;
+    transition: padding 300ms ease;
     .icon-diamond {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         left: 0;
         opacity: 0;
-        transition: opacity 0.15s ease;
-        transition-delay: 0s;
+        transition: opacity 150ms ease;
+        transition-delay: 0ms;
         width: 16px;
         height: 16px;
         color: #647f18;
@@ -225,15 +290,15 @@ const onEnter = () => {
         padding-left: 24px;
         .icon-diamond {
             opacity: 1;
-            transition: opacity 0.3s ease 0.15s;
+            transition: opacity 300ms ease 150ms;
         }
     }
 }
 .collapse-enter-active,
 .collapse-leave-active {
-    transition: max-height 0.5s ease;
+    transition: max-height 500ms ease;
     @media (--md) {
-        transition: max-width 0.5s ease;
+        transition: max-width 500ms ease;
     }
 }
 .collapse-enter-from,
