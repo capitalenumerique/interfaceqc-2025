@@ -9,7 +9,12 @@ export default defineNuxtConfig({
         enabled: true,
     },
 
-    css: ['normalize.css/normalize.css', '@/assets/css/colors.css', '@/assets/css/app.css'],
+    css: [
+        'normalize.css/normalize.css',
+        '@/assets/css/colors.css',
+        '@/assets/css/variables.css',
+        '@/assets/css/app.css',
+    ],
 
     runtimeConfig: {
         public: {
@@ -47,11 +52,11 @@ export default defineNuxtConfig({
 
     postcss: {
         plugins: {
-            'postcss-nested': {},
-            'postcss-custom-media': {},
-            'postcss-global-data': {
-                files: ['@/assets/css/custom-media.css'],
+            '@csstools/postcss-global-data': {
+                files: ['./app/assets/css/variables.css'],
             },
+            'postcss-preset-env': {},
+            'postcss-nested': {},
             'postcss-functions': {
                 functions: {
                     rem: (pxValue: number | string) => {
