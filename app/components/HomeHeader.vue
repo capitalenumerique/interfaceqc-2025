@@ -16,7 +16,7 @@
     </section>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { useWindowSize } from '@vueuse/core';
 import BouncingAnimation from '@/components/BouncingAnimation.vue';
 import IconAsterisk from '@/assets/svg/shapes/asterisk.svg?component';

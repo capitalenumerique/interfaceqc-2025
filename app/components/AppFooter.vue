@@ -56,9 +56,10 @@
                 </ul>
             </div>
         </div>
-        <Vue3Marquee>
+        <Vue3Marquee v-if="width <= 1024">
             <img class="logo" src="@/assets/svg/logo-with-star.svg" alt="interface" />
         </Vue3Marquee>
+        <img v-else class="logo" src="@/assets/svg/logo-with-star.svg" alt="interface" />
         <div class="credits-wrapper">
             <div class="credits">
                 <span>
@@ -87,6 +88,7 @@
 </template>
 
 <script lang="ts" setup>
+import { useWindowSize } from '@vueuse/core';
 import PrimaryButton from '@/components/PrimaryButton.vue';
 import IconLemon from '@/assets/svg/shapes/lemon.svg?component';
 import IconAsterisk from '@/assets/svg/shapes/asterisk.svg?component';
@@ -96,6 +98,7 @@ import IconInstagram from '@/assets/svg/instagram.svg?component';
 import IconLinkedin from '@/assets/svg/linkedin.svg?component';
 
 const { t } = useI18n();
+const { width } = useWindowSize();
 
 const socials = [
     {
@@ -278,8 +281,8 @@ footer {
     object-position: 12%;
     padding: 0 0 18px 50px;
     border-bottom: 1px solid var(--yellow-200);
-    @media (--medium) {
-        padding-bottom: 24px;
+    @media (--large) {
+        padding: 0 0 24px;
     }
 }
 .credits-wrapper {
