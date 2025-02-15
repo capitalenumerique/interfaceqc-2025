@@ -22,16 +22,19 @@ onMounted(() => {
         duration: 3000,
         ease: 'linear',
     };
-    const enterPositions = { x: 0, y: container.value.clientHeight / 2 };
+    const halfWidth = container.value.clientWidth / 2 - object.value.offsetWidth / 2;
+    const halfHeight = container.value.clientHeight / 2 - object.value.offsetHeight / 2;
+
+    const enterPositions = { x: 0, y: halfHeight };
     const bottomBouncePositions = {
-        x: container.value.clientWidth / 2,
+        x: halfWidth,
         y: container.value.clientHeight - object.value.offsetHeight,
     };
     const rightBouncePositions = {
         x: container.value.clientWidth - object.value.offsetWidth,
-        y: container.value.clientHeight / 2,
+        y: halfHeight,
     };
-    const topBouncePositions = { x: container.value.clientWidth / 2, y: 0 };
+    const topBouncePositions = { x: halfWidth, y: 0 };
 
     const { variant } = useMotion(object, {
         enter: {
@@ -41,7 +44,6 @@ onMounted(() => {
             transition: {
                 ...transitionOptions,
                 onComplete: () => {
-                    console.log('enter');
                     if (props.onCollision) {
                         props.onCollision();
                     }
@@ -55,7 +57,6 @@ onMounted(() => {
             transition: {
                 ...transitionOptions,
                 onComplete: () => {
-                    console.log('bottomBounce');
                     if (props.onCollision) {
                         props.onCollision();
                     }
@@ -69,7 +70,6 @@ onMounted(() => {
             transition: {
                 ...transitionOptions,
                 onComplete: () => {
-                    console.log('rightBounce');
                     if (props.onCollision) {
                         props.onCollision();
                     }
@@ -83,7 +83,6 @@ onMounted(() => {
             transition: {
                 ...transitionOptions,
                 onComplete: () => {
-                    console.log('topBounce');
                     if (props.onCollision) {
                         props.onCollision();
                     }

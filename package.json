@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@csstools/postcss-global-data": "^3.0.0",
+    "@vueuse/core": "^12.7.0",
     "@vueuse/motion": "^2.2.6",
     "normalize.css": "^8.0.1",
     "nuxt": "^3.15.4",

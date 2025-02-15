@@ -26,7 +26,7 @@
     <footer>
         <div class="footer-content">
             <div class="column">
-                <span class="column-icon"><IconStar width="24" /></span>
+                <span class="column-icon"><IconAsterisk width="24" /></span>
                 <ul class="column-list">
                     <li><a href="mailto:info@interfaceqc.com">info@interfaceqc.com</a></li>
                     <!-- @TODO: Ajout les vrais liens lorsque les pages existeront -->
@@ -89,7 +89,7 @@
 <script lang="ts" setup>
 import PrimaryButton from '@/components/PrimaryButton.vue';
 import IconLemon from '@/assets/svg/shapes/lemon.svg?component';
-import IconStar from '@/assets/svg/shapes/star.svg?component';
+import IconAsterisk from '@/assets/svg/shapes/asterisk.svg?component';
 import IconFacebook from '@/assets/svg/facebook.svg?component';
 import IconHexagon from '@/assets/svg/shapes/hexagon.svg?component';
 import IconInstagram from '@/assets/svg/instagram.svg?component';

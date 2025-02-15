@@ -1,7 +1,12 @@
 :root {
-    --yellow-200: #ffd371;
     --black-900: #333230;
     --black-300: #b3afad;
     --brown-100: #f3eee7;
+    --yellow-200: #ffd371;
+    --orange-400: #ff9253;
+    --pink-300: #ffb0e1;
     --red-500: #fe4549;
+    --teal-500: #16b0a3;
+    --green-700: #647f18;
+    --blue-700: #2222d3;
 }
