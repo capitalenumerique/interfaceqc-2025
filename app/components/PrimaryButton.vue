@@ -18,11 +18,16 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
+    isSmall: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 const buttonClasses = computed(() => {
     return {
         'is-outlined': props.isOutlined,
+        'is-small': props.isSmall,
     };
 });
 </script>
@@ -51,5 +56,9 @@ const buttonClasses = computed(() => {
 .is-outlined {
     background-color: transparent;
     border: 1px solid var(--brown-100);
+}
+.is-small {
+    padding: 12px 24px;
+    border-radius: 8px;
 }
 </style>

@@ -1,22 +1,32 @@
 <template>
+    <section class="newsletter-section">
+        <div class="newsletter-text-wrapper">
+            <h2 class="newsletter-title">{{ t('infolettre') }}</h2>
+            <p class="newsletter-text">
+                {{ t('Pour tout savoir, l’infolettre est le secret le moins bien gardé.') }}
+            </p>
+        </div>
+        <form
+            class="newsletter-form"
+            action="https://l.c.capitalenumerique.com/T/WF/29582/hiWyAo/Optin/fr-CA/Form.ofsys"
+            method="GET"
+        >
+            <IconLemon class="lemon-icon" width="40" />
+            <label class="sr-only" for="email-address">Adresse courriel</label>
+            <input
+                id="email-address"
+                class="email-input"
+                name="BF_Form_f_EMail"
+                type="email"
+                placeholder="ton@courriel.com"
+            />
+            <PrimaryButton class="form-submit" type="submit" is-small>{{ t('m’inscrire') }}</PrimaryButton>
+        </form>
+    </section>
     <footer>
         <div class="footer-content">
             <div class="column">
-                <h2 class="newsletter-title">{{ t('infolettre') }}</h2>
-                <p class="newsletter-text">
-                    {{ t('Pour tout savoir, l’infolettre est le secret le moins bien gardé.') }}
-                </p>
-                <PrimaryButton is-outlined>{{ t('m’inscrire') }}</PrimaryButton>
-                <ul class="socials-list">
-                    <li v-for="(social, i) in socials" :key="`social-${i}`">
-                        <a class="social-link" :href="social.link" target="_blank" :aria-label="social.name">
-                            <component :is="social.icon" width="32" />
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="column">
-                <span class="column-icon"><IconDownArrow width="20" /></span>
+                <span class="column-icon"><IconStar width="24" /></span>
                 <ul class="column-list">
                     <li><a href="mailto:info@interfaceqc.com">info@interfaceqc.com</a></li>
                     <!-- @TODO: Ajout les vrais liens lorsque les pages existeront -->
@@ -36,8 +46,19 @@
                     </ul>
                 </template>
             </div>
+            <div class="column">
+                <ul class="socials-list">
+                    <li v-for="(social, i) in socials" :key="`social-${i}`">
+                        <a class="social-link" :href="social.link" target="_blank" :aria-label="social.name">
+                            <component :is="social.icon" width="32" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <img class="logo" src="@/assets/svg/logo-with-star.svg" alt="interface" />
+        <Vue3Marquee>
+            <img class="logo" src="@/assets/svg/logo-with-star.svg" alt="interface" />
+        </Vue3Marquee>
         <div class="credits-wrapper">
             <div class="credits">
                 <span>
@@ -67,9 +88,10 @@
 
 <script lang="ts" setup>
 import PrimaryButton from '@/components/PrimaryButton.vue';
-import IconDownArrow from '@/assets/svg/down-arrow.svg?component';
+import IconLemon from '@/assets/svg/shapes/lemon.svg?component';
+import IconStar from '@/assets/svg/shapes/star.svg?component';
 import IconFacebook from '@/assets/svg/facebook.svg?component';
-import IconHexagon from '@/assets/svg/hexagon.svg?component';
+import IconHexagon from '@/assets/svg/shapes/hexagon.svg?component';
 import IconInstagram from '@/assets/svg/instagram.svg?component';
 import IconLinkedin from '@/assets/svg/linkedin.svg?component';
 
@@ -103,52 +125,105 @@ const archives = [
 </script>
 
 <style lang="postcss" scoped>
+.newsletter-section {
+    display: flex;
+    margin: 80px 0;
+    flex-direction: column;
+    @media (--large) {
+        flex-direction: row;
+    }
+}
+.newsletter-text-wrapper,
+.newsletter-form {
+    position: relative;
+    border-radius: 20px;
+    background-color: var(--brown-100);
+    border: 1px solid var(--black-900);
+    padding: 40px 16px;
+    @media (--large) {
+        padding: 48px 32px;
+        border-radius: 40px;
+    }
+}
+.newsletter-text-wrapper {
+    flex-grow: 1;
+}
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
+    max-width: 100%;
+    margin-top: -1px;
+    @media (--large) {
+        min-width: 375px;
+        margin: 0 0 0 -1px;
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: -2px;
+        width: calc(100% - 35px);
+        height: 3px;
+        transform: translateX(-50%);
+        background-color: var(--brown-100);
+        @media (--large) {
+            top: 50%;
+            left: -2px;
+            width: 3px;
+            height: calc(100% - 65px);
+            transform: translateY(-50%);
+        }
+    }
+}
+.lemon-icon {
+    fill: var(--red-500);
+}
+.email-input {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--black-300);
+    padding: 10px 14px;
+    box-sizing: border-box;
+}
+.form-submit {
+    width: 100%;
+}
 footer {
     background-color: var(--black-900);
-    border-radius: 40px 40px 0 0;
+    border-radius: 24px 24px 0 0;
     color: var(--brown-100);
+    @media (--medium) {
+        border-radius: 40px 40px 0 0;
+    }
 }
 .footer-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(0, 320px));
-    padding: 80px 16px 48px;
+    padding: 48px 16px;
     max-width: 1240px;
+    margin: auto;
     justify-content: space-between;
-    gap: 48px 24px;
-    @media (--small-only) {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto auto;
-        grid-template-areas:
-            'first first'
-            'second third';
-    }
+    gap: 0 24px;
     @media (--medium) {
         padding: 80px 40px;
     }
 }
-.column {
-    @media (--small-only) {
-        &:first-child {
-            grid-area: first;
-        }
-        &:nth-child(2) {
-            grid-area: second;
-        }
-        &:nth-child(3) {
-            grid-area: third;
-        }
-    }
-}
 .newsletter-title {
-    font-size: rem(36px);
-    color: var(--yellow-200);
-    margin-bottom: 24px;
-    @media (--large) {
-        margin-bottom: 48px;
+    font-size: rem(18px);
+    margin-bottom: 8px;
+    font-weight: 500;
+    @media (--medium) {
+        margin-bottom: 16px;
     }
 }
 .newsletter-text {
-    margin-bottom: 32px;
+    font-size: rem(30px);
+    margin: 0;
+    @media (--medium) {
+        font-size: rem(48px);
+    }
 }
 .socials-list {
     list-style: none;
@@ -201,14 +276,14 @@ footer {
     min-height: 200px;
     object-fit: cover;
     object-position: 12%;
-    padding-bottom: 18px;
+    padding: 0 0 18px 50px;
     border-bottom: 1px solid var(--yellow-200);
     @media (--medium) {
         padding-bottom: 24px;
     }
 }
 .credits-wrapper {
-    padding: 48px 16px 75px;
+    padding: 48px 16px 32px;
     display: flex;
     justify-content: space-between;
     align-items: center;

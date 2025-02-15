@@ -17,7 +17,8 @@
   "dependencies": {
     "normalize.css": "^8.0.1",
     "nuxt": "^3.15.3",
-    "vue": "latest"
+    "vue": "latest",
+    "vue3-marquee": "^4.2.2"
   },
   "devDependencies": {
     "@csstools/postcss-global-data": "^3.0.0",
