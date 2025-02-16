@@ -43,12 +43,21 @@ import IconInterfaceV from '@/assets/svg/interface-logo-v.svg?component';
 import IconStar from '@/assets/svg/star.svg?component';
 import IconDiamond from '@/assets/svg/diamond.svg?component';
 
+const { t } = useI18n();
 const isOpen = ref(false);
 const isAnimating = ref(false);
 const maxHeight = ref('0px');
 const menu = useTemplateRef('menu');
 const menuList = useTemplateRef('menuList');
-const items = ref(['billetterie', 'programmation', 'participer', 'médiathèque', 'à propos', 'contact', 'faq']);
+const items = ref([
+    t('billetterie'),
+    t('programmation'),
+    t('participer'),
+    t('médiathèque'),
+    t('à propos'),
+    t('contact'),
+    t('faq'),
+]);
 
 const { activate, deactivate } = useFocusTrap(menu);
 watch(isOpen, (value) => {
@@ -79,7 +88,7 @@ const onEscape = () => {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    border-bottom: 1px solid #333230;
+    border-bottom: 1px solid var(--gray-900);
     transition: background 500ms ease;
     background-color: var(--beige-100);
     z-index: 10;
@@ -87,9 +96,8 @@ const onEscape = () => {
         flex-direction: row;
         right: auto;
         bottom: 0;
-        border-right: 1px solid #333230;
+        border-right: 1px solid var(--gray-900);
         border-bottom: 0;
-        background: none;
     }
     &.menu-opened,
     &:hover {
@@ -169,7 +177,7 @@ const onEscape = () => {
         top: 50%;
         left: 50%;
         translate: -50%;
-        rotate: 0deg;
+        rotate: 0;
     }
     &::before {
         margin-top: -4px;
@@ -199,7 +207,6 @@ const onEscape = () => {
     }
 }
 .menu-inner {
-    max-height: 0;
     max-height: v-bind(maxHeight);
     @media (--md) {
         overflow-y: auto;
@@ -310,3 +317,17 @@ const onEscape = () => {
     }
 }
 </style>
+
+<i18n lang="json">
+{
+    "en": {
+        "billetterie": "tickets",
+        "programmation": "programming",
+        "participer": "participate",
+        "médiathèque": "media library",
+        "à propos": "about",
+        "contact": "contact",
+        "faq": "faq"
+    }
+}
+</i18n>
