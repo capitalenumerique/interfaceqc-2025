@@ -81,7 +81,7 @@ const onEscape = () => {
     overflow: hidden;
     border-bottom: 1px solid #333230;
     transition: background 500ms ease;
-    background-color: var(--brown-100);
+    background-color: var(--beige-100);
     z-index: 10;
     @media (--md) {
         flex-direction: row;
@@ -93,7 +93,7 @@ const onEscape = () => {
     }
     &.menu-opened,
     &:hover {
-        background-color: var(--brown-100);
+        background-color: var(--beige-100);
     }
 }
 .menu-wrapper {
@@ -123,7 +123,7 @@ const onEscape = () => {
 }
 .logo-link {
     text-decoration: none;
-    color: #000;
+    color: var(--gray-900);
 }
 .icon-interface-h {
     height: 24px;
@@ -149,7 +149,7 @@ const onEscape = () => {
     height: 50px;
     padding: 0;
     margin: 0;
-    color: #000;
+    color: var(--gray-900);
     border: 0;
     appearance: none;
     margin-left: -41px;
@@ -270,7 +270,7 @@ const onEscape = () => {
     display: inline-block;
     font-size: 24px;
     text-decoration: none;
-    color: #000;
+    color: var(--gray-900);
     font-weight: 500;
     transition: padding 300ms ease;
     .icon-diamond {
@@ -283,7 +283,7 @@ const onEscape = () => {
         transition-delay: 0ms;
         width: 16px;
         height: 16px;
-        color: #647f18;
+        color: var(--green-700);
     }
     &.router-link-exact-active,
     &:hover {
