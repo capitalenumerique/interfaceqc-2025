@@ -81,7 +81,8 @@ const onEscape = () => {
     overflow: hidden;
     border-bottom: 1px solid #333230;
     transition: background 500ms ease;
-    background-color: #f3eee7;
+    background-color: var(--brown-100);
+    z-index: 10;
     @media (--md) {
         flex-direction: row;
         right: auto;
@@ -92,7 +93,7 @@ const onEscape = () => {
     }
     &.menu-opened,
     &:hover {
-        background-color: #f3eee7;
+        background-color: var(--brown-100);
     }
 }
 .menu-wrapper {
