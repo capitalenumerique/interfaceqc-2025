@@ -4,6 +4,20 @@ body {
     overflow-x: hidden;
 }
 
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+img {
+    box-sizing: content-box;
+}
+
 h1,
 h2,
 h3,

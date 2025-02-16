@@ -18,7 +18,6 @@
 
 <script lang="ts" setup>
 import { useWindowSize } from '@vueuse/core';
-import BouncingAnimation from '@/components/BouncingAnimation.vue';
 import IconAsterisk from '@/assets/svg/shapes/asterisk.svg?component';
 import IconHexagon from '@/assets/svg/shapes/hexagon.svg?component';
 import IconLemon from '@/assets/svg/shapes/lemon.svg?component';
@@ -55,7 +54,7 @@ function changeShape() {
     width: 180px;
     height: 180px;
     border-radius: 20px;
-    @media (--large) {
+    @media (--lg) {
         width: 250px;
         height: 250px;
     }
@@ -64,11 +63,13 @@ function changeShape() {
     width: 75%;
 }
 .logo {
+    position: relative;
     display: block;
     margin-left: 50px;
     fill: var(--black-900);
     width: 860px;
-    @media (--large) {
+    z-index: 1;
+    @media (--lg) {
         margin-left: auto;
         width: 950px;
     }

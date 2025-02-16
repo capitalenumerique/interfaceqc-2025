@@ -15,8 +15,6 @@
 </template>
 
 <script setup>
-import HomeHeader from '@/components/HomeHeader.vue';
-
 const img = useImage();
 const { t } = useI18n();
 const prismic = usePrismic();
