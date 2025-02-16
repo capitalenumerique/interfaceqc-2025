@@ -1,5 +1,13 @@
 <template>
-    <component :is="href ? 'nuxt-link' : 'button'" :href="href" :class="buttonClasses" class="primary-button">
+    <component
+        :is="component"
+        :href="href"
+        :class="{
+            'is-outlined': outline,
+            'is-small': small,
+        }"
+        class="primary-button"
+    >
         <slot />
     </component>
 </template>
@@ -14,21 +22,19 @@ const props = defineProps({
         type: String,
         default: '',
     },
-    isOutlined: {
+    outline: {
         type: Boolean,
         default: false,
     },
-    isSmall: {
+    small: {
         type: Boolean,
         default: false,
     },
 });
 
-const buttonClasses = computed(() => {
-    return {
-        'is-outlined': props.isOutlined,
-        'is-small': props.isSmall,
-    };
+const component = computed(() => {
+    if (props.href) return resolveComponent('NuxtLink');
+    return 'button';
 });
 </script>
 
@@ -47,15 +53,23 @@ const buttonClasses = computed(() => {
     transition:
         background-color var(--hover-transition),
         color var(--hover-transition);
+    border: 2px solid var(--black-900);
+    text-decoration: none;
     &:hover,
-    &:focus {
+    &:focus-visible {
         background-color: var(--brown-100);
         color: var(--black-900);
     }
 }
 .is-outlined {
+    color: var(--black-900);
     background-color: transparent;
-    border: 1px solid var(--brown-100);
+    border-color: var(--black-900);
+    &:hover,
+    &:focus-visible {
+        background-color: var(--black-900);
+        color: var(--brown-100);
+    }
 }
 .is-small {
     padding: 12px 24px;

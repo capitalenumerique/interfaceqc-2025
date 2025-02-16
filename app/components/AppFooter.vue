@@ -12,18 +12,18 @@
             method="GET"
         >
             <IconLemon class="lemon-icon" width="40" />
-            <label class="sr-only" for="email-address">Adresse courriel</label>
+            <label class="sr-only" for="email-address">{{ t('Adresse courriel') }}</label>
             <input
                 id="email-address"
                 class="email-input"
                 name="BF_Form_f_EMail"
                 type="email"
-                placeholder="ton@courriel.com"
+                :placeholder="t('adresse@exemple.com')"
             />
-            <PrimaryButton class="form-submit" type="submit" is-small>{{ t('m’inscrire') }}</PrimaryButton>
+            <PrimaryButton class="form-submit" type="submit" small>{{ t('m’inscrire') }}</PrimaryButton>
         </form>
     </section>
-    <footer>
+    <footer class="footer">
         <div class="footer-content">
             <div class="column">
                 <span class="column-icon"><IconStar width="24" /></span>
@@ -34,17 +34,15 @@
                     <li><a href="#">faq</a></li>
                 </ul>
             </div>
-            <div class="column">
-                <template v-if="archives.length > 1">
-                    <span class="column-icon"><IconHexagon width="18" /></span>
-                    <ul class="column-list">
-                        <li v-for="(archive, i) in archives" :key="`archive-${i}`">
-                            <a :href="`/programmation/${archive.year}`">
-                                {{ t('édition {year}', { year: archive.year }) }}
-                            </a>
-                        </li>
-                    </ul>
-                </template>
+            <div v-show="false" class="column">
+                <span class="column-icon"><IconHexagon width="18" /></span>
+                <ul class="column-list">
+                    <li v-for="(archive, i) in archives" :key="`archive-${i}`">
+                        <a :href="`/programmation/${archive.year}`">
+                            {{ t('édition {year}', { year: archive.year }) }}
+                        </a>
+                    </li>
+                </ul>
             </div>
             <div class="column">
                 <ul class="socials-list">
@@ -87,7 +85,6 @@
 </template>
 
 <script lang="ts" setup>
-import PrimaryButton from '@/components/PrimaryButton.vue';
 import IconLemon from '@/assets/svg/shapes/lemon.svg?component';
 import IconStar from '@/assets/svg/shapes/star.svg?component';
 import IconFacebook from '@/assets/svg/facebook.svg?component';
@@ -129,7 +126,7 @@ const archives = [
     display: flex;
     margin: 80px 0;
     flex-direction: column;
-    @media (--large) {
+    @media (--md) {
         flex-direction: row;
     }
 }
@@ -140,7 +137,7 @@ const archives = [
     background-color: var(--brown-100);
     border: 1px solid var(--black-900);
     padding: 40px 16px;
-    @media (--large) {
+    @media (--md) {
         padding: 48px 32px;
         border-radius: 40px;
     }
@@ -155,7 +152,7 @@ const archives = [
     gap: 16px;
     max-width: 100%;
     margin-top: -1px;
-    @media (--large) {
+    @media (--md) {
         min-width: 375px;
         margin: 0 0 0 -1px;
     }
@@ -168,7 +165,7 @@ const archives = [
         height: 3px;
         transform: translateX(-50%);
         background-color: var(--brown-100);
-        @media (--large) {
+        @media (--md) {
             top: 50%;
             left: -2px;
             width: 3px;
@@ -185,43 +182,44 @@ const archives = [
     border-radius: 8px;
     border: 1px solid var(--black-300);
     padding: 10px 14px;
-    box-sizing: border-box;
 }
 .form-submit {
     width: 100%;
 }
-footer {
+.footer {
     background-color: var(--black-900);
     border-radius: 24px 24px 0 0;
     color: var(--brown-100);
-    @media (--medium) {
+    @media (--md) {
         border-radius: 40px 40px 0 0;
     }
 }
 .footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(0, 320px));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
     padding: 48px 16px;
     max-width: 1240px;
     margin: auto;
-    justify-content: space-between;
-    gap: 0 24px;
-    @media (--medium) {
+    gap: 48px 24px;
+    @media (--md) {
         padding: 80px 40px;
+        flex-direction: row;
     }
 }
 .newsletter-title {
     font-size: rem(18px);
     margin-bottom: 8px;
     font-weight: 500;
-    @media (--medium) {
+    @media (--md) {
         margin-bottom: 16px;
     }
 }
 .newsletter-text {
     font-size: rem(30px);
     margin: 0;
-    @media (--medium) {
+    @media (--md) {
         font-size: rem(48px);
     }
 }
@@ -230,13 +228,13 @@ footer {
     display: flex;
     gap: 40px;
     padding: 0;
-    margin: 48px 0 0;
+    margin: 0;
 }
 .social-link {
     color: var(--brown-100);
     transition: color var(--hover-transition);
     &:hover,
-    &:focus {
+    &:focus-visible {
         color: var(--yellow-200);
     }
 }
@@ -256,7 +254,7 @@ footer {
     padding: 0;
     margin-top: 24px;
     font-size: rem(14px);
-    @media (--large) {
+    @media (--md) {
         margin-top: 48px;
         font-size: rem(16px);
     }
@@ -265,7 +263,7 @@ footer {
         text-decoration: none;
         font-weight: 500;
         &:hover,
-        &:focus {
+        &:focus-visible {
             text-decoration: underline;
         }
     }
@@ -273,13 +271,12 @@ footer {
 .logo {
     width: 100%;
     max-width: none;
-    min-height: 200px;
-    object-fit: cover;
-    object-position: 12%;
+    height: 200px;
     padding: 0 0 18px 50px;
     border-bottom: 1px solid var(--yellow-200);
-    @media (--medium) {
+    @media (--md) {
         padding-bottom: 24px;
+        height: auto;
     }
 }
 .credits-wrapper {
@@ -289,7 +286,7 @@ footer {
     align-items: center;
     flex-direction: column;
     gap: 48px;
-    @media (--medium) {
+    @media (--md) {
         padding: 40px;
         flex-direction: row;
     }
@@ -299,7 +296,7 @@ footer {
     a {
         color: var(--brown-100);
         &:hover,
-        &:focus {
+        &:focus-visible {
             text-decoration: none;
         }
     }
@@ -309,7 +306,7 @@ footer {
     padding: 0;
     margin: 0;
     gap: 32px;
-    @media (--small-only) {
+    @media (--md-down) {
         order: -1;
     }
 }
@@ -320,6 +317,8 @@ footer {
     "en": {
         "infolettre": "newsletter",
         "Pour tout savoir, l’infolettre est le secret le moins bien gardé.": "To know everything, the newsletter is the worst-kept secret.",
+        "Adresse courriel": "Email address",
+        "adresse{'@'}exemple.com": "address{'@'}example.com",
         "édition {year}": "{year} edition",
         "Tous droits réservés.": "All rights reserved."
     }
