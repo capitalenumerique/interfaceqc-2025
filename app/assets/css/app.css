@@ -1,12 +1,32 @@
-:root {
-    --primary-color: green;
-}
-
 html,
 body {
-    font-family: ui-sans-serif, system-ui, sans-serif;
-    background: red;
-    @media (--small-viewport) {
-        background: blue;
-    }
+    font-family: Inter, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    overflow-x: hidden;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+img {
+    box-sizing: content-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+}
+
+svg {
+    fill: currentColor;
 }
