@@ -26,7 +26,7 @@
                         <!-- TODO: Change link -->
                         <NuxtLinkLocale to="/404" class="menu-link">
                             <IconDiamond class="icon-diamond" />
-                            {{ item }}
+                            {{ t(item) }}
                         </NuxtLinkLocale>
                     </li>
                 </ul>
@@ -49,15 +49,7 @@ const isAnimating = ref(false);
 const maxHeight = ref('0px');
 const menu = useTemplateRef('menu');
 const menuList = useTemplateRef('menuList');
-const items = ref([
-    t('billetterie'),
-    t('programmation'),
-    t('participer'),
-    t('médiathèque'),
-    t('à propos'),
-    t('contact'),
-    t('faq'),
-]);
+const items = ['billetterie', 'programmation', 'participer', 'médiathèque', 'à propos', 'contact', 'faq'];
 
 const { activate, deactivate } = useFocusTrap(menu);
 watch(isOpen, (value) => {

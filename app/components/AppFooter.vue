@@ -1,28 +1,4 @@
 <template>
-    <section class="newsletter-section">
-        <div class="newsletter-text-wrapper">
-            <h2 class="newsletter-title">{{ t('infolettre') }}</h2>
-            <p class="newsletter-text">
-                {{ t('Pour tout savoir, l’infolettre est le secret le moins bien gardé.') }}
-            </p>
-        </div>
-        <form
-            class="newsletter-form"
-            action="https://l.c.capitalenumerique.com/T/WF/29582/hiWyAo/Optin/fr-CA/Form.ofsys"
-            method="GET"
-        >
-            <IconLemon class="lemon-icon" width="40" />
-            <label class="sr-only" for="email-address">{{ t('Adresse courriel') }}</label>
-            <input
-                id="email-address"
-                class="email-input"
-                name="BF_Form_f_EMail"
-                type="email"
-                :placeholder="t('adresse@exemple.com')"
-            />
-            <PrimaryButton class="form-submit" type="submit" small>{{ t('m’inscrire') }}</PrimaryButton>
-        </form>
-    </section>
     <footer class="footer">
         <div class="footer-content">
             <div class="column">
@@ -30,8 +6,12 @@
                 <ul class="column-list">
                     <li><a href="mailto:info@interfaceqc.com">info@interfaceqc.com</a></li>
                     <!-- @TODO: Ajout les vrais liens lorsque les pages existeront -->
-                    <li><a href="#">partenaires</a></li>
-                    <li><a href="#">faq</a></li>
+                    <li>
+                        <a href="#">{{ t('partenaires') }}</a>
+                    </li>
+                    <li>
+                        <a href="#">{{ t('faq') }}</a>
+                    </li>
                 </ul>
             </div>
             <div v-show="false" class="column">
@@ -54,9 +34,11 @@
                 </ul>
             </div>
         </div>
-        <Vue3Marquee>
-            <img class="logo" src="@/assets/svg/logo-with-star.svg" alt="interface" />
-        </Vue3Marquee>
+        <ClientOnly>
+            <Vue3Marquee>
+                <img class="logo" src="@/assets/svg/logo-with-star.svg" alt="Interface" />
+            </Vue3Marquee>
+        </ClientOnly>
         <div class="credits-wrapper">
             <div class="credits">
                 <span>
@@ -85,7 +67,6 @@
 </template>
 
 <script lang="ts" setup>
-import IconLemon from '@/assets/svg/shapes/lemon.svg?component';
 import IconStar from '@/assets/svg/shapes/star.svg?component';
 import IconFacebook from '@/assets/svg/facebook.svg?component';
 import IconHexagon from '@/assets/svg/shapes/hexagon.svg?component';
@@ -122,70 +103,6 @@ const archives = [
 </script>
 
 <style lang="postcss" scoped>
-.newsletter-section {
-    display: flex;
-    margin: 80px 0;
-    flex-direction: column;
-    @media (--md) {
-        flex-direction: row;
-    }
-}
-.newsletter-text-wrapper,
-.newsletter-form {
-    position: relative;
-    border-radius: 20px;
-    background-color: var(--beige-100);
-    border: 1px solid var(--gray-900);
-    padding: 40px 16px;
-    @media (--md) {
-        padding: 48px 32px;
-        border-radius: 40px;
-    }
-}
-.newsletter-text-wrapper {
-    flex-grow: 1;
-}
-.newsletter-form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 16px;
-    max-width: 100%;
-    margin-top: -1px;
-    @media (--md) {
-        min-width: 375px;
-        margin: 0 0 0 -1px;
-    }
-    &::after {
-        content: '';
-        position: absolute;
-        left: 50%;
-        top: -2px;
-        width: calc(100% - 35px);
-        height: 3px;
-        transform: translateX(-50%);
-        background-color: var(--beige-100);
-        @media (--md) {
-            top: 50%;
-            left: -2px;
-            width: 3px;
-            height: calc(100% - 65px);
-            transform: translateY(-50%);
-        }
-    }
-}
-.lemon-icon {
-    fill: var(--red-500);
-}
-.email-input {
-    width: 100%;
-    border-radius: 8px;
-    border: 1px solid var(--gray-300);
-    padding: 10px 14px;
-}
-.form-submit {
-    width: 100%;
-}
 .footer {
     background-color: var(--gray-900);
     border-radius: 24px 24px 0 0;
@@ -206,21 +123,6 @@ const archives = [
     @media (--md) {
         padding: 80px 40px;
         flex-direction: row;
-    }
-}
-.newsletter-title {
-    font-size: rem(18px);
-    margin-bottom: 8px;
-    font-weight: 500;
-    @media (--md) {
-        margin-bottom: 16px;
-    }
-}
-.newsletter-text {
-    font-size: rem(30px);
-    margin: 0;
-    @media (--md) {
-        font-size: rem(48px);
     }
 }
 .socials-list {
@@ -315,10 +217,9 @@ const archives = [
 <i18n lang="json">
 {
     "en": {
-        "infolettre": "newsletter",
-        "Pour tout savoir, l’infolettre est le secret le moins bien gardé.": "To know everything, the newsletter is the worst-kept secret.",
-        "Adresse courriel": "Email address",
-        "adresse{'@'}exemple.com": "address{'@'}example.com",
+        "partenaires": "partners",
+        "faq": "faq",
+        "Politique de confidentialité": "Privacy policy",
         "édition {year}": "{year} edition",
         "Tous droits réservés.": "All rights reserved."
     }
