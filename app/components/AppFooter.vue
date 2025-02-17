@@ -104,6 +104,8 @@ const archives = [
 
 <style lang="postcss" scoped>
 .footer {
+    position: sticky;
+    bottom: 0;
     background-color: var(--gray-900);
     border-radius: 24px 24px 0 0;
     color: var(--beige-100);

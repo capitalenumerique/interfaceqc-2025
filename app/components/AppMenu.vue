@@ -75,16 +75,16 @@ const onEscape = () => {
 .menu {
     position: fixed;
     top: 0;
-    left: 0;
-    right: 0;
+    width: 100%;
+    max-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
     border-bottom: 1px solid var(--gray-900);
     transition: background 500ms ease;
     background-color: var(--beige-100);
     z-index: 10;
     @media (--md) {
+        position: sticky;
         flex-direction: row;
         right: auto;
         bottom: 0;
@@ -103,7 +103,7 @@ const onEscape = () => {
     justify-content: space-between;
     width: 100%;
     padding: 0 32px;
-    height: 80px;
+    height: 72px;
     @media (--md) {
         height: auto;
         flex-direction: column;
@@ -112,99 +112,20 @@ const onEscape = () => {
         flex-shrink: 0;
     }
 }
-.logo-wrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    @media (--md) {
-        flex-direction: column;
-        gap: 50px;
-    }
-}
-.logo-link {
-    text-decoration: none;
-    color: var(--gray-900);
-}
-.icon-interface-h {
-    height: 24px;
-    @media (--md) {
-        display: none;
-    }
-}
-.icon-interface-v {
-    display: none;
-    @media (--md) {
-        display: block;
-        width: 32px;
-    }
-}
-.icon-star {
-    width: 26px;
-    height: 26px;
-}
-.btn-menu {
-    position: relative;
-    background: transparent;
-    width: 50px;
-    height: 50px;
-    padding: 0;
-    margin: 0;
-    color: var(--gray-900);
-    border: 0;
-    appearance: none;
-    margin-left: -41px;
-    @media (--md) {
-        margin-left: 0;
-        margin-top: -20px;
-    }
-    &::before,
-    &::after {
-        content: '';
-        display: block;
-        height: 1px;
-        width: 32px;
-        background: currentColor;
-        transition: all 150ms ease;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        translate: -50%;
-        rotate: 0;
-    }
-    &::before {
-        margin-top: -4px;
-    }
-    &::after {
-        margin-top: 4px;
-    }
-    &.is-open {
-        translate: 4px;
-        @media (--md) {
-            translate: 0;
-        }
-        &::before,
-        &::after {
-            margin: 0;
-            width: 24px;
-            @media (--md) {
-                width: 32px;
-            }
-        }
-        &::before {
-            rotate: 45deg;
-        }
-        &::after {
-            rotate: -45deg;
-        }
-    }
-}
 .menu-inner {
+    background-color: var(--beige-100);
     max-height: v-bind(maxHeight);
+    overflow: hidden;
     @media (--md) {
+        position: absolute;
+        left: 100%;
         overflow-y: auto;
         width: 300px;
         max-width: 300px;
         will-change: auto;
+        height: 100vh;
+        max-height: none;
+        border-right: 1px solid var(--gray-900);
     }
 }
 .menu-list {
@@ -294,6 +215,92 @@ const onEscape = () => {
         }
     }
 }
+.logo-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    @media (--md) {
+        flex-direction: column;
+        gap: 50px;
+    }
+}
+.logo-link {
+    text-decoration: none;
+    color: var(--gray-900);
+}
+.icon-interface-h {
+    height: 24px;
+    @media (--md) {
+        display: none;
+    }
+}
+.icon-interface-v {
+    display: none;
+    @media (--md) {
+        display: block;
+        width: 32px;
+    }
+}
+.icon-star {
+    width: 26px;
+    height: 26px;
+}
+.btn-menu {
+    position: relative;
+    background: transparent;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    margin: 0;
+    color: var(--gray-900);
+    border: 0;
+    appearance: none;
+    margin-left: -41px;
+    @media (--md) {
+        margin-left: 0;
+        margin-top: -20px;
+    }
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        height: 1px;
+        width: 32px;
+        background: currentColor;
+        transition: all 150ms ease;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50%;
+        rotate: 0;
+    }
+    &::before {
+        margin-top: -4px;
+    }
+    &::after {
+        margin-top: 4px;
+    }
+    &.is-open {
+        translate: 4px;
+        @media (--md) {
+            translate: 0;
+        }
+        &::before,
+        &::after {
+            margin: 0;
+            width: 24px;
+            @media (--md) {
+                width: 32px;
+            }
+        }
+        &::before {
+            rotate: 45deg;
+        }
+        &::after {
+            rotate: -45deg;
+        }
+    }
+}
 .collapse-enter-active,
 .collapse-leave-active {
     transition: max-height 500ms ease;
@@ -302,9 +309,10 @@ const onEscape = () => {
     }
 }
 .collapse-enter-from,
-.collapse-leave-active {
+.collapse-leave-to {
     max-height: 0px;
     @media (--md) {
+        max-height: none;
         max-width: 0px;
     }
 }
