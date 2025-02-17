@@ -30,13 +30,12 @@
     &::after {
         content: '';
         display: block;
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
         position: absolute;
         top: 100%;
         background: var(--beige-100);
         z-index: 10;
-        margin-top: -1px;
     }
     &::before {
         left: 0;
