@@ -14,7 +14,7 @@
                     </li>
                 </ul>
             </div>
-            <div v-show="false" class="column">
+            <!-- <div class="column">
                 <span class="column-icon"><IconHexagon width="18" /></span>
                 <ul class="column-list">
                     <li v-for="(archive, i) in archives" :key="`archive-${i}`">
@@ -23,7 +23,7 @@
                         </a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
             <div class="column">
                 <ul class="socials-list">
                     <li v-for="(social, i) in socials" :key="`social-${i}`">
@@ -69,7 +69,7 @@
 <script lang="ts" setup>
 import IconStar from '@/assets/svg/shapes/star.svg?component';
 import IconFacebook from '@/assets/svg/facebook.svg?component';
-import IconHexagon from '@/assets/svg/shapes/hexagon.svg?component';
+// import IconHexagon from '@/assets/svg/shapes/hexagon.svg?component';
 import IconInstagram from '@/assets/svg/instagram.svg?component';
 import IconLinkedin from '@/assets/svg/linkedin.svg?component';
 
@@ -95,11 +95,11 @@ const socials = [
 
 // @TODO: À dynamiser lorsqu'on aura déterminer la logique des archives
 // et qu'il y aura au moins une édition passée
-const archives = [
-    {
-        year: 2024,
-    },
-];
+// const archives = [
+//     {
+//         year: 2024,
+//     },
+// ];
 </script>
 
 <style lang="postcss" scoped>

@@ -22,11 +22,11 @@
         <Transition name="collapse" @enter="onEnter" @after-leave="isAnimating = false">
             <nav v-show="isOpen" class="menu-inner">
                 <ul ref="menuList" class="menu-list">
-                    <li v-for="item in items" :key="item" class="menu-item">
+                    <li v-for="item in items" :key="item.label" class="menu-item">
                         <!-- TODO: Change link -->
-                        <NuxtLinkLocale to="/404" class="menu-link">
+                        <NuxtLinkLocale :to="item.path" class="menu-link">
                             <IconDiamond class="icon-diamond" />
-                            {{ t(item) }}
+                            {{ item.label }}
                         </NuxtLinkLocale>
                     </li>
                 </ul>
@@ -49,7 +49,28 @@ const isAnimating = ref(false);
 const maxHeight = ref('0px');
 const menu = useTemplateRef('menu');
 const menuList = useTemplateRef('menuList');
-const items = ['billetterie', 'programmation', 'participer', 'médiathèque', 'à propos', 'contact', 'faq'];
+const items = computed(() => [
+    {
+        label: t('accueil'),
+        path: 'index',
+        icon: '',
+    },
+    {
+        label: t('billetterie'),
+        path: 'tickets',
+        icon: '',
+    },
+    {
+        label: t('programmation'),
+        path: 'programming',
+        icon: '',
+    },
+    {
+        label: t('faq'),
+        path: 'faq',
+        icon: '',
+    },
+]);
 
 const { activate, deactivate } = useFocusTrap(menu);
 watch(isOpen, (value) => {
@@ -321,6 +342,7 @@ const onEscape = () => {
 <i18n lang="json">
 {
     "en": {
+        "accueil": "home",
         "billetterie": "tickets",
         "programmation": "programming",
         "participer": "participate",
