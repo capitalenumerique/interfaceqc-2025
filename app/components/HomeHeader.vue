@@ -42,7 +42,7 @@ function changeShape() {
 <style lang="postcss" scoped>
 .home-header {
     height: 100vh;
-    background-color: var(--brown-100);
+    background-color: var(--beige-100);
 }
 .bouncing-animation-zone {
     height: 70%;
@@ -66,7 +66,7 @@ function changeShape() {
     position: relative;
     display: block;
     margin-left: 50px;
-    fill: var(--black-900);
+    fill: var(--gray-900);
     width: 860px;
     z-index: 1;
     @media (--lg) {

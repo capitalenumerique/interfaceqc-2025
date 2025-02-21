@@ -26,14 +26,14 @@ defineProps(getSliceComponentProps<Content.AlternateGridSlice>(['slice', 'index'
                         : 'es-alternate-grid__image--left'
                 "
             />
-            <NuxtImg
+            <!-- <NuxtImg
                 provider="prismic"
                 :src="slice.primary.image.url"
                 format="webp"
                 quality="70"
                 width="200"
                 height="150"
-            />
+            /> -->
             <div class="es-alternate-grid__primary-content">
                 <div className="es-alternate-grid__primary-content__intro">
                     <div
@@ -68,12 +68,6 @@ defineProps(getSliceComponentProps<Content.AlternateGridSlice>(['slice', 'index'
     min-width: 0px;
     position: relative;
     padding: 8vw 1.25rem;
-}
-
-.es-alternate-grid {
-    font-family: system-ui, sans-serif;
-    background-color: #fff;
-    color: #333;
 }
 
 .es-alternate-grid__content {
