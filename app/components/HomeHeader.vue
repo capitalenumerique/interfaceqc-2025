@@ -1,5 +1,9 @@
 <template>
     <section class="home-header">
+        <div class="header-top">
+            <span class="header-text">27 au 29<br />mai 2025</span>
+            <span class="header-text">Terminal de croisière<br />Port de Québec</span>
+        </div>
         <BouncingAnimation class="bouncing-animation-zone" :on-collision="changeShape">
             <div class="bouncing-object" :style="{ backgroundColor: `var(${backgroundColors[activeIndex]})` }">
                 <component
@@ -13,6 +17,27 @@
             <IconLogo class="logo" />
         </Vue3Marquee>
         <IconLogo v-else class="logo" />
+        <div class="event-infos-wrapper">
+            <div class="event-infos">
+                <h2 class="infos-title">qu'est-ce que l'événement?</h2>
+                <p class="infos-text">
+                    Attends-toi à trois journées de conférences sur des sujets tels que le marketing, le design, le
+                    développement, l’intelligence artificielle, la technocréativité, les communications et des sujets
+                    innovants.
+                </p>
+            </div>
+            <div class="event-infos infos-cta">
+                <PrimaryButton
+                    href="https://ti.to/cnum/interface-2025"
+                    target="_blank"
+                    primary-color="--green-800"
+                    secondary-color="--yellow-200"
+                >
+                    participer
+                </PrimaryButton>
+                <IconAsterisk width="40" />
+            </div>
+        </div>
     </section>
 </template>
 
@@ -22,7 +47,7 @@ import IconAsterisk from '@/assets/svg/shapes/asterisk.svg?component';
 import IconHexagon from '@/assets/svg/shapes/hexagon.svg?component';
 import IconLemon from '@/assets/svg/shapes/lemon.svg?component';
 import IconStar from '@/assets/svg/shapes/star.svg?component';
-import IconLogo from '@/assets/svg/logo-with-star.svg?component';
+import IconLogo from '@/assets/svg/interface-logo.svg?component';
 
 const activeIndex = ref(0);
 const shapes = [IconAsterisk, IconLemon, IconStar, IconHexagon];
@@ -41,11 +66,31 @@ function changeShape() {
 
 <style lang="postcss" scoped>
 .home-header {
-    height: 100vh;
     background-color: var(--beige-100);
 }
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px 32px;
+    @media (--lg) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        padding: 24px 48px;
+    }
+}
+.header-text {
+    font-size: rem(20px);
+    font-weight: 500;
+    @media (--lg) {
+        font-size: rem(24px);
+    }
+}
 .bouncing-animation-zone {
-    height: 70%;
+    height: 30vh;
+    @media (--lg) {
+        height: 50vh;
+    }
 }
 .bouncing-object {
     display: flex;
@@ -68,10 +113,53 @@ function changeShape() {
     margin-left: 50px;
     fill: var(--gray-900);
     width: 860px;
+    max-width: 100%;
     z-index: 1;
     @media (--lg) {
-        margin-left: auto;
-        width: 950px;
+        margin: auto;
+        width: 1272px;
+        padding: 0 16px;
     }
+}
+.event-infos-wrapper {
+    margin: 40px auto;
+    width: 100%;
+    max-width: 1272px;
+    padding: 0 16px;
+    @media (--lg) {
+        margin: 64px auto;
+    }
+}
+.event-infos {
+    background-color: var(--yellow-200);
+    color: var(--green-800);
+    border-radius: 20px;
+    padding: 24px 16px;
+    @media (--lg) {
+        border-radius: 40px;
+        padding: 32px;
+    }
+}
+.infos-title {
+    font-size: rem(18px);
+    font-weight: 600;
+    margin-bottom: 24px;
+    @media (--lg) {
+        font-size: rem(20px);
+        margin-bottom: 32px;
+    }
+}
+.infos-text {
+    font-size: rem(32px);
+    font-weight: 600;
+    margin: 0;
+    @media (--lg) {
+        font-size: rem(48px);
+    }
+}
+.infos-cta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 </style>

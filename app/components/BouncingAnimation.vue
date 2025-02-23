@@ -6,6 +6,7 @@
 
 <script setup>
 import { useMotion } from '@vueuse/motion';
+import { useResizeObserver } from '@vueuse/core';
 
 const props = defineProps({
     onCollision: {
@@ -16,8 +17,9 @@ const props = defineProps({
 
 const object = ref();
 const container = ref();
+let motionInstance = null;
 
-onMounted(() => {
+function startAnimation() {
     const transitionOptions = {
         duration: 3000,
         ease: 'linear',
@@ -25,7 +27,7 @@ onMounted(() => {
     const halfWidth = container.value.clientWidth / 2 - object.value.offsetWidth / 2;
     const halfHeight = container.value.clientHeight / 2 - object.value.offsetHeight / 2;
 
-    const enterPositions = { x: 0, y: halfHeight };
+    const leftPositions = { x: 0, y: halfHeight };
     const bottomBouncePositions = {
         x: halfWidth,
         y: container.value.clientHeight - object.value.offsetHeight,
@@ -36,18 +38,22 @@ onMounted(() => {
     };
     const topBouncePositions = { x: halfWidth, y: 0 };
 
-    const { variant } = useMotion(object, {
+    if (motionInstance) {
+        motionInstance.stop();
+        motionInstance = null;
+    }
+
+    motionInstance = useMotion(object, {
         enter: {
-            x: enterPositions.x,
-            y: enterPositions.y,
+            x: leftPositions.x,
+            y: leftPositions.y,
             opacity: 1,
             transition: {
-                ...transitionOptions,
                 onComplete: () => {
                     if (props.onCollision) {
                         props.onCollision();
                     }
-                    variant.value = 'bottomBounce';
+                    motionInstance.variant.value = 'bottomBounce';
                 },
             },
         },
@@ -60,7 +66,7 @@ onMounted(() => {
                     if (props.onCollision) {
                         props.onCollision();
                     }
-                    variant.value = 'rightBounce';
+                    motionInstance.variant.value = 'rightBounce';
                 },
             },
         },
@@ -73,7 +79,7 @@ onMounted(() => {
                     if (props.onCollision) {
                         props.onCollision();
                     }
-                    variant.value = 'topBounce';
+                    motionInstance.variant.value = 'topBounce';
                 },
             },
         },
@@ -86,11 +92,33 @@ onMounted(() => {
                     if (props.onCollision) {
                         props.onCollision();
                     }
-                    variant.value = 'enter';
+                    motionInstance.variant.value = 'leftBounce';
+                },
+            },
+        },
+        leftBounce: {
+            x: leftPositions.x,
+            y: leftPositions.y,
+            opacity: 1,
+            transition: {
+                ...transitionOptions,
+                onComplete: () => {
+                    if (props.onCollision) {
+                        props.onCollision();
+                    }
+                    motionInstance.variant.value = 'bottomBounce';
                 },
             },
         },
     });
+}
+
+onMounted(() => {
+    startAnimation();
+});
+
+useResizeObserver(container, () => {
+    startAnimation();
 });
 </script>
 
