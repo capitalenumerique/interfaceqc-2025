@@ -6,10 +6,11 @@
 
 <script setup>
 import { components } from '~/slices';
+const { locale } = useI18n();
 
 const prismic = usePrismic();
 
 const { data: page } = useAsyncData('index', () => {
-    return prismic.client.getSingle('program');
+    return prismic.client.getSingle('program', { lang: `${locale.value}-ca` });
 });
 </script>
