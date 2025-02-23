@@ -11,10 +11,7 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
-                        "alternate_grid": {
-                            "type": "SharedSlice"
-                        },
-                        "hero": {
+                        "partners_grid": {
                             "type": "SharedSlice"
                         }
                     }

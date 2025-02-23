@@ -7,4 +7,5 @@ export const components = defineSliceZoneComponents({
     alternate_grid: defineAsyncComponent(() => import('./AlternateGrid/index.vue')),
     hero: defineAsyncComponent(() => import('./Hero/index.vue')),
     page_intro_header: defineAsyncComponent(() => import('./PageIntroHeader/index.vue')),
+    partners_grid: defineAsyncComponent(() => import('./PartnersGrid/index.vue')),
 });
