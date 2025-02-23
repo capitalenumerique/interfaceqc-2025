@@ -1,8 +1,16 @@
 <template>
     <section class="home-header">
         <div class="header-top">
-            <span class="header-text">27 au 29<br />mai 2025</span>
-            <span class="header-text">Terminal de croisière<br />Port de Québec</span>
+            <span class="header-text">
+                <i18n-t keypath="event_date">
+                    <template #linebreak><br /></template>
+                </i18n-t>
+            </span>
+            <span class="header-text">
+                <i18n-t keypath="location">
+                    <template #linebreak><br /></template>
+                </i18n-t>
+            </span>
         </div>
         <BouncingAnimation class="bouncing-animation-zone" :on-collision="changeShape">
             <div class="bouncing-object" :style="{ backgroundColor: `var(${backgroundColors[activeIndex]})` }">
@@ -13,27 +21,31 @@
                 />
             </div>
         </BouncingAnimation>
-        <Vue3Marquee v-if="width <= 1024">
-            <IconLogo class="logo" />
-        </Vue3Marquee>
+        <ClientOnly v-if="showMarquee">
+            <Vue3Marquee>
+                <IconLogo class="logo" />
+            </Vue3Marquee>
+        </ClientOnly>
         <IconLogo v-else class="logo" />
         <div class="event-infos-wrapper">
             <div class="event-infos">
-                <h2 class="infos-title">qu'est-ce que l'événement?</h2>
+                <h2 class="infos-title">{{ t('qu’est-ce que l’événement?') }}</h2>
                 <p class="infos-text">
-                    Attends-toi à trois journées de conférences sur des sujets tels que le marketing, le design, le
-                    développement, l’intelligence artificielle, la technocréativité, les communications et des sujets
-                    innovants.
+                    {{
+                        t(
+                            'Attends-toi à trois journées de conférences sur des sujets tels que le marketing, le design, le développement, l’intelligence artificielle, la technocréativité, les communications et des sujets innovants.',
+                        )
+                    }}
                 </p>
             </div>
             <div class="event-infos infos-cta">
                 <PrimaryButton
                     href="https://ti.to/cnum/interface-2025"
                     target="_blank"
-                    primary-color="--green-800"
-                    secondary-color="--yellow-200"
+                    primary-color="green-800"
+                    secondary-color="yellow-200"
                 >
-                    participer
+                    {{ t('participer') }}
                 </PrimaryButton>
                 <IconAsterisk width="40" />
             </div>
@@ -41,19 +53,22 @@
     </section>
 </template>
 
-<script lang="ts" setup>
-import { useWindowSize } from '@vueuse/core';
+<script setup>
+import { useBreakpoints } from '@vueuse/core';
 import IconAsterisk from '@/assets/svg/shapes/asterisk.svg?component';
 import IconHexagon from '@/assets/svg/shapes/hexagon.svg?component';
 import IconLemon from '@/assets/svg/shapes/lemon.svg?component';
 import IconStar from '@/assets/svg/shapes/star.svg?component';
 import IconLogo from '@/assets/svg/interface-logo.svg?component';
 
+const { t } = useI18n();
 const activeIndex = ref(0);
 const shapes = [IconAsterisk, IconLemon, IconStar, IconHexagon];
 const shapesColors = ['--orange-400', '--red-500', '--green-700', '--red-500'];
 const backgroundColors = ['--blue-700', '--pink-300', '--teal-500', '--yellow-200'];
-const { width } = useWindowSize();
+
+const breakpoints = useBreakpoints({ lg: 1024 });
+const showMarquee = breakpoints.smaller('lg');
 
 function changeShape() {
     if (activeIndex.value < shapes.length - 1) {
@@ -163,3 +178,19 @@ function changeShape() {
     align-items: center;
 }
 </style>
+
+<i18n lang="json">
+{
+    "en": {
+        "event_date": "May 27 to 29{linebreak}2025",
+        "location": "Cruise Terminal{linebreak}Port of Québec",
+        "qu’est-ce que l’événement?": "what is the event?",
+        "Attends-toi à trois journées de conférences sur des sujets tels que le marketing, le design, le développement, l’intelligence artificielle, la technocréativité, les communications et des sujets innovants.": "Expect three days of conferences on topics such as marketing, design, development, artificial intelligence, technocreativity, communications, and innovative subjects.",
+        "participer": "participate"
+    },
+    "fr": {
+        "event_date": "27 au 29{linebreak}mai 2025",
+        "location": "Terminal de croisière{linebreak}Port de Québec"
+    }
+}
+</i18n>

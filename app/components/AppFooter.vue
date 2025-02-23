@@ -34,7 +34,7 @@
                 </ul>
             </div>
         </div>
-        <ClientOnly v-if="width <= 1024">
+        <ClientOnly v-if="showMarquee">
             <Vue3Marquee>
                 <img class="logo" src="@/assets/svg/logo-with-star.svg" alt="interface" />
             </Vue3Marquee>
@@ -68,15 +68,15 @@
 </template>
 
 <script lang="ts" setup>
-import { useWindowSize } from '@vueuse/core';
+import { useBreakpoints } from '@vueuse/core';
 import IconAsterisk from '@/assets/svg/shapes/asterisk.svg?component';
 import IconFacebook from '@/assets/svg/facebook.svg?component';
-// import IconHexagon from '@/assets/svg/shapes/hexagon.svg?component';
 import IconInstagram from '@/assets/svg/instagram.svg?component';
 import IconLinkedin from '@/assets/svg/linkedin.svg?component';
 
 const { t } = useI18n();
-const { width } = useWindowSize();
+const breakpoints = useBreakpoints({ lg: 1024 });
+const showMarquee = breakpoints.smaller('lg');
 
 const socials = [
     {

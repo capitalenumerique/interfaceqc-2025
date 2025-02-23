@@ -50,9 +50,6 @@ function startAnimation() {
             opacity: 1,
             transition: {
                 onComplete: () => {
-                    if (props.onCollision) {
-                        props.onCollision();
-                    }
                     motionInstance.variant.value = 'bottomBounce';
                 },
             },
@@ -63,9 +60,6 @@ function startAnimation() {
             transition: {
                 ...transitionOptions,
                 onComplete: () => {
-                    if (props.onCollision) {
-                        props.onCollision();
-                    }
                     motionInstance.variant.value = 'rightBounce';
                 },
             },
@@ -126,9 +120,10 @@ useResizeObserver(container, () => {
 .container {
     position: relative;
     width: 100%;
-    height: 300px;
 }
 .object {
     position: absolute;
+    opacity: 0;
+    transition: opacity 500ms ease-in-out;
 }
 </style>

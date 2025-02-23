@@ -8,8 +8,8 @@
         }"
         class="primary-button"
         :style="{
-            '--primary-color': `var(${primaryColor})`,
-            '--secondary-color': `var(${secondaryColor})`,
+            '--primary-color': `var(--${primaryColor})`,
+            '--secondary-color': `var(--${secondaryColor})`,
         }"
     >
         <slot />
@@ -36,11 +36,11 @@ const props = defineProps({
     },
     primaryColor: {
         type: String,
-        default: '--gray-900',
+        default: 'gray-900',
     },
     secondaryColor: {
         type: String,
-        default: '--beige-100',
+        default: 'beige-100',
     },
 });
 
