@@ -7,6 +7,10 @@
             'is-small': small,
         }"
         class="primary-button"
+        :style="{
+            '--primary-color': `var(${primaryColor})`,
+            '--secondary-color': `var(${secondaryColor})`,
+        }"
     >
         <slot />
     </component>
@@ -30,6 +34,14 @@ const props = defineProps({
         type: Boolean,
         default: false,
     },
+    primaryColor: {
+        type: String,
+        default: '--gray-900',
+    },
+    secondaryColor: {
+        type: String,
+        default: '--beige-100',
+    },
 });
 
 const component = computed(() => {
@@ -45,30 +57,30 @@ const component = computed(() => {
     align-items: center;
     gap: 8px;
     padding: 18px 32px;
-    background-color: var(--gray-900);
-    color: var(--beige-100);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
     font-weight: 500;
     border-radius: 12px;
     cursor: pointer;
     transition:
         background-color var(--hover-transition),
         color var(--hover-transition);
-    border: 2px solid var(--gray-900);
+    border: 2px solid var(--primary-color);
     text-decoration: none;
     &:hover,
     &:focus-visible {
-        background-color: var(--beige-100);
-        color: var(--gray-900);
+        background-color: var(--secondary-color);
+        color: var(--primary-color);
     }
 }
 .is-outlined {
-    color: var(--gray-900);
+    color: var(--primary-color);
     background-color: transparent;
-    border-color: var(--gray-900);
+    border-color: var(--primary-color);
     &:hover,
     &:focus-visible {
-        background-color: var(--gray-900);
-        color: var(--beige-100);
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
     }
 }
 .is-small {

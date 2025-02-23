@@ -1,5 +1,6 @@
 <template>
     <div>
+        <HomeHeader />
         <SliceZone :slices="page?.data?.slices ?? []" :components="components" />
         <NewsletterSection />
     </div>
