@@ -3,7 +3,6 @@
         <div class="page-wrapper">
             <AppMenu />
             <div class="content-wrapper">
-                <AppHeader />
                 <slot />
             </div>
         </div>
@@ -18,7 +17,7 @@
 .page-wrapper {
     position: relative;
     flex-grow: 1;
-    margin-top: 80px;
+    margin-top: 72px;
     z-index: 10;
     background: var(--beige-100);
     @media (--md) {

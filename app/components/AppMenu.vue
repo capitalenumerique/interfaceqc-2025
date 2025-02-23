@@ -29,6 +29,7 @@
                             {{ item.label }}
                         </NuxtLinkLocale>
                     </li>
+                    <li><LanguageSwitcher /></li>
                 </ul>
             </nav>
         </Transition>
@@ -209,7 +210,7 @@ const onEscape = () => {
 .menu-link {
     position: relative;
     display: inline-block;
-    font-size: 24px;
+    font-size: rem(24px);
     text-decoration: none;
     color: var(--gray-900);
     font-weight: 500;

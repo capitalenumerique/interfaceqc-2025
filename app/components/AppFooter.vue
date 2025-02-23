@@ -2,7 +2,7 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="column">
-                <span class="column-icon"><IconStar width="24" /></span>
+                <span class="column-icon"><IconAsterisk width="24" /></span>
                 <ul class="column-list">
                     <li><a href="mailto:info@interfaceqc.com">info@interfaceqc.com</a></li>
                     <!-- @TODO: Ajout les vrais liens lorsque les pages existeront -->
@@ -34,11 +34,12 @@
                 </ul>
             </div>
         </div>
-        <ClientOnly>
+        <ClientOnly v-if="showMarquee">
             <Vue3Marquee>
-                <img class="logo" src="@/assets/svg/logo-with-star.svg" alt="Interface" />
+                <img class="logo" src="@/assets/svg/logo-with-star.svg" alt="interface" />
             </Vue3Marquee>
         </ClientOnly>
+        <img v-else class="logo" src="@/assets/svg/logo-with-star.svg" alt="interface" />
         <div class="credits-wrapper">
             <div class="credits">
                 <span>
@@ -67,13 +68,15 @@
 </template>
 
 <script lang="ts" setup>
-import IconStar from '@/assets/svg/shapes/star.svg?component';
+import { useBreakpoints } from '@vueuse/core';
+import IconAsterisk from '@/assets/svg/shapes/asterisk.svg?component';
 import IconFacebook from '@/assets/svg/facebook.svg?component';
-// import IconHexagon from '@/assets/svg/shapes/hexagon.svg?component';
 import IconInstagram from '@/assets/svg/instagram.svg?component';
 import IconLinkedin from '@/assets/svg/linkedin.svg?component';
 
 const { t } = useI18n();
+const breakpoints = useBreakpoints({ lg: 1024 });
+const showMarquee = breakpoints.smaller('lg');
 
 const socials = [
     {
@@ -179,7 +182,7 @@ const socials = [
     padding: 0 0 18px 50px;
     border-bottom: 1px solid var(--yellow-200);
     @media (--md) {
-        padding-bottom: 24px;
+        padding: 0 0 24px;
         height: auto;
     }
 }
