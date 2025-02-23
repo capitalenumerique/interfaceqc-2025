@@ -13,6 +13,10 @@ const props = defineProps({
         type: Function,
         default: undefined,
     },
+    duration: {
+        type: Number,
+        default: 3000,
+    },
 });
 
 const object = ref();
@@ -21,7 +25,7 @@ let motionInstance = null;
 
 function startAnimation() {
     const transitionOptions = {
-        duration: 3000,
+        duration: props.duration,
         ease: 'linear',
     };
     const halfWidth = container.value.clientWidth / 2 - object.value.offsetWidth / 2;
