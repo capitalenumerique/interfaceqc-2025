@@ -1,0 +1,25 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "pound",
+				"type": "Text"
+			},
+			"introduction": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Eiusmod aliqua deserunt eiusmod consectetur duis sit exercitation officia amet mollit commodo nulla quis enim quis."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

@@ -1,0 +1,35 @@
+{
+  "id": "page_intro_header",
+  "type": "SharedSlice",
+  "name": "PageIntroHeader",
+  "description": "PageIntroHeader",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": "Titre de la page"
+          }
+        },
+        "introduction": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Introduction",
+            "placeholder": "Texte d'introduction de la page",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

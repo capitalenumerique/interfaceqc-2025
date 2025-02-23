@@ -62,7 +62,7 @@ const items = computed(() => [
     },
     {
         label: t('programmation'),
-        path: 'programming',
+        path: 'program',
         icon: '',
     },
     {
@@ -344,7 +344,7 @@ const onEscape = () => {
     "en": {
         "accueil": "home",
         "billetterie": "tickets",
-        "programmation": "programming",
+        "programmation": "program",
         "participer": "participate",
         "médiathèque": "media library",
         "à propos": "about",

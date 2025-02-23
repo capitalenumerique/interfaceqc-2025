@@ -10,6 +10,6 @@ import { components } from '~/slices';
 const prismic = usePrismic();
 
 const { data: page } = useAsyncData('index', () => {
-    return prismic.client.getSingle('tickets');
+    return prismic.client.getSingle('program');
 });
 </script>
