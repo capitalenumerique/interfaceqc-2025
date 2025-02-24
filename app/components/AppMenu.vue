@@ -52,22 +52,22 @@ const menu = useTemplateRef('menu');
 const menuList = useTemplateRef('menuList');
 const items = computed(() => [
     {
-        label: t('accueil'),
+        label: t('Accueil'),
         path: 'index',
         icon: '',
     },
     {
-        label: t('billetterie'),
+        label: t('Billetterie'),
         path: 'tickets',
         icon: '',
     },
     {
-        label: t('programmation'),
+        label: t('Programmation'),
         path: 'program',
         icon: '',
     },
     {
-        label: t('faq'),
+        label: t('Faq'),
         path: 'faq',
         icon: '',
     },
@@ -214,6 +214,7 @@ const onEscape = () => {
     text-decoration: none;
     color: var(--gray-900);
     font-weight: 500;
+    text-transform: lowercase;
     transition: padding 300ms ease;
     .icon-diamond {
         position: absolute;
@@ -345,14 +346,14 @@ const onEscape = () => {
     "en": {
         "Menu": "Menu",
         "Retour à l'accueil": "Back to homepage",
-        "accueil": "home",
-        "billetterie": "tickets",
-        "programmation": "program",
-        "participer": "participate",
-        "médiathèque": "media library",
-        "à propos": "about",
-        "contact": "contact",
-        "faq": "faq"
+        "Accueil": "Home",
+        "Billetterie": "Tickets",
+        "Programmation": "Program",
+        "Participer": "Participate",
+        "Médiathèque": "media Library",
+        "À propos": "About",
+        "Contact": "Contact",
+        "Faq": "Faq"
     }
 }
 </i18n>

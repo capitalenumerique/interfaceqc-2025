@@ -21,7 +21,7 @@
         <IconLogo v-else class="logo" />
         <div class="event-infos-wrapper">
             <div class="event-infos">
-                <h2 class="infos-title">{{ t('qu’est-ce que l’événement?') }}</h2>
+                <h2 class="infos-title">{{ t('Qu’est-ce que l’événement?') }}</h2>
                 <p class="infos-text">
                     {{
                         t(
@@ -37,7 +37,7 @@
                     primary-color="green-800"
                     secondary-color="yellow-200"
                 >
-                    {{ t('participer') }}
+                    {{ t('Participer') }}
                 </PrimaryButton>
                 <IconAsterisk width="40" />
             </div>
@@ -151,6 +151,7 @@ function changeShape() {
     font-size: rem(18px);
     font-weight: 600;
     margin-bottom: 24px;
+    text-transform: lowercase;
     @media (--lg) {
         font-size: rem(20px);
         margin-bottom: 32px;
@@ -168,6 +169,9 @@ function changeShape() {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    .primary-button {
+        text-transform: lowercase;
+    }
 }
 </style>
 
@@ -176,9 +180,9 @@ function changeShape() {
     "en": {
         "27 au 29 <br>mai 2025": "May 27 to 29 <br>2025",
         "Terminal de croisière <br>Port de Québec": "Cruise Terminal <br>Port of Québec",
-        "qu’est-ce que l’événement?": "what is the event?",
+        "Qu’est-ce que l’événement?": "What is the event?",
         "Attends-toi à trois journées de conférences sur des sujets tels que le marketing, le design, le développement, l’intelligence artificielle, la technocréativité, les communications et des sujets innovants.": "Expect three days of conferences on topics such as marketing, design, development, artificial intelligence, technocreativity, communications, and innovative subjects.",
-        "participer": "participate"
+        "Participer": "Participate"
     }
 }
 </i18n>

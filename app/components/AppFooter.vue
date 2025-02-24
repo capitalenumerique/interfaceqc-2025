@@ -5,14 +5,14 @@
                 <span class="column-icon"><IconAsterisk width="24" /></span>
                 <ul class="column-list">
                     <li>
-                        <a href="mailto:info@interfaceqc.com">{{ t('info@interfaceqc.com') }}</a>
+                        <a href="mailto:info@interfaceqc.com">{{ t("info{'@'}interfaceqc.com") }}</a>
                     </li>
                     <!-- @TODO: Ajout les vrais liens lorsque les pages existeront -->
                     <li>
-                        <a href="#">{{ t('partenaires') }}</a>
+                        <a href="#">{{ t('Partenaires') }}</a>
                     </li>
                     <li>
-                        <a href="#">{{ t('faq') }}</a>
+                        <a href="#">{{ t('Faq') }}</a>
                     </li>
                 </ul>
             </div>
@@ -21,7 +21,7 @@
                 <ul class="column-list">
                     <li v-for="(archive, i) in archives" :key="`archive-${i}`">
                         <a :href="`/programmation/${archive.year}`">
-                            {{ t('édition {year}', { year: archive.year }) }}
+                            {{ t('Édition {year}', { year: archive.year }) }}
                         </a>
                     </li>
                 </ul>
@@ -170,6 +170,7 @@ const socials = [
         font-size: rem(16px);
     }
     a {
+        text-transform: lowercase;
         color: var(--beige-100);
         text-decoration: none;
         font-weight: 500;
@@ -228,10 +229,10 @@ const socials = [
 <i18n lang="json">
 {
     "en": {
-        "partenaires": "partners",
-        "faq": "faq",
+        "Partenaires": "Partners",
+        "Faq": "Faq",
         "Politique de confidentialité": "Privacy policy",
-        "édition {year}": "{year} edition",
+        "Édition {year}": "{year} edition",
         "© Interface - Québec {n}. Tous droits réservés.": "© Interface - Québec {n}. All rights reserved."
     }
 }

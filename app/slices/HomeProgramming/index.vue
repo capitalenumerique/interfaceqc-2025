@@ -28,14 +28,14 @@ const next = () => {
     <section :data-slice-type="slice.slice_type" :data-slice-variation="slice.variation">
         <div class="programming-header">
             <h2 class="programming-title">
-                {{ t('la programmation') }}<br />
+                {{ t('La programmation') }}<br />
                 {{ new Date().getFullYear() }}
             </h2>
             <div class="programming-content">
                 <div class="wysiwyg">
                     {{ slice.primary.description }}
                 </div>
-                <PrimaryButton href="/program">{{ t('voir la programmation complète') }}</PrimaryButton>
+                <PrimaryButton href="/program">{{ t('Voir la programmation complète') }}</PrimaryButton>
             </div>
         </div>
         <Swiper
@@ -119,6 +119,7 @@ const next = () => {
     max-width: 430px;
     flex-shrink: 0;
     margin: 0;
+    text-transform: lowercase;
     @media (--lg) {
         font-size: rem(48px);
     }
@@ -139,6 +140,9 @@ const next = () => {
         @media (--lg) {
             margin-left: 0px;
         }
+    }
+    .primary-button {
+        text-transform: lowercase;
     }
 }
 
@@ -294,8 +298,8 @@ const next = () => {
 <i18n lang="json">
 {
     "en": {
-        "la programmation": "the program",
-        "voir la programmation complète": "See the complete program",
+        "La programmation": "The program",
+        "Voir la programmation complète": "See the complete program",
         "Voir <br>la programmation <br>complète": "See <br>the complete <br>program"
     }
 }

@@ -1,7 +1,7 @@
 <template>
     <section class="newsletter-section">
         <div class="newsletter-text-wrapper">
-            <h2 class="newsletter-title">{{ t('infolettre') }}</h2>
+            <h2 class="newsletter-title">{{ t('Infolettre') }}</h2>
             <p class="newsletter-text">
                 {{ t('Pour tout savoir, l’infolettre est le secret le moins bien gardé.') }}
             </p>
@@ -92,6 +92,7 @@ const { t } = useI18n();
     font-size: rem(18px);
     margin-bottom: 8px;
     font-weight: 500;
+    text-transform: lowercase;
     @media (--lg) {
         margin-bottom: 16px;
     }
@@ -117,7 +118,7 @@ const { t } = useI18n();
 <i18n lang="json">
 {
     "en": {
-        "infolettre": "newsletter",
+        "Infolettre": "Newsletter",
         "Pour tout savoir, l’infolettre est le secret le moins bien gardé.": "To know everything, the newsletter is the worst-kept secret.",
         "Adresse courriel": "Email address",
         "adresse{'@'}exemple.com": "email{'@'}example.com"
