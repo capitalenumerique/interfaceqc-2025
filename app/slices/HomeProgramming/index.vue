@@ -1,5 +1,33 @@
+<script setup lang="ts">
+import type { Content } from '@prismicio/client';
+
+import 'swiper/css';
+
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Navigation, Autoplay } from 'swiper/modules';
+
+import IconArrow from '@/assets/svg/arrow.svg?component';
+import IconStar from '@/assets/svg/shapes/star.svg?component';
+
+// The array passed to `getSliceComponentProps` is purely optional.
+// Consider it as a visual hint for you when templating your slice.
+const props = defineProps(
+    getSliceComponentProps<Content.HomeProgrammingSlice>(['slice', 'index', 'slices', 'context']),
+);
+
+const { t } = useI18n();
+const swiperRef = ref();
+
+const prev = () => {
+    swiperRef.value.slidePrev(300);
+};
+const next = () => {
+    swiperRef.value.slideNext(300);
+};
+</script>
+
 <template>
-    <section>
+    <section :data-slice-type="slice.slice_type" :data-slice-variation="slice.variation">
         <div class="programming-header">
             <h2 class="programming-title">
                 {{ t('la programmation') }}<br />
@@ -7,23 +35,18 @@
             </h2>
             <div class="programming-content">
                 <div class="wysiwyg">
-                    {{
-                        t(
-                            'Texte tu souhaites transmettre ton expertise sur un sujet qui te passionne lié au numérique, aux communications ou de tout autre sujets plutôt softskills?Texte tu souhaites transmettre ton expertise sur un sujet qui te passionne lié au numérique, aux communications ou de tout autre sujets plutôt softskills?',
-                        )
-                    }}
+                    {{ slice.primary.description }}
                 </div>
-                <PrimaryButton>{{ t('voir la programmation complète') }}</PrimaryButton>
+                <PrimaryButton href="/program">{{ t('voir la programmation complète') }}</PrimaryButton>
             </div>
         </div>
         <Swiper
             slides-per-view="auto"
-            :space-between="24"
             :modules="[Navigation, Autoplay]"
             :loop="true"
-            :loop-additional-slides="10"
             :loop-prevents-sliding="false"
             :centered-slides="true"
+            :center-insufficient-slides="true"
             :speed="2000"
             :autoplay="{
                 delay: 4000,
@@ -32,7 +55,7 @@
             @swiper="(s) => (swiperRef = s)"
         >
             <SwiperSlide class="slide-view-all">
-                <NuxtLinkLocale to="/programming">
+                <NuxtLinkLocale to="/program">
                     <div class="icon-wrapper">
                         <IconStar />
                     </div>
@@ -43,21 +66,25 @@
                 </NuxtLinkLocale>
             </SwiperSlide>
             <SwiperSlide
-                v-for="(slide, index) in slides"
-                :key="`${slide.firstName} ${slide.lastName}`"
-                class="slide-presenter"
-                :style="{ '--backgroundColor': slide.backgroundColor, '--textColor': slide.textColor }"
+                v-for="(speaker, index) in slice.primary.speakers"
+                :key="`${speaker.firstName} ${speaker.lastName}`"
+                class="slide-speaker"
+                :class="{
+                    'is-reverse': index % 2 === 0,
+                }"
+                :style="{
+                    '--backgroundColor': speaker.background_color,
+                    '--textColor': speaker.text_color,
+                }"
             >
                 <NuxtLinkLocale to="/">
-                    <div>
-                        <img :src="`https://picsum.photos/seed/${index + 1}/322/375`" width="322" height="375" alt="" />
-                    </div>
+                    <PrismicImage :field="speaker.img" />
                     <div class="slide-content">
                         <h3>
-                            {{ slide.firstName }}<br />
-                            {{ slide.lastName }}
+                            {{ speaker.first_name }}<br />
+                            {{ speaker.last_name }}
                         </h3>
-                        <div>{{ slide.job }}</div>
+                        <div>{{ speaker.job }}</div>
                     </div>
                 </NuxtLinkLocale>
             </SwiperSlide>
@@ -72,109 +99,6 @@
         </Swiper>
     </section>
 </template>
-
-<script lang="ts" setup>
-import 'swiper/css';
-
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Navigation, Autoplay } from 'swiper/modules';
-
-import IconArrow from '@/assets/svg/arrow.svg?component';
-import IconStar from '@/assets/svg/shapes/star.svg?component';
-
-const { t } = useI18n();
-const swiperRef = ref();
-
-const slides = [
-    {
-        firstName: 'ioana',
-        lastName: 'teleanu',
-        job: 'Product Designer, Miro',
-        img: '',
-        backgroundColor: '',
-        textColor: '',
-    },
-    {
-        firstName: 'philippe',
-        lastName: 'lamarre',
-        job: 'Co-fondateur, Urbania ',
-        img: '',
-        backgroundColor: '',
-        textColor: '',
-    },
-    {
-        firstName: 'ioana',
-        lastName: 'teleanu',
-        job: 'Product Designer, Miro',
-        img: '',
-        backgroundColor: '',
-        textColor: '',
-    },
-    {
-        firstName: 'philippe',
-        lastName: 'lamarre',
-        job: 'Co-fondateur, Urbania ',
-        img: '',
-        backgroundColor: '',
-        textColor: '',
-    },
-    {
-        firstName: 'ioana',
-        lastName: 'teleanu',
-        job: 'Product Designer, Miro',
-        img: '',
-        backgroundColor: '',
-        textColor: '',
-    },
-    {
-        firstName: 'philippe',
-        lastName: 'lamarre',
-        job: 'Co-fondateur, Urbania ',
-        img: '',
-        backgroundColor: '',
-        textColor: '',
-    },
-    {
-        firstName: 'ioana',
-        lastName: 'teleanu',
-        job: 'Product Designer, Miro',
-        img: '',
-        backgroundColor: '',
-        textColor: '',
-    },
-    {
-        firstName: 'philippe',
-        lastName: 'lamarre',
-        job: 'Co-fondateur, Urbania ',
-        img: '',
-        backgroundColor: '',
-        textColor: '',
-    },
-    {
-        firstName: 'ioana',
-        lastName: 'teleanu',
-        job: 'Product Designer, Miro',
-        img: '',
-        backgroundColor: '',
-        textColor: '',
-    },
-    {
-        firstName: 'philippe',
-        lastName: 'lamarre',
-        job: 'Co-fondateur, Urbania ',
-        img: '',
-        backgroundColor: '',
-        textColor: '',
-    },
-];
-
-const prev = () => {
-    swiperRef.value.slidePrev(300);
-};
-const next = () => {
-    swiperRef.value.slideNext(300);
-};
-</script>
 
 <style lang="postcss" scoped>
 .programming-header {
@@ -261,7 +185,7 @@ const next = () => {
     }
 }
 
-.slide-presenter,
+.slide-speaker,
 .slide-view-all {
     width: 322px;
     height: auto;
@@ -279,11 +203,16 @@ const next = () => {
     }
 }
 
-.slide-presenter {
+.slide-speaker {
     a {
         border-radius: 20px;
-        background-color: var(--backgroundColor, var(--green-800));
-        color: var(--textColor, var(--pink-300));
+        background-color: var(--backgroundColor, var(--beige-100));
+        color: var(--textColor, var(--gray-900));
+    }
+    &.is-reverse {
+        a {
+            flex-direction: column-reverse;
+        }
     }
     img {
         border-radius: 20px;
@@ -294,6 +223,7 @@ const next = () => {
         gap: 16px;
         padding: 16px;
         h3 {
+            text-transform: lowercase;
             margin: 0;
         }
     }

@@ -68,7 +68,7 @@ export type FaqDocument<Lang extends string = string> = prismic.PrismicDocumentW
     Lang
 >;
 
-type HomeDocumentDataSlicesSlice = PartnersGridSlice;
+type HomeDocumentDataSlicesSlice = PartnersGridSlice | HomeProgrammingSlice;
 
 /**
  * Content for Home documents
@@ -609,6 +609,133 @@ type HeroSliceVariation = HeroSliceDefault | HeroSliceImageRight;
 export type HeroSlice = prismic.SharedSlice<'hero', HeroSliceVariation>;
 
 /**
+ * Item in *HomeProgramming → Default → Primary → speakers*
+ */
+export interface HomeProgrammingSliceDefaultPrimarySpeakersItem {
+    /**
+     * speaker id field in *HomeProgramming → Default → Primary → speakers*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_programming.default.primary.speakers[].speaker_id
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    speaker_id: prismic.KeyTextField;
+
+    /**
+     * first name field in *HomeProgramming → Default → Primary → speakers*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_programming.default.primary.speakers[].first_name
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    first_name: prismic.KeyTextField;
+
+    /**
+     * last_name field in *HomeProgramming → Default → Primary → speakers*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_programming.default.primary.speakers[].last_name
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    last_name: prismic.KeyTextField;
+
+    /**
+     * job field in *HomeProgramming → Default → Primary → speakers*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_programming.default.primary.speakers[].job
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    job: prismic.KeyTextField;
+
+    /**
+     * img field in *HomeProgramming → Default → Primary → speakers*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_programming.default.primary.speakers[].img
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    img: prismic.ImageField<never>;
+
+    /**
+     * background color field in *HomeProgramming → Default → Primary → speakers*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_programming.default.primary.speakers[].background_color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    background_color: prismic.ColorField;
+
+    /**
+     * text color field in *HomeProgramming → Default → Primary → speakers*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_programming.default.primary.speakers[].text_color
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    text_color: prismic.ColorField;
+}
+
+/**
+ * Primary content in *HomeProgramming → Default → Primary*
+ */
+export interface HomeProgrammingSliceDefaultPrimary {
+    /**
+     * description field in *HomeProgramming → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_programming.default.primary.description
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    description: prismic.KeyTextField;
+
+    /**
+     * speakers field in *HomeProgramming → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_programming.default.primary.speakers[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    speakers: prismic.GroupField<Simplify<HomeProgrammingSliceDefaultPrimarySpeakersItem>>;
+}
+
+/**
+ * Default variation for HomeProgramming Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomeProgrammingSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<HomeProgrammingSliceDefaultPrimary>,
+    never
+>;
+
+/**
+ * Slice variation for *HomeProgramming*
+ */
+type HomeProgrammingSliceVariation = HomeProgrammingSliceDefault;
+
+/**
+ * HomeProgramming Shared Slice
+ *
+ * - **API ID**: `home_programming`
+ * - **Description**: HomeProgramming
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomeProgrammingSlice = prismic.SharedSlice<'home_programming', HomeProgrammingSliceVariation>;
+
+/**
  * Primary content in *PageIntroHeader → Default → Primary*
  */
 export interface PageIntroHeaderSliceDefaultPrimary {
@@ -790,6 +917,11 @@ declare module '@prismicio/client' {
             HeroSliceVariation,
             HeroSliceDefault,
             HeroSliceImageRight,
+            HomeProgrammingSlice,
+            HomeProgrammingSliceDefaultPrimarySpeakersItem,
+            HomeProgrammingSliceDefaultPrimary,
+            HomeProgrammingSliceVariation,
+            HomeProgrammingSliceDefault,
             PageIntroHeaderSlice,
             PageIntroHeaderSliceDefaultPrimary,
             PageIntroHeaderSliceVariation,
