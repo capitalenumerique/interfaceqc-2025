@@ -4,7 +4,71 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomeDocumentDataSlicesSlice = AlternateGridSlice | HeroSlice;
+type FaqDocumentDataSlicesSlice = PageIntroHeaderSlice;
+
+/**
+ * Content for FAQ documents
+ */
+interface FaqDocumentData {
+    /**
+     * Slice Zone field in *FAQ*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: faq.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#slices
+     */
+    slices: prismic.SliceZone<FaqDocumentDataSlicesSlice> /**
+     * Meta Title field in *FAQ*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: A title of the page used for social media and search engines
+     * - **API ID Path**: faq.meta_title
+     * - **Tab**: SEO & Metadata
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */;
+    meta_title: prismic.KeyTextField;
+
+    /**
+     * Meta Description field in *FAQ*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: A brief summary of the page
+     * - **API ID Path**: faq.meta_description
+     * - **Tab**: SEO & Metadata
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    meta_description: prismic.KeyTextField;
+
+    /**
+     * Meta Image field in *FAQ*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: faq.meta_image
+     * - **Tab**: SEO & Metadata
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * FAQ document from Prismic
+ *
+ * - **API ID**: `faq`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type FaqDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+    Simplify<FaqDocumentData>,
+    'faq',
+    Lang
+>;
+
+type HomeDocumentDataSlicesSlice = PartnersGridSlice;
 
 /**
  * Content for Home documents
@@ -68,7 +132,135 @@ export type HomeDocument<Lang extends string = string> = prismic.PrismicDocument
     Lang
 >;
 
-export type AllDocumentTypes = HomeDocument;
+type ProgramDocumentDataSlicesSlice = PageIntroHeaderSlice;
+
+/**
+ * Content for Program documents
+ */
+interface ProgramDocumentData {
+    /**
+     * Slice Zone field in *Program*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: program.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#slices
+     */
+    slices: prismic.SliceZone<ProgramDocumentDataSlicesSlice> /**
+     * Meta Title field in *Program*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: A title of the page used for social media and search engines
+     * - **API ID Path**: program.meta_title
+     * - **Tab**: SEO & Metadata
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */;
+    meta_title: prismic.KeyTextField;
+
+    /**
+     * Meta Description field in *Program*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: A brief summary of the page
+     * - **API ID Path**: program.meta_description
+     * - **Tab**: SEO & Metadata
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    meta_description: prismic.KeyTextField;
+
+    /**
+     * Meta Image field in *Program*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: program.meta_image
+     * - **Tab**: SEO & Metadata
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Program document from Prismic
+ *
+ * - **API ID**: `program`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProgramDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+    Simplify<ProgramDocumentData>,
+    'program',
+    Lang
+>;
+
+type TicketsDocumentDataSlicesSlice = PageIntroHeaderSlice;
+
+/**
+ * Content for Tickets documents
+ */
+interface TicketsDocumentData {
+    /**
+     * Slice Zone field in *Tickets*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tickets.slices[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#slices
+     */
+    slices: prismic.SliceZone<TicketsDocumentDataSlicesSlice> /**
+     * Meta Title field in *Tickets*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: A title of the page used for social media and search engines
+     * - **API ID Path**: tickets.meta_title
+     * - **Tab**: SEO & Metadata
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */;
+    meta_title: prismic.KeyTextField;
+
+    /**
+     * Meta Description field in *Tickets*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: A brief summary of the page
+     * - **API ID Path**: tickets.meta_description
+     * - **Tab**: SEO & Metadata
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    meta_description: prismic.KeyTextField;
+
+    /**
+     * Meta Image field in *Tickets*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: tickets.meta_image
+     * - **Tab**: SEO & Metadata
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Tickets document from Prismic
+ *
+ * - **API ID**: `tickets`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type TicketsDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+    Simplify<TicketsDocumentData>,
+    'tickets',
+    Lang
+>;
+
+export type AllDocumentTypes = FaqDocument | HomeDocument | ProgramDocument | TicketsDocument;
 
 /**
  * Item in *AlternateGrid → Default → Primary → items*
@@ -322,7 +514,7 @@ export interface HeroSliceDefaultPrimary {
      * - **API ID Path**: hero.default.primary.callToActionLink
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    callToActionLink: prismic.LinkField;
+    callToActionLink: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
 /**
@@ -386,7 +578,7 @@ export interface HeroSliceImageRightPrimary {
      * - **API ID Path**: hero.imageRight.primary.callToActionLink
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
-    callToActionLink: prismic.LinkField;
+    callToActionLink: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
 }
 
 /**
@@ -416,6 +608,146 @@ type HeroSliceVariation = HeroSliceDefault | HeroSliceImageRight;
  */
 export type HeroSlice = prismic.SharedSlice<'hero', HeroSliceVariation>;
 
+/**
+ * Primary content in *PageIntroHeader → Default → Primary*
+ */
+export interface PageIntroHeaderSliceDefaultPrimary {
+    /**
+     * Title field in *PageIntroHeader → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Titre de la page
+     * - **API ID Path**: page_intro_header.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField;
+
+    /**
+     * Introduction field in *PageIntroHeader → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: Texte d'introduction de la page
+     * - **API ID Path**: page_intro_header.default.primary.introduction
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    introduction: prismic.RichTextField;
+}
+
+/**
+ * Default variation for PageIntroHeader Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PageIntroHeaderSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<PageIntroHeaderSliceDefaultPrimary>,
+    never
+>;
+
+/**
+ * Slice variation for *PageIntroHeader*
+ */
+type PageIntroHeaderSliceVariation = PageIntroHeaderSliceDefault;
+
+/**
+ * PageIntroHeader Shared Slice
+ *
+ * - **API ID**: `page_intro_header`
+ * - **Description**: PageIntroHeader
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PageIntroHeaderSlice = prismic.SharedSlice<'page_intro_header', PageIntroHeaderSliceVariation>;
+
+/**
+ * Item in *PartnersGrid → Default → Primary → Partner*
+ */
+export interface PartnersGridSliceDefaultPrimaryPartnerItem {
+    /**
+     * Logo field in *PartnersGrid → Default → Primary → Partner*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: partners_grid.default.primary.partner[].logo
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    logo: prismic.ImageField<never>;
+
+    /**
+     * Name field in *PartnersGrid → Default → Primary → Partner*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Nom du partenaire
+     * - **API ID Path**: partners_grid.default.primary.partner[].name
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    name: prismic.KeyTextField;
+
+    /**
+     * Website field in *PartnersGrid → Default → Primary → Partner*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: Url du site Web du partenaire
+     * - **API ID Path**: partners_grid.default.primary.partner[].website
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    website: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+    /**
+     * Category field in *PartnersGrid → Default → Primary → Partner*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: Catégorie du partenaire
+     * - **Default Value**: Principaux
+     * - **API ID Path**: partners_grid.default.primary.partner[].category
+     * - **Documentation**: https://prismic.io/docs/field#select
+     */
+    category: prismic.SelectField<'Principaux' | 'Secondaires', 'filled'>;
+}
+
+/**
+ * Primary content in *PartnersGrid → Default → Primary*
+ */
+export interface PartnersGridSliceDefaultPrimary {
+    /**
+     * Partner field in *PartnersGrid → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: partners_grid.default.primary.partner[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    partner: prismic.GroupField<Simplify<PartnersGridSliceDefaultPrimaryPartnerItem>>;
+}
+
+/**
+ * Default variation for PartnersGrid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PartnersGridSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<PartnersGridSliceDefaultPrimary>,
+    never
+>;
+
+/**
+ * Slice variation for *PartnersGrid*
+ */
+type PartnersGridSliceVariation = PartnersGridSliceDefault;
+
+/**
+ * PartnersGrid Shared Slice
+ *
+ * - **API ID**: `partners_grid`
+ * - **Description**: PartnersGrid
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PartnersGridSlice = prismic.SharedSlice<'partners_grid', PartnersGridSliceVariation>;
+
 declare module '@prismicio/client' {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
@@ -431,9 +763,18 @@ declare module '@prismicio/client' {
 
     namespace Content {
         export type {
+            FaqDocument,
+            FaqDocumentData,
+            FaqDocumentDataSlicesSlice,
             HomeDocument,
             HomeDocumentData,
             HomeDocumentDataSlicesSlice,
+            ProgramDocument,
+            ProgramDocumentData,
+            ProgramDocumentDataSlicesSlice,
+            TicketsDocument,
+            TicketsDocumentData,
+            TicketsDocumentDataSlicesSlice,
             AllDocumentTypes,
             AlternateGridSlice,
             AlternateGridSliceDefaultPrimaryItemsItem,
@@ -449,6 +790,15 @@ declare module '@prismicio/client' {
             HeroSliceVariation,
             HeroSliceDefault,
             HeroSliceImageRight,
+            PageIntroHeaderSlice,
+            PageIntroHeaderSliceDefaultPrimary,
+            PageIntroHeaderSliceVariation,
+            PageIntroHeaderSliceDefault,
+            PartnersGridSlice,
+            PartnersGridSliceDefaultPrimaryPartnerItem,
+            PartnersGridSliceDefaultPrimary,
+            PartnersGridSliceVariation,
+            PartnersGridSliceDefault,
         };
     }
 }

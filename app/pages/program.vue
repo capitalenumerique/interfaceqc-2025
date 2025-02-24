@@ -1,8 +1,6 @@
 <template>
     <div>
-        <HomeHeader />
         <SliceZone :slices="page?.data?.slices ?? []" :components="components" />
-        <NewsletterSection />
     </div>
 </template>
 
@@ -13,6 +11,6 @@ const { locale } = useI18n();
 const prismic = usePrismic();
 
 const { data: page } = useAsyncData('index', () => {
-    return prismic.client.getSingle('home', { lang: `${locale.value}-ca` });
+    return prismic.client.getSingle('program', { lang: `${locale.value}-ca` });
 });
 </script>
