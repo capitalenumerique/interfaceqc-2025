@@ -1,18 +1,10 @@
 <template>
     <section class="home-header">
         <div class="header-top">
-            <span class="header-text">
-                <i18n-t keypath="event_date">
-                    <template #linebreak><br /></template>
-                </i18n-t>
-            </span>
-            <span class="header-text">
-                <i18n-t keypath="location">
-                    <template #linebreak><br /></template>
-                </i18n-t>
-            </span>
+            <span class="header-text" v-html="t('27 au 29 <br>mai 2025')"> </span>
+            <span class="header-text" v-html="t('Terminal de croisière <br>Port de Québec')"> </span>
         </div>
-        <BouncingAnimation class="bouncing-animation-zone" :on-collision="changeShape">
+        <BouncingAnimation class="bouncing-animation-zone" @bounce="changeShape">
             <div class="bouncing-object" :style="{ backgroundColor: `var(${backgroundColors[activeIndex]})` }">
                 <component
                     :is="shapes[activeIndex]"
@@ -71,6 +63,7 @@ const breakpoints = useBreakpoints({ lg: 1024 });
 const showMarquee = breakpoints.smaller('lg');
 
 function changeShape() {
+    console.log('bounce');
     if (activeIndex.value < shapes.length - 1) {
         activeIndex.value++;
     } else {
@@ -182,15 +175,11 @@ function changeShape() {
 <i18n lang="json">
 {
     "en": {
-        "event_date": "May 27 to 29{linebreak}2025",
-        "location": "Cruise Terminal{linebreak}Port of Québec",
+        "27 au 29 <br>mai 2025": "May 27 to 29 <br>2025",
+        "Terminal de croisière <br>Port de Québec": "Cruise Terminal <br>Port of Québec",
         "qu’est-ce que l’événement?": "what is the event?",
         "Attends-toi à trois journées de conférences sur des sujets tels que le marketing, le design, le développement, l’intelligence artificielle, la technocréativité, les communications et des sujets innovants.": "Expect three days of conferences on topics such as marketing, design, development, artificial intelligence, technocreativity, communications, and innovative subjects.",
         "participer": "participate"
-    },
-    "fr": {
-        "event_date": "27 au 29{linebreak}mai 2025",
-        "location": "Terminal de croisière{linebreak}Port de Québec"
     }
 }
 </i18n>

@@ -9,15 +9,13 @@ import { useMotion } from '@vueuse/motion';
 import { useResizeObserver } from '@vueuse/core';
 
 const props = defineProps({
-    onCollision: {
-        type: Function,
-        default: undefined,
-    },
     duration: {
         type: Number,
         default: 3000,
     },
 });
+
+const emit = defineEmits('bounce');
 
 const object = ref();
 const container = ref();
@@ -44,6 +42,7 @@ function startAnimation() {
 
     if (motionInstance) {
         motionInstance.stop();
+        object.value.style = '';
         motionInstance = null;
     }
 
@@ -64,6 +63,7 @@ function startAnimation() {
             transition: {
                 ...transitionOptions,
                 onComplete: () => {
+                    emit('bounce');
                     motionInstance.variant.value = 'rightBounce';
                 },
             },
@@ -74,9 +74,7 @@ function startAnimation() {
             transition: {
                 ...transitionOptions,
                 onComplete: () => {
-                    if (props.onCollision) {
-                        props.onCollision();
-                    }
+                    emit('bounce');
                     motionInstance.variant.value = 'topBounce';
                 },
             },
@@ -87,9 +85,7 @@ function startAnimation() {
             transition: {
                 ...transitionOptions,
                 onComplete: () => {
-                    if (props.onCollision) {
-                        props.onCollision();
-                    }
+                    emit('bounce');
                     motionInstance.variant.value = 'leftBounce';
                 },
             },
@@ -101,19 +97,13 @@ function startAnimation() {
             transition: {
                 ...transitionOptions,
                 onComplete: () => {
-                    if (props.onCollision) {
-                        props.onCollision();
-                    }
+                    emit('bounce');
                     motionInstance.variant.value = 'bottomBounce';
                 },
             },
         },
     });
 }
-
-onMounted(() => {
-    startAnimation();
-});
 
 useResizeObserver(container, () => {
     startAnimation();
