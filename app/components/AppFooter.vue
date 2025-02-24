@@ -4,7 +4,9 @@
             <div class="column">
                 <span class="column-icon"><IconAsterisk width="24" /></span>
                 <ul class="column-list">
-                    <li><a href="mailto:info@interfaceqc.com">info@interfaceqc.com</a></li>
+                    <li>
+                        <a href="mailto:info@interfaceqc.com">{{ t('info@interfaceqc.com') }}</a>
+                    </li>
                     <!-- @TODO: Ajout les vrais liens lorsque les pages existeront -->
                     <li>
                         <a href="#">{{ t('partenaires') }}</a>
@@ -36,20 +38,22 @@
         </div>
         <ClientOnly v-if="showMarquee">
             <Vue3Marquee>
-                <img class="logo" src="@/assets/svg/logo-with-star.svg" alt="interface" />
+                <img class="logo" src="@/assets/svg/logo-with-star.svg" :alt="t('interface')" />
             </Vue3Marquee>
         </ClientOnly>
-        <img v-else class="logo" src="@/assets/svg/logo-with-star.svg" alt="interface" />
+        <img v-else class="logo" src="@/assets/svg/logo-with-star.svg" :alt="t('interface')" />
         <div class="credits-wrapper">
             <div class="credits">
                 <span>
                     <a href="https://capitalenumerique.com/politique-de-confidentialite/" target="_blank">
                         {{ t('Politique de confidentialité') }}
                     </a>
-                    | © Interface - Québec {{ new Date().getFullYear() }}. {{ t('Tous droits réservés.') }}
+                    | {{ t('© Interface - Québec {n}. Tous droits réservés.', new Date().getFullYear()) }}
                 </span>
                 <span>
-                    <template v-if="$config.public.commitTag || $config.public.commitShortSha">Version:</template>
+                    <template v-if="$config.public.commitTag || $config.public.commitShortSha">{{
+                        t('Version:')
+                    }}</template>
                     {{ $config.public.commitTag }}
                     {{
                         $config.public.commitTag ? `(${$config.public.commitShortSha})` : $config.public.commitShortSha
@@ -59,7 +63,7 @@
             <ul class="organizers">
                 <li>
                     <a href="https://capitalenumerique.com/" target="_blank">
-                        <img src="@/assets/img/capitale-numerique.png" alt="Capitale Numérique" />
+                        <img src="@/assets/img/capitale-numerique.png" :alt="t('Capitale Numérique')" />
                     </a>
                 </li>
             </ul>
@@ -199,6 +203,8 @@ const socials = [
     }
 }
 .credits {
+    display: flex;
+    gap: 4px;
     font-size: rem(12px);
     a {
         color: var(--beige-100);
@@ -226,7 +232,7 @@ const socials = [
         "faq": "faq",
         "Politique de confidentialité": "Privacy policy",
         "édition {year}": "{year} edition",
-        "Tous droits réservés.": "All rights reserved."
+        "© Interface - Québec {n}. Tous droits réservés.": "© Interface - Québec {n}. All rights reserved."
     }
 }
 </i18n>

@@ -9,10 +9,10 @@
         <div class="menu-wrapper">
             <div class="logo-wrapper">
                 <button class="btn-menu" type="button" :class="{ 'is-open': isOpen }" @click="isOpen = !isOpen">
-                    <span class="sr-only">Menu</span>
+                    <span class="sr-only">{{ t('Menu') }}</span>
                 </button>
                 <NuxtLinkLocale to="index" class="logo-link">
-                    <span class="sr-only">interface</span>
+                    <span class="sr-only">{{ t("Retour à l'accueil") }}</span>
                     <IconInterfaceH class="icon-interface-h" />
                     <IconInterfaceV class="icon-interface-v" />
                 </NuxtLinkLocale>
@@ -343,6 +343,8 @@ const onEscape = () => {
 <i18n lang="json">
 {
     "en": {
+        "Menu": "Menu",
+        "Retour à l'accueil": "Back to homepage",
         "accueil": "home",
         "billetterie": "tickets",
         "programmation": "program",
