@@ -1,7 +1,7 @@
 {
     "format": "page",
-    "id": "home",
-    "label": "Home",
+    "id": "program",
+    "label": "Program",
     "repeatable": false,
     "status": true,
     "json": {
@@ -11,7 +11,7 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
-                        "partners_grid": {
+                        "page_intro_header": {
                             "type": "SharedSlice"
                         }
                     }

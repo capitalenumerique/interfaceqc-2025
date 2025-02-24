@@ -1,0 +1,69 @@
+{
+  "id": "partners_grid",
+  "type": "SharedSlice",
+  "name": "PartnersGrid",
+  "description": "PartnersGrid",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "partner": {
+          "type": "Group",
+          "config": {
+            "label": "Partner",
+            "repeat": true,
+            "fields": {
+              "logo": {
+                "type": "Image",
+                "config": {
+                  "label": "Logo",
+                  "constraint": {
+                    "width": null,
+                    "height": null
+                  },
+                  "thumbnails": []
+                }
+              },
+              "name": {
+                "type": "Text",
+                "config": {
+                  "label": "Name",
+                  "placeholder": "Nom du partenaire"
+                }
+              },
+              "website": {
+                "type": "Link",
+                "config": {
+                  "label": "Website",
+                  "placeholder": "Url du site Web du partenaire",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": false,
+                  "repeat": false
+                }
+              },
+              "category": {
+                "type": "Select",
+                "config": {
+                  "label": "Category",
+                  "placeholder": "Catégorie du partenaire",
+                  "options": [
+                    "Principaux",
+                    "Secondaires"
+                  ],
+                  "default_value": "Principaux"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
