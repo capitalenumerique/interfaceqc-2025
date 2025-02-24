@@ -15,7 +15,7 @@ const props = defineProps({
     },
 });
 
-const emit = defineEmits('bounce');
+const emit = defineEmits(['bounce']);
 
 const object = ref();
 const container = ref();

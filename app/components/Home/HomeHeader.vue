@@ -63,7 +63,6 @@ const breakpoints = useBreakpoints({ lg: 1024 });
 const showMarquee = breakpoints.smaller('lg');
 
 function changeShape() {
-    console.log('bounce');
     if (activeIndex.value < shapes.length - 1) {
         activeIndex.value++;
     } else {
