@@ -5,8 +5,8 @@
 		"primary": {
 			"description": {
 				"__TYPE__": "FieldContent",
-				"value": "stomach",
-				"type": "Text"
+				"type": "Text",
+				"value": "Texte tu souhaites transmettre ton expertise sur un sujet qui te passionne lié au numérique, aux communications ou de tout autre sujets plutôt softskills?Texte tu souhaites transmettre ton expertise sur un sujet qui te passionne lié au numérique, aux communications ou de tout autre sujets plutôt softskills?"
 			},
 			"speakers": {
 				"__TYPE__": "GroupContentType",
@@ -18,41 +18,41 @@
 								"first_name",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "mixture",
-									"type": "Text"
+									"type": "Text",
+									"value": "Philippe"
 								}
 							],
 							[
 								"last_name",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "vowel",
-									"type": "Text"
+									"type": "Text",
+									"value": "Lamarre"
 								}
 							],
 							[
 								"img",
 								{
+									"__TYPE__": "ImageContent",
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxfHxwZXJzb258ZW58MHx8fHwxNzQwMzY2NDAzfDA&ixlib=rb-4.0.3&q=85&rect=1108,0,2968,3456&w=322&h=375",
+									"alt": "shallow focus photography of woman outdoor during day",
 									"origin": {
-										"id": "main",
-										"url": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1",
-										"width": 5616,
-										"height": 3744
+										"id": "rDEOVtE7vOs",
+										"url": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxfHxwZXJzb258ZW58MHx8fHwxNzQwMzY2NDAzfDA&ixlib=rb-4.0.3&q=85",
+										"width": 5184,
+										"height": 3456
 									},
-									"url": "https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?rect=1151%2C0%2C3315%2C3744&w=332&h=375",
 									"width": 322,
 									"height": 375,
 									"edit": {
+										"background": "transparent",
 										"zoom": 1,
 										"crop": {
-											"x": 1151,
+											"x": 1108,
 											"y": 0
-										},
-										"background": "transparent"
+										}
 									},
-									"credits": null,
-									"alt": null,
-									"__TYPE__": "ImageContent",
 									"thumbnails": {}
 								}
 							],
@@ -60,32 +60,735 @@
 								"background_color",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "#f2dd5b",
-									"type": "Color"
+									"type": "Color",
+									"value": "#FE4549"
 								}
 							],
 							[
 								"text_color",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "#40196b",
-									"type": "Color"
+									"type": "Color",
+									"value": "#FFD371"
 								}
 							],
 							[
 								"job",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "wool",
-									"type": "Text"
+									"type": "Text",
+									"value": "Co-fondateur, Urbania"
 								}
 							],
 							[
 								"speaker_id",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "star",
-									"type": "Text"
+									"type": "Text",
+									"value": "1"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"first_name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Philippe"
+								}
+							],
+							[
+								"last_name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Lamarre"
+								}
+							],
+							[
+								"job",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Co-fondateur, Urbania"
+								}
+							],
+							[
+								"img",
+								{
+									"__TYPE__": "ImageContent",
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwzfHxwZXJzb258ZW58MHx8fHwxNzQwMzY2NDAzfDA&ixlib=rb-4.0.3&q=85&rect=0,820,4912,5720&w=322&h=375",
+									"alt": "smiling woman wearing white and black pinstriped collared top",
+									"origin": {
+										"id": "QXevDflbl8A",
+										"url": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwzfHxwZXJzb258ZW58MHx8fHwxNzQwMzY2NDAzfDA&ixlib=rb-4.0.3&q=85",
+										"width": 4912,
+										"height": 7360
+									},
+									"width": 322,
+									"height": 375,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 820
+										}
+									},
+									"thumbnails": {}
+								}
+							],
+							[
+								"background_color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#FFB0E1"
+								}
+							],
+							[
+								"text_color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#333230"
+								}
+							],
+							[
+								"speaker_id",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "1"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"speaker_id",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "1"
+								}
+							],
+							[
+								"first_name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Philippe"
+								}
+							],
+							[
+								"last_name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Lamarre"
+								}
+							],
+							[
+								"job",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Co-fondateur, Urbania"
+								}
+							],
+							[
+								"img",
+								{
+									"__TYPE__": "ImageContent",
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyfHxwZXJzb258ZW58MHx8fHwxNzQwMzY2NDAzfDA&ixlib=rb-4.0.3&q=85&rect=1283,0,3435,4000&w=322&h=375",
+									"alt": "grayscale photo of man",
+									"origin": {
+										"id": "c_GmwfHBDzk",
+										"url": "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyfHxwZXJzb258ZW58MHx8fHwxNzQwMzY2NDAzfDA&ixlib=rb-4.0.3&q=85",
+										"width": 6000,
+										"height": 4000
+									},
+									"width": 322,
+									"height": 375,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 1283,
+											"y": 0
+										}
+									},
+									"thumbnails": {}
+								}
+							],
+							[
+								"background_color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#FFD371"
+								}
+							],
+							[
+								"text_color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#FE4549"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"first_name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Philippe"
+								}
+							],
+							[
+								"last_name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Lamarre"
+								}
+							],
+							[
+								"job",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Co-fondateur, Urbania"
+								}
+							],
+							[
+								"speaker_id",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "1"
+								}
+							],
+							[
+								"img",
+								{
+									"__TYPE__": "ImageContent",
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1552058544-f2b08422138a?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw1fHxwZXJzb258ZW58MHx8fHwxNzQwMzY2NDAzfDA&ixlib=rb-4.0.3&q=85&rect=0,478,3300,3843&w=322&h=375",
+									"alt": "grayscale photography of man wearing crew-neck shirt",
+									"origin": {
+										"id": "jmURdhtm7Ng",
+										"url": "https://images.unsplash.com/photo-1552058544-f2b08422138a?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw1fHxwZXJzb258ZW58MHx8fHwxNzQwMzY2NDAzfDA&ixlib=rb-4.0.3&q=85",
+										"width": 3300,
+										"height": 4800
+									},
+									"width": 322,
+									"height": 375,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 478
+										}
+									},
+									"thumbnails": {}
+								}
+							],
+							[
+								"background_color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#16B0A3"
+								}
+							],
+							[
+								"text_color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#F3EEE8"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"speaker_id",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "1"
+								}
+							],
+							[
+								"first_name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Philippe"
+								}
+							],
+							[
+								"last_name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Lamarre"
+								}
+							],
+							[
+								"job",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Co-fondateur, Urbania"
+								}
+							],
+							[
+								"img",
+								{
+									"__TYPE__": "ImageContent",
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1491349174775-aaafddd81942?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw4fHxwZXJzb258ZW58MHx8fHwxNzQwMzY2NDAzfDA&ixlib=rb-4.0.3&q=85&rect=0,653,3888,4528&w=322&h=375",
+									"alt": "woman standing near trees wearing black hat",
+									"origin": {
+										"id": "pg_WCHWSdT8",
+										"url": "https://images.unsplash.com/photo-1491349174775-aaafddd81942?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHw4fHxwZXJzb258ZW58MHx8fHwxNzQwMzY2NDAzfDA&ixlib=rb-4.0.3&q=85",
+										"width": 3888,
+										"height": 5833
+									},
+									"width": 322,
+									"height": 375,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 653
+										}
+									},
+									"thumbnails": {}
+								}
+							],
+							[
+								"background_color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#647F18"
+								}
+							],
+							[
+								"text_color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#16B0A4"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"first_name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Philippe"
+								}
+							],
+							[
+								"last_name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Lamarre"
+								}
+							],
+							[
+								"job",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Co-fondateur, Urbania"
+								}
+							],
+							[
+								"speaker_id",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "1"
+								}
+							],
+							[
+								"img",
+								{
+									"__TYPE__": "ImageContent",
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxNHx8cGVyc29ufGVufDB8fHx8MTc0MDM2NjQwM3ww&ixlib=rb-4.0.3&q=85&rect=0,698,4160,4845&w=322&h=375",
+									"alt": "man in white crew neck shirt wearing black framed eyeglasses",
+									"origin": {
+										"id": "C8Ta0gwPbQg",
+										"url": "https://images.unsplash.com/photo-1599566150163-29194dcaad36?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwxNHx8cGVyc29ufGVufDB8fHx8MTc0MDM2NjQwM3ww&ixlib=rb-4.0.3&q=85",
+										"width": 4160,
+										"height": 6240
+									},
+									"width": 322,
+									"height": 375,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 698
+										}
+									},
+									"thumbnails": {}
+								}
+							],
+							[
+								"background_color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#FF9253"
+								}
+							],
+							[
+								"text_color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#FFD371"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"first_name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Philippe"
+								}
+							],
+							[
+								"last_name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Lamarre"
+								}
+							],
+							[
+								"job",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Co-fondateur, Urbania"
+								}
+							],
+							[
+								"img",
+								{
+									"__TYPE__": "ImageContent",
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyOHx8cGVyc29ufGVufDB8fHx8MTc0MDM2NjQwM3ww&ixlib=rb-4.0.3&q=85&rect=0,628,3744,4360&w=322&h=375",
+									"alt": "closeup photography of woman smiling",
+									"origin": {
+										"id": "mEZ3PoFGs_k",
+										"url": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyOHx8cGVyc29ufGVufDB8fHx8MTc0MDM2NjQwM3ww&ixlib=rb-4.0.3&q=85",
+										"width": 3744,
+										"height": 5616
+									},
+									"width": 322,
+									"height": 375,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 628
+										}
+									},
+									"thumbnails": {}
+								}
+							],
+							[
+								"background_color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#647F18"
+								}
+							],
+							[
+								"text_color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#FFB0E1"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"speaker_id",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "1"
+								}
+							],
+							[
+								"first_name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Philippe"
+								}
+							],
+							[
+								"last_name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Lamarre"
+								}
+							],
+							[
+								"job",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Co-fondateur, Urbania"
+								}
+							],
+							[
+								"img",
+								{
+									"__TYPE__": "ImageContent",
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyNXx8cGVyc29ufGVufDB8fHx8MTc0MDM2NjQwM3ww&ixlib=rb-4.0.3&q=85&rect=0,503,3000,3494&w=322&h=375",
+									"alt": "man wearing Henley top portrait",
+									"origin": {
+										"id": "7YVZYZeITc8",
+										"url": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyNXx8cGVyc29ufGVufDB8fHx8MTc0MDM2NjQwM3ww&ixlib=rb-4.0.3&q=85",
+										"width": 3000,
+										"height": 4499
+									},
+									"width": 322,
+									"height": 375,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 503
+										}
+									},
+									"thumbnails": {}
+								}
+							],
+							[
+								"background_color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#2222D3"
+								}
+							],
+							[
+								"text_color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#FF9253"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"first_name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Philippe"
+								}
+							],
+							[
+								"last_name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Lamarre"
+								}
+							],
+							[
+								"job",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Co-fondateur, Urbania"
+								}
+							],
+							[
+								"speaker_id",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "2"
+								}
+							],
+							[
+								"background_color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#FF9D9F"
+								}
+							],
+							[
+								"text_color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#333230"
+								}
+							],
+							[
+								"img",
+								{
+									"__TYPE__": "ImageContent",
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwzfHxwb3J0cmFpdHxlbnwwfHx8fDE3NDAzNjY2OTd8MA&ixlib=rb-4.0.3&q=85&rect=0,109,2550,2970&w=322&h=375",
+									"alt": "woman staring directly at camera near pink wall",
+									"origin": {
+										"id": "bqe0J0b26RQ",
+										"url": "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwzfHxwb3J0cmFpdHxlbnwwfHx8fDE3NDAzNjY2OTd8MA&ixlib=rb-4.0.3&q=85",
+										"width": 2550,
+										"height": 3188
+									},
+									"width": 322,
+									"height": 375,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 109
+										}
+									},
+									"thumbnails": {}
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"first_name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Philippe"
+								}
+							],
+							[
+								"job",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Co-fondateur, Urbania"
+								}
+							],
+							[
+								"last_name",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "Lamarre"
+								}
+							],
+							[
+								"img",
+								{
+									"__TYPE__": "ImageContent",
+									"provider": "imgix",
+									"url": "https://images.unsplash.com/photo-1528892952291-009c663ce843?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyMXx8cG9ydHJhaXR8ZW58MHx8fHwxNzQwMzY2Njk3fDA&ixlib=rb-4.0.3&q=85&rect=0,620,2363,2752&w=322&h=375",
+									"alt": "grayscale photography of man smiling",
+									"origin": {
+										"id": "rriAI0nhcbc",
+										"url": "https://images.unsplash.com/photo-1528892952291-009c663ce843?crop=entropy&cs=srgb&fm=jpg&ixid=M3wzMzc0NjN8MHwxfHNlYXJjaHwyMXx8cG9ydHJhaXR8ZW58MHx8fHwxNzQwMzY2Njk3fDA&ixlib=rb-4.0.3&q=85",
+										"width": 2363,
+										"height": 3992
+									},
+									"width": 322,
+									"height": 375,
+									"edit": {
+										"background": "transparent",
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 620
+										}
+									},
+									"thumbnails": {}
+								}
+							],
+							[
+								"speaker_id",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Text",
+									"value": "1"
+								}
+							],
+							[
+								"background_color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#FF9253"
+								}
+							],
+							[
+								"text_color",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Color",
+									"value": "#333230"
 								}
 							]
 						]

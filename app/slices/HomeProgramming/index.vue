@@ -11,9 +11,7 @@ import IconStar from '@/assets/svg/shapes/star.svg?component';
 
 // The array passed to `getSliceComponentProps` is purely optional.
 // Consider it as a visual hint for you when templating your slice.
-const props = defineProps(
-    getSliceComponentProps<Content.HomeProgrammingSlice>(['slice', 'index', 'slices', 'context']),
-);
+defineProps(getSliceComponentProps<Content.HomeProgrammingSlice>(['slice', 'index', 'slices', 'context']));
 
 const { t } = useI18n();
 const swiperRef = ref();
@@ -60,7 +58,7 @@ const next = () => {
                         <IconStar />
                     </div>
                     <div class="slide-content">
-                        <h3 v-html="t('Voir <br>la programmation <br>complète')"></h3>
+                        <h3 class="speaker-title" v-html="t('Voir <br>la programmation <br>complète')"></h3>
                         <IconArrow class="icon-arrow" />
                     </div>
                 </NuxtLinkLocale>
@@ -80,11 +78,11 @@ const next = () => {
                 <NuxtLinkLocale to="/">
                     <PrismicImage :field="speaker.img" />
                     <div class="slide-content">
-                        <h3>
+                        <h3 class="speaker-title">
                             {{ speaker.first_name }}<br />
                             {{ speaker.last_name }}
                         </h3>
-                        <div>{{ speaker.job }}</div>
+                        <div class="speaker-subtitle">{{ speaker.job }}</div>
                     </div>
                 </NuxtLinkLocale>
             </SwiperSlide>
@@ -187,9 +185,13 @@ const next = () => {
 
 .slide-speaker,
 .slide-view-all {
-    width: 322px;
+    width: 171px;
     height: auto;
-    margin-right: 24px;
+    margin-right: 16px;
+    @media (--md) {
+        width: 322px;
+        margin-right: 24px;
+    }
     a {
         height: 100%;
         display: flex;
@@ -201,6 +203,19 @@ const next = () => {
             scale: 1.1;
         }
     }
+    .speaker-title {
+        font-size: rem(14px);
+        margin: 0;
+        @media (--md) {
+            font-size: rem(16px);
+        }
+    }
+    .speaker-subtitle {
+        font-size: rem(10px);
+        @media (--md) {
+            font-size: rem(12px);
+        }
+    }
 }
 
 .slide-speaker {
@@ -208,6 +223,10 @@ const next = () => {
         border-radius: 20px;
         background-color: var(--backgroundColor, var(--beige-100));
         color: var(--textColor, var(--gray-900));
+        border-radius: 8px;
+        @media (--md) {
+            border-radius: 20px;
+        }
     }
     &.is-reverse {
         a {
@@ -215,16 +234,21 @@ const next = () => {
         }
     }
     img {
-        border-radius: 20px;
+        border-radius: 8px;
+        @media (--md) {
+            border-radius: 20px;
+        }
     }
     .slide-content {
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: 8px;
         padding: 16px;
-        h3 {
+        @media (--md) {
+            gap: 16px;
+        }
+        .speaker-title {
             text-transform: lowercase;
-            margin: 0;
         }
     }
 }
@@ -238,8 +262,11 @@ const next = () => {
         align-items: center;
         justify-content: center;
         aspect-ratio: 1 / 1;
-        border-radius: 20px;
         background-color: var(--pink-300);
+        border-radius: 8px;
+        @media (--md) {
+            border-radius: 20px;
+        }
         svg {
             width: 69%;
             fill: var(--green-800);
@@ -252,10 +279,9 @@ const next = () => {
         justify-content: space-between;
         padding: 16px;
         border: 1px solid black;
-        border-radius: 20px;
-        h3 {
-            margin: 0;
-            font-weight: 400;
+        border-radius: 8px;
+        @media (--md) {
+            border-radius: 20px;
         }
     }
     .icon-arrow {
@@ -264,3 +290,13 @@ const next = () => {
     }
 }
 </style>
+
+<i18n lang="json">
+{
+    "en": {
+        "la programmation": "the program",
+        "voir la programmation complète": "See the complete program",
+        "Voir <br>la programmation <br>complète": "See <br>the complete <br>program"
+    }
+}
+</i18n>
