@@ -49,7 +49,7 @@ import IconStar from '@/assets/svg/shapes/star.svg?component';
 import IconSemiCircle from '@/assets/svg/shapes/semi-circle.svg?component';
 // import IconAsterix from '@/assets/svg/shapes/asterisk.svg?component?component';
 // import IconTriangle from '@/assets/svg/shapes/triangle.svg?component';
-// import IconGlyph from '@/assets/svg/shapes/glyph.svg?component';
+import IconGlyph from '@/assets/svg/shapes/glyph.svg?component';
 // import IconHexagon from '@/assets/svg/shapes/hexagon.svg?component';
 import IconCircle from '@/assets/svg/shapes/circle.svg?component';
 
@@ -60,12 +60,12 @@ const maxHeight = ref('0px');
 const menu = useTemplateRef('menu');
 const menuList = useTemplateRef('menuList');
 const items = computed(() => [
-    // {
-    //     label: t('Accueil'),
-    //     path: 'index',
-    //     icon: IconGlyph,
-    //     color: 'yellow-200',
-    // },
+    {
+        label: t('Accueil'),
+        path: 'index',
+        icon: IconGlyph,
+        color: 'yellow-200',
+    },
     {
         label: t('Billetterie'),
         path: 'tickets',
@@ -252,7 +252,7 @@ const onEscape = () => {
 }
 .menu-link {
     position: relative;
-    display: inline-block;
+    display: block;
     font-size: rem(24px);
     text-decoration: none;
     color: var(--gray-900);
@@ -266,11 +266,12 @@ const onEscape = () => {
         transform: translateY(-50%);
         left: 0;
         opacity: 0;
-        transition: opacity 150ms ease;
+        transition: all 300ms ease;
         transition-delay: 0ms;
         width: 16px;
         height: 16px;
         color: var(--green-700);
+        translate: -100%;
     }
     &.router-link-exact-active,
     &:hover {
@@ -278,7 +279,7 @@ const onEscape = () => {
         padding-left: 24px;
         .menu-icon {
             opacity: 1;
-            transition: opacity 300ms ease 150ms;
+            translate: 0;
         }
     }
 }
