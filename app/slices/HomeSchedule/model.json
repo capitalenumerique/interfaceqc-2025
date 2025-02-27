@@ -1,0 +1,88 @@
+{
+  "id": "home_programming",
+  "type": "SharedSlice",
+  "name": "HomeSchedule",
+  "description": "HomeProgramming",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "description": {
+          "type": "Text",
+          "config": {
+            "label": "description",
+            "placeholder": ""
+          }
+        },
+        "speakers": {
+          "type": "Group",
+          "config": {
+            "label": "speakers",
+            "repeat": true,
+            "fields": {
+              "speaker_id": {
+                "type": "Text",
+                "config": {
+                  "label": "speaker id",
+                  "placeholder": ""
+                }
+              },
+              "first_name": {
+                "type": "Text",
+                "config": {
+                  "label": "first name",
+                  "placeholder": ""
+                }
+              },
+              "last_name": {
+                "type": "Text",
+                "config": {
+                  "label": "last_name",
+                  "placeholder": ""
+                }
+              },
+              "job": {
+                "type": "Text",
+                "config": {
+                  "label": "job",
+                  "placeholder": ""
+                }
+              },
+              "img": {
+                "type": "Image",
+                "config": {
+                  "label": "img",
+                  "constraint": {
+                    "width": 322,
+                    "height": 375
+                  },
+                  "thumbnails": []
+                }
+              },
+              "background_color": {
+                "type": "Color",
+                "config": {
+                  "label": "background color",
+                  "placeholder": ""
+                }
+              },
+              "text_color": {
+                "type": "Color",
+                "config": {
+                  "label": "text color",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

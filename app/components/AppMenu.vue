@@ -9,10 +9,10 @@
         <div class="menu-wrapper">
             <div class="logo-wrapper">
                 <button class="btn-menu" type="button" :class="{ 'is-open': isOpen }" @click="isOpen = !isOpen">
-                    <span class="sr-only">Menu</span>
+                    <span class="sr-only">{{ t('Menu') }}</span>
                 </button>
                 <NuxtLinkLocale to="index" class="logo-link">
-                    <span class="sr-only">interface</span>
+                    <span class="sr-only">{{ t('Retour à l’accueil') }}</span>
                     <IconInterfaceH class="icon-interface-h" />
                     <IconInterfaceV class="icon-interface-v" />
                 </NuxtLinkLocale>
@@ -52,22 +52,22 @@ const menu = useTemplateRef('menu');
 const menuList = useTemplateRef('menuList');
 const items = computed(() => [
     {
-        label: t('accueil'),
+        label: t('Accueil'),
         path: 'index',
         icon: '',
     },
     {
-        label: t('billetterie'),
+        label: t('Billetterie'),
         path: 'tickets',
         icon: '',
     },
     {
-        label: t('programmation'),
-        path: 'program',
+        label: t('Programmation'),
+        path: 'schedule',
         icon: '',
     },
     {
-        label: t('faq'),
+        label: t('Faq'),
         path: 'faq',
         icon: '',
     },
@@ -214,6 +214,7 @@ const onEscape = () => {
     text-decoration: none;
     color: var(--gray-900);
     font-weight: 500;
+    text-transform: lowercase;
     transition: padding 300ms ease;
     .icon-diamond {
         position: absolute;
@@ -343,14 +344,16 @@ const onEscape = () => {
 <i18n lang="json">
 {
     "en": {
-        "accueil": "home",
-        "billetterie": "tickets",
-        "programmation": "program",
-        "participer": "participate",
-        "médiathèque": "media library",
-        "à propos": "about",
-        "contact": "contact",
-        "faq": "faq"
+        "Menu": "Menu",
+        "Retour à l’accueil": "Back to homepage",
+        "Accueil": "Home",
+        "Billetterie": "Tickets",
+        "Programmation": "Schedule",
+        "Participer": "Participate",
+        "Médiathèque": "media Library",
+        "À propos": "About",
+        "Contact": "Contact",
+        "Faq": "Faq"
     }
 }
 </i18n>

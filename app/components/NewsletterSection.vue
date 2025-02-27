@@ -1,7 +1,7 @@
 <template>
     <section class="newsletter-section">
         <div class="newsletter-text-wrapper">
-            <h2 class="newsletter-title">{{ t('infolettre') }}</h2>
+            <h2 class="newsletter-title">{{ t('Infolettre') }}</h2>
             <p class="newsletter-text">
                 {{ t('Pour tout savoir, l’infolettre est le secret le moins bien gardé.') }}
             </p>
@@ -37,7 +37,7 @@ const { t } = useI18n();
     flex-direction: column;
     max-width: 1272px;
     padding: 80px 16px;
-    @media (--md) {
+    @media (--lg) {
         flex-direction: row;
     }
 }
@@ -48,7 +48,7 @@ const { t } = useI18n();
     background-color: var(--beige-100);
     border: 1px solid var(--gray-900);
     padding: 40px 16px;
-    @media (--md) {
+    @media (--lg) {
         padding: 48px 32px;
         border-radius: 40px;
     }
@@ -63,7 +63,7 @@ const { t } = useI18n();
     gap: 16px;
     max-width: 100%;
     margin-top: -1px;
-    @media (--md) {
+    @media (--lg) {
         min-width: 375px;
         margin: 0 0 0 -1px;
     }
@@ -76,7 +76,7 @@ const { t } = useI18n();
         height: 3px;
         transform: translateX(-50%);
         background-color: var(--beige-100);
-        @media (--md) {
+        @media (--lg) {
             top: 50%;
             left: -2px;
             width: 3px;
@@ -92,14 +92,15 @@ const { t } = useI18n();
     font-size: rem(18px);
     margin-bottom: 8px;
     font-weight: 500;
-    @media (--md) {
+    text-transform: lowercase;
+    @media (--lg) {
         margin-bottom: 16px;
     }
 }
 .newsletter-text {
     font-size: rem(30px);
     margin: 0;
-    @media (--md) {
+    @media (--lg) {
         font-size: rem(48px);
     }
 }
@@ -117,7 +118,7 @@ const { t } = useI18n();
 <i18n lang="json">
 {
     "en": {
-        "infolettre": "newsletter",
+        "Infolettre": "Newsletter",
         "Pour tout savoir, l’infolettre est le secret le moins bien gardé.": "To know everything, the newsletter is the worst-kept secret.",
         "Adresse courriel": "Email address",
         "adresse{'@'}exemple.com": "email{'@'}example.com"

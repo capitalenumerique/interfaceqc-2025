@@ -17,6 +17,7 @@
 </template>
 
 <script lang="ts" setup>
+import { NuxtLinkLocale } from '#components';
 const props = defineProps({
     type: {
         type: String,
@@ -45,7 +46,7 @@ const props = defineProps({
 });
 
 const component = computed(() => {
-    if (props.href) return resolveComponent('NuxtLink');
+    if (props.href) return NuxtLinkLocale;
     return 'button';
 });
 </script>

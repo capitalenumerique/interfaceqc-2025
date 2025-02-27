@@ -18,7 +18,7 @@ defineProps(getSliceComponentProps<Content.PartnersGridSlice>(['slice', 'index',
         </BouncingAnimation>
         <ul class="partners-list">
             <li v-for="(partner, index) in slice.primary.partner" :key="`partner-${index}`" class="partner-item">
-                <a :href="partner.website.url" :target="partner.website.target">
+                <a :href="partner.website.url" target="_blank">
                     <img class="partner-logo" :src="partner.logo.url" :alt="partner.logo.alt" />
                 </a>
             </li>

@@ -13,6 +13,9 @@
                     "choices": {
                         "partners_grid": {
                             "type": "SharedSlice"
+                        },
+                        "home_programming": {
+                            "type": "SharedSlice"
                         }
                     }
                 }
