@@ -1,7 +1,7 @@
 {
   "id": "home_programming",
   "type": "SharedSlice",
-  "name": "HomeProgramming",
+  "name": "HomeSchedule",
   "description": "HomeProgramming",
   "variations": [
     {

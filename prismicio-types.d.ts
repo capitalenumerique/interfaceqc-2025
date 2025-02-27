@@ -263,11 +263,11 @@ export type TicketsDocument<Lang extends string = string> = prismic.PrismicDocum
 export type AllDocumentTypes = FaqDocument | HomeDocument | ProgramDocument | TicketsDocument;
 
 /**
- * Item in *HomeProgramming → Default → Primary → speakers*
+ * Item in *HomeSchedule → Default → Primary → speakers*
  */
 export interface HomeProgrammingSliceDefaultPrimarySpeakersItem {
     /**
-     * speaker id field in *HomeProgramming → Default → Primary → speakers*
+     * speaker id field in *HomeSchedule → Default → Primary → speakers*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -277,7 +277,7 @@ export interface HomeProgrammingSliceDefaultPrimarySpeakersItem {
     speaker_id: prismic.KeyTextField;
 
     /**
-     * first name field in *HomeProgramming → Default → Primary → speakers*
+     * first name field in *HomeSchedule → Default → Primary → speakers*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -287,7 +287,7 @@ export interface HomeProgrammingSliceDefaultPrimarySpeakersItem {
     first_name: prismic.KeyTextField;
 
     /**
-     * last_name field in *HomeProgramming → Default → Primary → speakers*
+     * last_name field in *HomeSchedule → Default → Primary → speakers*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -297,7 +297,7 @@ export interface HomeProgrammingSliceDefaultPrimarySpeakersItem {
     last_name: prismic.KeyTextField;
 
     /**
-     * job field in *HomeProgramming → Default → Primary → speakers*
+     * job field in *HomeSchedule → Default → Primary → speakers*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -307,7 +307,7 @@ export interface HomeProgrammingSliceDefaultPrimarySpeakersItem {
     job: prismic.KeyTextField;
 
     /**
-     * img field in *HomeProgramming → Default → Primary → speakers*
+     * img field in *HomeSchedule → Default → Primary → speakers*
      *
      * - **Field Type**: Image
      * - **Placeholder**: *None*
@@ -317,7 +317,7 @@ export interface HomeProgrammingSliceDefaultPrimarySpeakersItem {
     img: prismic.ImageField<never>;
 
     /**
-     * background color field in *HomeProgramming → Default → Primary → speakers*
+     * background color field in *HomeSchedule → Default → Primary → speakers*
      *
      * - **Field Type**: Color
      * - **Placeholder**: *None*
@@ -327,7 +327,7 @@ export interface HomeProgrammingSliceDefaultPrimarySpeakersItem {
     background_color: prismic.ColorField;
 
     /**
-     * text color field in *HomeProgramming → Default → Primary → speakers*
+     * text color field in *HomeSchedule → Default → Primary → speakers*
      *
      * - **Field Type**: Color
      * - **Placeholder**: *None*
@@ -338,11 +338,11 @@ export interface HomeProgrammingSliceDefaultPrimarySpeakersItem {
 }
 
 /**
- * Primary content in *HomeProgramming → Default → Primary*
+ * Primary content in *HomeSchedule → Default → Primary*
  */
 export interface HomeProgrammingSliceDefaultPrimary {
     /**
-     * description field in *HomeProgramming → Default → Primary*
+     * description field in *HomeSchedule → Default → Primary*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -352,7 +352,7 @@ export interface HomeProgrammingSliceDefaultPrimary {
     description: prismic.KeyTextField;
 
     /**
-     * speakers field in *HomeProgramming → Default → Primary*
+     * speakers field in *HomeSchedule → Default → Primary*
      *
      * - **Field Type**: Group
      * - **Placeholder**: *None*
@@ -363,7 +363,7 @@ export interface HomeProgrammingSliceDefaultPrimary {
 }
 
 /**
- * Default variation for HomeProgramming Slice
+ * Default variation for HomeSchedule Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -376,12 +376,12 @@ export type HomeProgrammingSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Slice variation for *HomeProgramming*
+ * Slice variation for *HomeSchedule*
  */
 type HomeProgrammingSliceVariation = HomeProgrammingSliceDefault;
 
 /**
- * HomeProgramming Shared Slice
+ * HomeSchedule Shared Slice
  *
  * - **API ID**: `home_programming`
  * - **Description**: HomeProgramming
