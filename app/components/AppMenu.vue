@@ -13,23 +13,25 @@
                 </button>
                 <NuxtLinkLocale to="index" class="logo-link">
                     <span class="sr-only">{{ t('Retour à l’accueil') }}</span>
-                    <IconInterfaceH class="icon-interface-h" />
-                    <IconInterfaceV class="icon-interface-v" />
+                    <LogoInterface class="logo-interface" />
                 </NuxtLinkLocale>
             </div>
-            <IconStar class="icon-star" />
+            <NuxtLinkLocale to="index" class="logo-interface-vertical">
+                <LogoInterfaceVertical />
+            </NuxtLinkLocale>
         </div>
         <Transition name="collapse" @enter="onEnter" @after-leave="isAnimating = false">
             <nav v-show="isOpen" class="menu-inner">
                 <ul ref="menuList" class="menu-list">
                     <li v-for="item in items" :key="item.label" class="menu-item">
-                        <!-- TODO: Change link -->
                         <NuxtLinkLocale :to="item.path" class="menu-link">
-                            <IconDiamond class="icon-diamond" />
+                            <Component :is="item.icon" :style="`fill: var(--${item.color})`" class="menu-icon" />
                             {{ item.label }}
                         </NuxtLinkLocale>
                     </li>
-                    <li><LanguageSwitcher /></li>
+                    <li class="menu-item">
+                        <LanguageSwitcher />
+                    </li>
                 </ul>
             </nav>
         </Transition>
@@ -39,10 +41,17 @@
 <script lang="ts" setup>
 import { OnClickOutside } from '@vueuse/components';
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap';
-import IconInterfaceH from '@/assets/svg/interface-logo.svg?component';
-import IconInterfaceV from '@/assets/svg/interface-logo-v.svg?component';
-import IconStar from '@/assets/svg/star.svg?component';
-import IconDiamond from '@/assets/svg/diamond.svg?component';
+import LogoInterface from '@/assets/svg/logo.svg?component';
+import LogoInterfaceVertical from '@/assets/svg/logo-with-glyph-vertical.svg?component';
+
+// import IconLemon from '@/assets/svg/shapes/lemon.svg?component';
+import IconStar from '@/assets/svg/shapes/star.svg?component';
+import IconSemiCircle from '@/assets/svg/shapes/semi-circle.svg?component';
+// import IconAsterix from '@/assets/svg/shapes/asterisk.svg?component?component';
+// import IconTriangle from '@/assets/svg/shapes/triangle.svg?component';
+// import IconGlyph from '@/assets/svg/shapes/glyph.svg?component';
+// import IconHexagon from '@/assets/svg/shapes/hexagon.svg?component';
+import IconCircle from '@/assets/svg/shapes/circle.svg?component';
 
 const { t } = useI18n();
 const isOpen = ref(false);
@@ -51,25 +60,53 @@ const maxHeight = ref('0px');
 const menu = useTemplateRef('menu');
 const menuList = useTemplateRef('menuList');
 const items = computed(() => [
-    {
-        label: t('Accueil'),
-        path: 'index',
-        icon: '',
-    },
+    // {
+    //     label: t('Accueil'),
+    //     path: 'index',
+    //     icon: IconGlyph,
+    //     color: 'yellow-200',
+    // },
     {
         label: t('Billetterie'),
         path: 'tickets',
-        icon: '',
+        icon: IconStar,
+        color: 'pink-300',
     },
     {
         label: t('Programmation'),
         path: 'schedule',
-        icon: '',
+        icon: IconSemiCircle,
+        color: 'red-500',
     },
+    // {
+    //     label: t('Participer'),
+    //     path: 'participate',
+    //     icon: IconAsterix,
+    //     color: 'green-700',
+    // },
+    // {
+    //     label: t('Médiathèque'),
+    //     path: 'media-library',
+    //     icon: IconTriangle,
+    //     color: 'teal-500',
+    // },
+    // {
+    //     label: t('À propos'),
+    //     path: 'about-us',
+    //     icon: IconGlyph,
+    //     color: 'yellow-200',
+    // },
+    // {
+    //     label: t('Contact'),
+    //     path: 'contact-us',
+    //     icon: IconHexagon,
+    //     color: 'orange-400',
+    // },
     {
         label: t('Faq'),
         path: 'faq',
-        icon: '',
+        icon: IconCircle,
+        color: 'blue-700',
     },
 ]);
 
@@ -80,6 +117,11 @@ watch(isOpen, (value) => {
     } else {
         deactivate();
     }
+});
+
+const route = useRoute();
+watch(route, () => {
+    isOpen.value = false;
 });
 
 const onEnter = () => {
@@ -145,21 +187,22 @@ const onEscape = () => {
         width: 300px;
         max-width: 300px;
         will-change: auto;
-        height: 100vh;
+        top: 0;
+        bottom: 0;
         max-height: none;
         border-right: 1px solid var(--gray-900);
     }
 }
 .menu-list {
-    padding: 32px 28px;
+    padding: 10px 28px 32px;
     white-space: nowrap;
     list-style: none;
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    margin: -12px 0;
     @media (--md) {
-        padding: calc(32px - 20px + 50px + 50px) 28px 32px;
+        padding: 32px 28px;
     }
 }
 .menu-item {
@@ -216,7 +259,8 @@ const onEscape = () => {
     font-weight: 500;
     text-transform: lowercase;
     transition: padding 300ms ease;
-    .icon-diamond {
+    padding: 12px 0;
+    .menu-icon {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -232,7 +276,7 @@ const onEscape = () => {
     &:hover {
         font-weight: 600;
         padding-left: 24px;
-        .icon-diamond {
+        .menu-icon {
             opacity: 1;
             transition: opacity 300ms ease 150ms;
         }
@@ -251,37 +295,38 @@ const onEscape = () => {
     text-decoration: none;
     color: var(--gray-900);
 }
-.icon-interface-h {
+.logo-interface {
     height: 24px;
     @media (--md) {
         display: none;
     }
 }
-.icon-interface-v {
+.logo-interface-vertical {
     display: none;
     @media (--md) {
         display: block;
         width: 32px;
+        color: var(--gray-900);
     }
 }
-.icon-star {
+.icon-glyph {
     width: 26px;
     height: 26px;
 }
 .btn-menu {
     position: relative;
     background: transparent;
-    width: 50px;
-    height: 50px;
-    padding: 0;
+    width: 24px;
+    height: 24px;
+    box-sizing: content-box;
+    padding: 12px;
     margin: 0;
     color: var(--gray-900);
     border: 0;
     appearance: none;
     margin-left: -41px;
     @media (--md) {
-        margin-left: 0;
-        margin-top: -20px;
+        margin: -12px;
     }
     &::before,
     &::after {
