@@ -26,16 +26,16 @@ const next = () => {
 
 <template>
     <section :data-slice-type="slice.slice_type" :data-slice-variation="slice.variation">
-        <div class="programming-header">
-            <h2 class="programming-title">
+        <div class="schedule-header">
+            <h2 class="schedule-title">
                 {{ t('La programmation') }}<br />
                 {{ new Date().getFullYear() }}
             </h2>
-            <div class="programming-content">
+            <div class="schedule-content">
                 <div class="wysiwyg">
                     {{ slice.primary.description }}
                 </div>
-                <PrimaryButton href="/program">{{ t('Voir la programmation complète') }}</PrimaryButton>
+                <PrimaryButton href="schedule">{{ t('Voir la programmation complète') }}</PrimaryButton>
             </div>
         </div>
         <Swiper
@@ -53,7 +53,7 @@ const next = () => {
             @swiper="(s) => (swiperRef = s)"
         >
             <SwiperSlide class="slide-view-all">
-                <NuxtLinkLocale to="/program">
+                <NuxtLinkLocale to="schedule">
                     <div class="icon-wrapper">
                         <IconStar />
                     </div>
@@ -68,14 +68,14 @@ const next = () => {
                 :key="`${speaker.firstName} ${speaker.lastName}`"
                 class="slide-speaker"
                 :class="{
-                    'is-reverse': index % 2 === 0,
+                    'is-reversed': index % 2 === 0,
                 }"
                 :style="{
                     '--backgroundColor': speaker.background_color,
                     '--textColor': speaker.text_color,
                 }"
             >
-                <NuxtLinkLocale to="/">
+                <NuxtLinkLocale to="index">
                     <PrismicImage :field="speaker.img" />
                     <div class="slide-content">
                         <h3 class="speaker-title">
@@ -88,10 +88,10 @@ const next = () => {
             </SwiperSlide>
             <div class="swiper-actions">
                 <button type="button" class="swiper-button-prev" @click="prev">
-                    <IconArrow class="size-7 -scale-x-100" />
+                    <IconArrow />
                 </button>
                 <button type="button" class="swiper-button-next" @click="next">
-                    <IconArrow class="size-7" />
+                    <IconArrow />
                 </button>
             </div>
         </Swiper>
@@ -99,7 +99,7 @@ const next = () => {
 </template>
 
 <style lang="postcss" scoped>
-.programming-header {
+.schedule-header {
     display: flex;
     align-items: flex-start;
     flex-direction: column;
@@ -113,7 +113,7 @@ const next = () => {
         flex-direction: row;
     }
 }
-.programming-title {
+.schedule-title {
     font-size: rem(32px);
     font-weight: 600;
     max-width: 430px;
@@ -124,7 +124,7 @@ const next = () => {
         font-size: rem(48px);
     }
 }
-.programming-content {
+.schedule-content {
     display: flex;
     flex-direction: column;
     font-size: rem(16px);
@@ -145,12 +145,10 @@ const next = () => {
         text-transform: lowercase;
     }
 }
-
 .swiper {
     padding: 30px 0;
     margin: -30px 0;
 }
-
 .swiper-actions {
     display: flex;
     justify-content: space-between;
@@ -160,7 +158,6 @@ const next = () => {
     max-width: 1272px;
     padding: 0 16px;
 }
-
 .swiper-button-prev,
 .swiper-button-next {
     display: flex;
@@ -186,7 +183,6 @@ const next = () => {
         rotate: 180deg;
     }
 }
-
 .slide-speaker,
 .slide-view-all {
     width: 171px;
@@ -221,7 +217,6 @@ const next = () => {
         }
     }
 }
-
 .slide-speaker {
     a {
         border-radius: 20px;
@@ -232,7 +227,7 @@ const next = () => {
             border-radius: 20px;
         }
     }
-    &.is-reverse {
+    &.is-reversed {
         a {
             flex-direction: column-reverse;
         }
@@ -256,7 +251,6 @@ const next = () => {
         }
     }
 }
-
 .slide-view-all {
     a {
         gap: 16px;
@@ -282,7 +276,7 @@ const next = () => {
         flex-direction: column;
         justify-content: space-between;
         padding: 16px;
-        border: 1px solid black;
+        border: 1px solid var(--color-black);
         border-radius: 8px;
         @media (--md) {
             border-radius: 20px;
@@ -298,9 +292,9 @@ const next = () => {
 <i18n lang="json">
 {
     "en": {
-        "La programmation": "The program",
-        "Voir la programmation complète": "See the complete program",
-        "Voir <br>la programmation <br>complète": "See <br>the complete <br>program"
+        "La programmation": "The schedule",
+        "Voir la programmation complète": "See the complete schedule",
+        "Voir <br>la programmation <br>complète": "See <br>the complete <br>schedule"
     }
 }
 </i18n>

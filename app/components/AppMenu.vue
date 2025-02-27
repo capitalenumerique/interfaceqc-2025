@@ -12,7 +12,7 @@
                     <span class="sr-only">{{ t('Menu') }}</span>
                 </button>
                 <NuxtLinkLocale to="index" class="logo-link">
-                    <span class="sr-only">{{ t("Retour à l'accueil") }}</span>
+                    <span class="sr-only">{{ t('Retour à l’accueil') }}</span>
                     <IconInterfaceH class="icon-interface-h" />
                     <IconInterfaceV class="icon-interface-v" />
                 </NuxtLinkLocale>
@@ -63,7 +63,7 @@ const items = computed(() => [
     },
     {
         label: t('Programmation'),
-        path: 'program',
+        path: 'schedule',
         icon: '',
     },
     {
@@ -345,10 +345,10 @@ const onEscape = () => {
 {
     "en": {
         "Menu": "Menu",
-        "Retour à l'accueil": "Back to homepage",
+        "Retour à l’accueil": "Back to homepage",
         "Accueil": "Home",
         "Billetterie": "Tickets",
-        "Programmation": "Program",
+        "Programmation": "Schedule",
         "Participer": "Participate",
         "Médiathèque": "media Library",
         "À propos": "About",
