@@ -17,7 +17,7 @@ defineProps(getSliceComponentProps<Content.PartnersGridSlice>(['slice', 'index',
         <BouncingAnimation class="animation-container is-reversed" :duration="9000">
             <IconLemon class="lemon" width="180" />
         </BouncingAnimation>
-        <SliceIntro class="partners-intro">
+        <SliceIntro>
             <template #title>{{ t('Partenaires') }}</template>
             <template #wysiwyg>{{ slice.primary.description }}</template>
             <template #cta>
@@ -44,6 +44,7 @@ defineProps(getSliceComponentProps<Content.PartnersGridSlice>(['slice', 'index',
 .animation-container {
     position: absolute;
     height: 100%;
+    z-index: -1;
     &.is-reversed {
         transform: scale(-1, -1);
     }
@@ -54,13 +55,7 @@ defineProps(getSliceComponentProps<Content.PartnersGridSlice>(['slice', 'index',
 .lemon {
     fill: var(--pink-300);
 }
-.partners-intro {
-    position: relative;
-    z-index: 1;
-}
 .partners-list {
-    position: relative;
-    z-index: 1;
     list-style: none;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
