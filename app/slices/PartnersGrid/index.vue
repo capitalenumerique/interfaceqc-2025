@@ -2,6 +2,7 @@
 import type { Content } from '@prismicio/client';
 import IconAsterisk from '@/assets/svg/shapes/asterisk.svg?component';
 import IconLemon from '@/assets/svg/shapes/lemon.svg?component';
+const { t } = useI18n();
 
 // The array passed to `getSliceComponentProps` is purely optional.
 // Consider it as a visual hint for you when templating your slice.
@@ -16,6 +17,13 @@ defineProps(getSliceComponentProps<Content.PartnersGridSlice>(['slice', 'index',
         <BouncingAnimation class="animation-container is-reversed" :duration="9000">
             <IconLemon class="lemon" width="180" />
         </BouncingAnimation>
+        <SliceIntro class="partners-intro">
+            <template #title>{{ t('Partenaires') }}</template>
+            <template #wysiwyg>{{ slice.primary.description }}</template>
+            <template #cta>
+                <PrimaryButton href="mailto:info@capitalenumerique.com">{{ t('Devenir partenaire') }}</PrimaryButton>
+            </template>
+        </SliceIntro>
         <ul class="partners-list">
             <li v-for="(partner, index) in slice.primary.partner" :key="`partner-${index}`" class="partner-item">
                 <a :href="partner.website.url" target="_blank">
@@ -46,6 +54,10 @@ defineProps(getSliceComponentProps<Content.PartnersGridSlice>(['slice', 'index',
 .lemon {
     fill: var(--pink-300);
 }
+.partners-intro {
+    position: relative;
+    z-index: 1;
+}
 .partners-list {
     position: relative;
     z-index: 1;
@@ -74,3 +86,12 @@ defineProps(getSliceComponentProps<Content.PartnersGridSlice>(['slice', 'index',
     }
 }
 </style>
+
+<i18n lang="json">
+{
+    "en": {
+        "Partenaires": "Partners",
+        "Devenir partenaire": "Become a partner"
+    }
+}
+</i18n>
