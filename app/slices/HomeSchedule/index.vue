@@ -26,18 +26,16 @@ const next = () => {
 
 <template>
     <section :data-slice-type="slice.slice_type" :data-slice-variation="slice.variation">
-        <div class="schedule-header">
-            <h2 class="schedule-title">
+        <SliceIntro>
+            <template #title>
                 {{ t('La programmation') }}<br />
                 {{ new Date().getFullYear() }}
-            </h2>
-            <div class="schedule-content">
-                <div class="wysiwyg">
-                    {{ slice.primary.description }}
-                </div>
+            </template>
+            <template #wysiwyg>{{ slice.primary.description }}</template>
+            <template #cta>
                 <PrimaryButton href="schedule">{{ t('Voir la programmation complète') }}</PrimaryButton>
-            </div>
-        </div>
+            </template>
+        </SliceIntro>
         <Swiper
             slides-per-view="auto"
             :modules="[Navigation, Autoplay]"
@@ -99,52 +97,6 @@ const next = () => {
 </template>
 
 <style lang="postcss" scoped>
-.schedule-header {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: space-between;
-    max-width: 1272px;
-    margin: 0 auto;
-    padding: 0 16px;
-    gap: 24px 32px;
-    margin-bottom: 64px;
-    @media (--lg) {
-        flex-direction: row;
-    }
-}
-.schedule-title {
-    font-size: rem(32px);
-    font-weight: 600;
-    max-width: 430px;
-    flex-shrink: 0;
-    margin: 0;
-    text-transform: lowercase;
-    @media (--lg) {
-        font-size: rem(48px);
-    }
-}
-.schedule-content {
-    display: flex;
-    flex-direction: column;
-    font-size: rem(16px);
-    line-height: 1.777;
-    gap: 40px;
-    @media (--lg) {
-        font-size: rem(18px);
-        align-items: flex-start;
-        max-width: 668px;
-    }
-    .wysiwyg {
-        margin-left: 40px;
-        @media (--lg) {
-            margin-left: 0px;
-        }
-    }
-    .primary-button {
-        text-transform: lowercase;
-    }
-}
 .swiper {
     padding: 30px 0;
     margin: -30px 0;

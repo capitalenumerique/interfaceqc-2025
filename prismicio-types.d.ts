@@ -492,6 +492,16 @@ export interface PartnersGridSliceDefaultPrimaryPartnerItem {
  */
 export interface PartnersGridSliceDefaultPrimary {
     /**
+     * Description field in *PartnersGrid → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Description de la section
+     * - **API ID Path**: partners_grid.default.primary.description
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    description: prismic.KeyTextField;
+
+    /**
      * Partner field in *PartnersGrid → Default → Primary*
      *
      * - **Field Type**: Group
