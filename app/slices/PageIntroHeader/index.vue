@@ -38,5 +38,10 @@ defineProps(getSliceComponentProps<Content.PageIntroHeaderSlice>(['slice', 'inde
         font-size: rem(36px);
         font-weight: 500;
     }
+    :deep(p) {
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
 }
 </style>
