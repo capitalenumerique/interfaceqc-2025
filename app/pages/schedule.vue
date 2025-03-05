@@ -14,19 +14,29 @@
                     </button>
                 </li>
             </ul>
+            <div class="schedule-grid">
+                <!-- <div class="time-slot keynote">
+                    <div class="room-name">Nom de la salle</div>
+                    <div class="talk">
+                        
+                    </div>
+                </div>
+                <div class="time-slot">
+                    <div class="talk"></div>
+                </div> -->
+            </div>
         </div>
         <div v-if="isLoading">{{ t('Loading...') }}</div>
         <!-- <div v-if="!isLoading && error?.message">
             {{ error?.message }}
         </div> -->
-        <div v-else>{{ data }}</div>
+        <pre v-else>{{ data }}</pre>
     </div>
 </template>
 
 <script setup>
 import { components } from '~/slices';
 import { useRouter } from 'vue-router';
-import { useI18n } from 'vue-i18n';
 
 const { t, locale } = useI18n();
 const router = useRouter();
