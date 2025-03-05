@@ -74,6 +74,10 @@ function changeShape() {
 <style lang="postcss" scoped>
 .home-header {
     background-color: var(--beige-100);
+    margin: 0 auto 40px;
+    @media (--lg) {
+        margin: 0 auto 64px;
+    }
 }
 .header-top {
     display: flex;
@@ -129,12 +133,12 @@ function changeShape() {
     }
 }
 .event-infos-wrapper {
-    margin: 40px auto;
+    margin: 40px auto 0;
     width: 100%;
     max-width: 1272px;
     padding: 0 16px;
     @media (--lg) {
-        margin: 64px auto;
+        margin: 64px auto 0;
     }
 }
 .event-infos {

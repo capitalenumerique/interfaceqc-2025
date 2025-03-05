@@ -13,7 +13,20 @@ const { locale } = useI18n();
 const prismic = usePrismic();
 
 const { data: page } = useAsyncData('index', () => {
-    return prismic.client.getSingle('home', { lang: `${locale.value}-ca` });
+    return prismic.client.getSingle('home', {
+        graphQuery: `{
+            slices {
+                home_tickets {
+                    tickets {
+                        ...on ticket_types {
+                            ...ticket_typesFields
+                        }
+                    }
+                }
+            }
+        }`,
+        lang: `${locale.value}-ca`,
+    });
 });
 
 useSeoMeta({

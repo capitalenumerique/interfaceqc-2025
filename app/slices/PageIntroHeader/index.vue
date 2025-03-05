@@ -17,7 +17,7 @@ defineProps(getSliceComponentProps<Content.PageIntroHeaderSlice>(['slice', 'inde
 
 <style lang="postcss" scoped>
 .page-header {
-    max-width: 1240px;
+    max-width: 1272px;
     margin: auto;
     padding: 64px 16px;
 }
