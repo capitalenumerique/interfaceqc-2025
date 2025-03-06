@@ -7,29 +7,18 @@ export const GET_EVENT_BY_ID = gql`
                 id
                 firstName
                 lastName
-                email
-                biography
-                photoUrl
                 organization
-                jobTitle
                 speakerOnPlannings {
                     id
                     beginsAt
                     endsAt
                     categories
-                    description
-                    descriptionTranslations {
-                        language
-                        value
-                    }
-                    htmlDescription
                     place
                     title
                     titleTranslations {
                         language
                         value
                     }
-                    type
                 }
             }
         }
