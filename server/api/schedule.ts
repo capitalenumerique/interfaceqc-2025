@@ -19,6 +19,7 @@ interface Session {
     categories: string[];
     title: string;
     place: string;
+    type: string;
 }
 
 interface EventPerson {
@@ -46,14 +47,15 @@ export default defineEventHandler(async () => {
 
     const speakers: EventPerson[] = response.data.eventPerson.nodes;
 
-    // Remanier la réponse pour que les conférenciers soient dans les conférences
+    // Réorganiser les sessions
     const sessions = speakers.flatMap((speaker) =>
         speaker.speakerOnPlannings.map((session) => ({
-            date: session.beginsAt.split(' ')[0],
-            time: session.beginsAt.split(' ')[1],
+            date: session.beginsAt.split(' ')[0], // Date
+            time: session.beginsAt.split(' ')[1], // Temps
             title: session.title,
             categories: session.categories,
             place: session.place,
+            type: session.type,
             speaker: {
                 id: speaker.id,
                 firstName: speaker.firstName,
@@ -63,19 +65,19 @@ export default defineEventHandler(async () => {
         })),
     );
 
-    // Grouper les conférences par date
+    // Grouper les sessions par date
     const groupedSessions = groupBy(sessions, (session) => session.date);
 
-    // Définit les heures de la journée
+    // Définir les créneaux horaire pour la journée
     const timeslotRange = Array.from({ length: 9 }, (_, i) => {
         const hour = 9 + i;
         return new Date(0, 0, 0, hour, 0, 0);
     });
 
-    // Permet de placer une conférence dans le bon créneau horaire
+    // Associe les bonnes sessions aux bons créneaux horaires
     const findTimeslot = (time: string): string => {
-        const [hour, minute, second] = time.split(':').map(Number);
-        const sessionTime = new Date(0, 0, 0, hour, minute, second);
+        const [hour, minute] = time.split(':').map(Number);
+        const sessionTime = new Date(0, 0, 0, hour, minute, 0);
 
         return (
             timeslotRange
@@ -87,38 +89,65 @@ export default defineEventHandler(async () => {
         );
     };
 
-    // Extraire toutes les catégories uniques
+    // Extraire les catégories uniques et leur assigner des couleurs
     const allCategories = Array.from(new Set(sessions.flatMap((session) => session.categories)));
-
-    // Assigner des couleurs aux catégories
     const colorArray = ['red', 'yellow', 'pink', 'blue', 'teal', 'gray', 'orange'];
     const categoryColorMap: Record<string, string> = {};
+
     allCategories.forEach((category, index) => {
         categoryColorMap[category] = category === 'Keynote' ? 'transparent' : colorArray[index % colorArray.length];
     });
 
-    // Ordonner les dates et regrouper par heures de la journée
+    // Extraire les salles uniques
+    const uniquePlaces = Array.from(
+        new Set(
+            sessions
+                .filter((session) => session.place && session.type === 'Conférence')
+                .map((session) => session.place),
+        ),
+    ).sort((a, b) => {
+        // Ordonner les salles et prendre en compte si leur nom contient un chiffre
+        const extractNumericValue = (place: string): number => {
+            const match = place.match(/(\d+)/);
+            return match ? parseInt(match[0], 10) : Infinity;
+        };
+        return extractNumericValue(a) - extractNumericValue(b);
+    });
+
+    // Ordonner les sessions par date et créneaux horaires
     const sortedResult = Object.keys(groupedSessions)
         .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
         .map((date) => ({
             date,
             timeslots: timeslotRange.map((slot) => ({
                 time: slot.toTimeString().split(' ')[0],
-                sessions: groupedSessions[date]
-                    .filter((session) => findTimeslot(session.time) === slot.toTimeString().split(' ')[0])
-                    .map((session) => ({
-                        title: session.title,
-                        time: session.time,
-                        categories: session.categories.map((cat) => ({
-                            name: cat,
-                            color: categoryColorMap[cat],
-                        })),
-                        place: session.place,
-                        speakers: uniqBy(
-                            groupedSessions[date].filter((s) => s.title === session.title).map((s) => s.speaker),
-                            (speaker) => speaker.id,
-                        ),
-                    })),
+                places: uniquePlaces.map((place) => {
+                    const sessionInPlace = groupedSessions[date].find(
+                        (session) =>
+                            session.place === place && findTimeslot(session.time) === slot.toTimeString().split(' ')[0],
+                    );
+                    return {
+                        name: place,
+                        session: sessionInPlace
+                            ? {
+                                  title: sessionInPlace.title,
+                                  time: sessionInPlace.time,
+                                  categories: sessionInPlace.categories.map((cat) => ({
+                                      name: cat,
+                                      color: categoryColorMap[cat],
+                                  })),
+                                  place: sessionInPlace.place,
+                                  type: sessionInPlace.type,
+                                  speakers: uniqBy(
+                                      groupedSessions[date]
+                                          .filter((s) => s.title === sessionInPlace.title)
+                                          .map((s) => s.speaker),
+                                      (speaker) => speaker.id,
+                                  ),
+                              }
+                            : null,
+                    };
+                }),
             })),
         }));
 
