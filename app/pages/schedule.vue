@@ -14,23 +14,46 @@
                     </button>
                 </li>
             </ul>
-            <div class="schedule-grid">
-                <!-- <div class="time-slot keynote">
-                    <div class="room-name">Nom de la salle</div>
-                    <div class="talk">
-                        
+            <div v-if="isLoading">{{ t('Loading...') }}</div>
+            <div v-else class="schedule-grid">
+                <template v-if="data">
+                    <div
+                        v-for="(timeslot, i) in data[activeDate].timeslots"
+                        :key="`timeslot-${timeslot.time}`"
+                        class="timeslot"
+                        :class="timeslot.type"
+                    >
+                        <span
+                            class="time"
+                            :class="{ 'has-place': i === 0 || data[activeDate].timeslots[i - 1].type !== 'regular' }"
+                            >{{ timeslot.time }}</span
+                        >
+                        <div class="timeslot-sessions">
+                            <div
+                                v-for="place in timeslot.places"
+                                :key="`session-${timeslot.time}-${place.name}`"
+                                class="session"
+                            >
+                                <div
+                                    v-if="i === 0 || data[activeDate].timeslots[i - 1].type !== 'regular'"
+                                    class="place"
+                                >
+                                    {{ place.name }}
+                                </div>
+                                <div class="session-cell">
+                                    <SessionItem v-if="place.session" :session="place.session" />
+                                    <div v-else class="to-be-anounced">{{ t('À déterminer') }}</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="time-slot">
-                    <div class="talk"></div>
-                </div> -->
+                </template>
             </div>
         </div>
-        <div v-if="isLoading">{{ t('Loading...') }}</div>
+        <pre>{{ data }}</pre>
         <!-- <div v-if="!isLoading && error?.message">
             {{ error?.message }}
         </div> -->
-        <pre v-else>{{ data }}</pre>
     </div>
 </template>
 
@@ -149,13 +172,78 @@ await suspense();
         border-style: dashed;
     }
 }
+.timeslot {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    &.special {
+        margin-bottom: 24px;
+    }
+    &.regular {
+        + .regular {
+            .timeslot-sessions {
+                border-top: 0;
+            }
+        }
+    }
+    &:first-child {
+        .timeslot-sessions {
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+    }
+    &:last-child {
+        .timeslot-sessions {
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+    }
+}
+.time {
+    font-weight: 600;
+    &.has-place {
+        margin-top: 68px;
+    }
+}
+.timeslot-sessions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1px solid var(--gray-900);
+    .special & {
+        border-radius: 8px;
+    }
+}
+.place {
+    padding: 24px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--gray-900);
+}
+.session {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--gray-900);
+    &:last-child {
+        border-right: 0;
+    }
+}
+.session-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 250px;
+    flex-grow: 1;
+}
+.to-be-anounced {
+    font-weight: 700;
+    color: var(--gray-300);
+}
 </style>
 
 <i18n lang="json">
 {
     "en": {
         "Loading...": "Chargement...",
-        "Something wrong happened on our side. Please try again. If the problem persist, contact...": "Un problème s'est produit de notre côté. Veuillez réessayer. Si le problème persiste, contactez..."
+        "Something wrong happened on our side. Please try again. If the problem persist, contact...": "Un problème s'est produit de notre côté. Veuillez réessayer. Si le problème persiste, contactez...",
+        "À déterminer": "To be announced"
     }
 }
 </i18n>

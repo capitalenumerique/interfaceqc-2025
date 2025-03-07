@@ -50,6 +50,7 @@ export default defineEventHandler(async () => {
     // Réorganiser les sessions
     const sessions = speakers.flatMap((speaker) =>
         speaker.speakerOnPlannings.map((session) => ({
+            id: session.id,
             date: session.beginsAt.split(' ')[0], // Date
             time: session.beginsAt.split(' ')[1], // Temps
             title: session.title,
@@ -119,36 +120,77 @@ export default defineEventHandler(async () => {
         .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
         .map((date) => ({
             date,
-            timeslots: timeslotRange.map((slot) => ({
-                time: slot.toTimeString().split(' ')[0],
-                places: uniquePlaces.map((place) => {
-                    const sessionInPlace = groupedSessions[date].find(
-                        (session) =>
-                            session.place === place && findTimeslot(session.time) === slot.toTimeString().split(' ')[0],
-                    );
-                    return {
-                        name: place,
-                        session: sessionInPlace
-                            ? {
-                                  title: sessionInPlace.title,
-                                  time: sessionInPlace.time,
-                                  categories: sessionInPlace.categories.map((cat) => ({
-                                      name: cat,
-                                      color: categoryColorMap[cat],
-                                  })),
-                                  place: sessionInPlace.place,
-                                  type: sessionInPlace.type,
-                                  speakers: uniqBy(
-                                      groupedSessions[date]
-                                          .filter((s) => s.title === sessionInPlace.title)
-                                          .map((s) => s.speaker),
-                                      (speaker) => speaker.id,
-                                  ),
-                              }
-                            : null,
-                    };
-                }),
-            })),
+            timeslots: timeslotRange.map((slot) => {
+                const timeString = slot.toTimeString().split(' ')[0];
+
+                // Trouver les sessions de ce créneau horaire
+                const sessionsInTimeslot = groupedSessions[date].filter(
+                    (session) => findTimeslot(session.time) === timeString,
+                );
+
+                // Valider s'il s'agit d'une conférence
+                const specialSession = sessionsInTimeslot.find((session) => session.type !== 'Conférence');
+
+                let places;
+                let type;
+                if (specialSession) {
+                    // S'il s'agit d'un autre type que "Conférence", par exemple: un keynote, un atelier au dîner
+                    // ou un 5 à 7, elle sera la seule session du créneau horaire
+                    places = [
+                        {
+                            name: specialSession.place,
+                            session: {
+                                title: specialSession.title,
+                                time: specialSession.time,
+                                categories: specialSession.categories.map((cat) => ({
+                                    name: cat,
+                                    color: categoryColorMap[cat],
+                                })),
+                                type: specialSession.type,
+                                speakers: uniqBy(
+                                    groupedSessions[date]
+                                        .filter((s) => s.title === specialSession.title)
+                                        .map((s) => s.speaker),
+                                    (speaker) => speaker.id,
+                                ),
+                            },
+                        },
+                    ];
+                    type = 'special';
+                } else {
+                    // Conférences par défaut
+                    places = uniquePlaces.map((place) => {
+                        const sessionInPlace = sessionsInTimeslot.find((session) => session.place === place);
+                        return {
+                            name: place,
+                            session: sessionInPlace
+                                ? {
+                                      title: sessionInPlace.title,
+                                      time: sessionInPlace.time,
+                                      categories: sessionInPlace.categories.map((cat) => ({
+                                          name: cat,
+                                          color: categoryColorMap[cat],
+                                      })),
+                                      type: sessionInPlace.type,
+                                      speakers: uniqBy(
+                                          groupedSessions[date]
+                                              .filter((s) => s.title === sessionInPlace.title)
+                                              .map((s) => s.speaker),
+                                          (speaker) => speaker.id,
+                                      ),
+                                  }
+                                : null,
+                        };
+                    });
+                    type = 'regular';
+                }
+
+                return {
+                    time: timeString,
+                    places,
+                    type,
+                };
+            }),
         }));
 
     return sortedResult;
