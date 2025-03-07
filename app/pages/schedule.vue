@@ -14,19 +14,24 @@
                     </button>
                 </li>
             </ul>
-            <div v-if="isLoading">{{ t('Loading...') }}</div>
+            <div v-if="!isLoading && error?.message">
+                {{ error?.message }}
+            </div>
+            <div v-else-if="isLoading">{{ t('Loading...') }}</div>
             <div v-else class="schedule-grid">
                 <template v-if="data">
                     <div
-                        v-for="(timeslot, i) in data[activeDate].timeslots"
+                        v-for="(timeslot, i) in data[activeDate - 1].timeslots"
                         :key="`timeslot-${timeslot.time}`"
                         class="timeslot"
                         :class="timeslot.type"
                     >
                         <span
                             class="time"
-                            :class="{ 'has-place': i === 0 || data[activeDate].timeslots[i - 1].type !== 'regular' }"
-                            >{{ timeslot.time }}</span
+                            :class="{
+                                'has-place': i === 0 || data[activeDate - 1].timeslots[i - 1].type !== 'regular',
+                            }"
+                            >{{ formatSessionTime(timeslot.time) }}</span
                         >
                         <div class="timeslot-sessions">
                             <div
@@ -35,7 +40,7 @@
                                 class="session"
                             >
                                 <div
-                                    v-if="i === 0 || data[activeDate].timeslots[i - 1].type !== 'regular'"
+                                    v-if="i === 0 || data[activeDate - 1].timeslots[i - 1].type !== 'regular'"
                                     class="place"
                                 >
                                     {{ place.name }}
@@ -50,10 +55,6 @@
                 </template>
             </div>
         </div>
-        <pre>{{ data }}</pre>
-        <!-- <div v-if="!isLoading && error?.message">
-            {{ error?.message }}
-        </div> -->
     </div>
 </template>
 
@@ -69,52 +70,44 @@ const { data: page } = useAsyncData('index', () => {
     return prismic.client.getSingle('program', { lang: `${locale.value}-ca` });
 });
 
-// Fake data (replace with real API data when available)
-const swapcardEventFakeData = {
-    id: 'event_12345',
-    name: 'Interface',
-    start_date: '2025-05-27T09:00:00Z',
-    end_date: '2025-05-29T18:00:00Z',
-    timezone: 'America/New_York',
-    venue: {
-        name: 'Terminal de croisière',
-        address: '84 Rue Dalhousie, Québec, QC',
-        city: 'Québec',
-        country: 'CA',
-    },
-};
+const { data, suspense, isLoading } = useSchedule();
 
-function getEventDates(eventData) {
-    const startDate = new Date(eventData.start_date);
-    const endDate = new Date(eventData.end_date);
-    const dates = [];
-    const formatter = new Intl.DateTimeFormat(locale.value, {
-        weekday: 'long',
-        day: 'numeric',
-        month: 'long',
-    });
+await suspense();
 
-    while (startDate <= endDate) {
-        const formattedDate = formatter.format(startDate);
-        dates.push(formattedDate);
-        startDate.setDate(startDate.getDate() + 1);
-    }
+const { $luxon } = useNuxtApp();
 
-    return dates;
-}
+const dates = computed(() => {
+    if (!data.value) return [];
+    return data.value
+        .map((entry) => {
+            const formattedDate = $luxon.DateTime.fromISO(entry.date).toLocaleString({
+                weekday: 'long',
+                day: 'numeric',
+                month: 'long',
+            });
+            return formattedDate;
+        })
+        .sort();
+});
 
-const dates = getEventDates(swapcardEventFakeData);
 const activeDate = ref(1);
 
-// Update `activeDate` when `router.query.d` changes
 watchEffect(() => {
     const dateParam = parseInt(router.currentRoute.value.query.d);
-    activeDate.value = isNaN(dateParam) ? 1 : dateParam;
+    activeDate.value = isNaN(dateParam) || dateParam < 1 || dateParam > dates.value.length ? 1 : dateParam;
 });
 
 function selectDate(dateIndex) {
     activeDate.value = dateIndex;
     router.push({ query: { d: dateIndex } });
+}
+
+function formatSessionTime(time) {
+    const dateTime = $luxon.DateTime.fromISO(time);
+    if (locale.value === 'fr') {
+        return dateTime.toFormat("HH'h'mm");
+    }
+    return dateTime.toFormat('HH:mm');
 }
 
 useSeoMeta({
@@ -124,11 +117,6 @@ useSeoMeta({
     ogDescription: page.value?.data.meta_description,
     ogImage: computed(() => prismic.asImageSrc(page.value?.data.meta_image)),
 });
-
-const { data, suspense, isLoading } = useSchedule();
-
-// wait for query to actually resolve on the server
-await suspense();
 </script>
 
 <style lang="postcss" scoped>
@@ -171,6 +159,9 @@ await suspense();
         border-color: var(--gray-900);
         border-style: dashed;
     }
+}
+.schedule-grid {
+    margin-bottom: 64px;
 }
 .timeslot {
     display: grid;
@@ -233,7 +224,6 @@ await suspense();
     flex-grow: 1;
 }
 .to-be-anounced {
-    font-weight: 700;
     color: var(--gray-300);
 }
 </style>
@@ -241,8 +231,8 @@ await suspense();
 <i18n lang="json">
 {
     "en": {
-        "Loading...": "Chargement...",
-        "Something wrong happened on our side. Please try again. If the problem persist, contact...": "Un problème s'est produit de notre côté. Veuillez réessayer. Si le problème persiste, contactez...",
+        "Chargement": "Loading",
+        "La programmation est présentement indisponible, veuillez réessayer plus tard.": "The schedule is currently unavailable. Please try again later.",
         "À déterminer": "To be announced"
     }
 }

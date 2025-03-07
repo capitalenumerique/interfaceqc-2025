@@ -37,6 +37,7 @@
         "@nuxtjs/prismic": "^4.0.1",
         "@slicemachine/adapter-nuxt": "^0.3.67",
         "@types/eslint-config-prettier": "^6.11.3",
+        "@types/luxon": "^3.4.2",
         "@vueuse/components": "^12.7.0",
         "@vueuse/core": "^12.7.0",
         "@vueuse/integrations": "^12.7.0",
