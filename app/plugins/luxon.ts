@@ -1,5 +1,10 @@
 import { DateTime, Settings } from 'luxon';
 
-export default defineNuxtPlugin((nuxtApp) => {
-    nuxtApp.provide('luxon', { DateTime, Settings });
+export default defineNuxtPlugin(() => {
+    // nuxtApp.provide('luxon', { DateTime, Settings });
+    return {
+        provide: {
+            luxon: { DateTime, Settings },
+        },
+    };
 });

@@ -8,6 +8,12 @@
                     <p class="speaker-organization">{{ speaker.organization }}</p>
                 </li>
             </ul>
+            <span class="session-time">{{
+                t('{start} à {end}', {
+                    start: formatSessionTime(session.startAt),
+                    end: formatSessionTime(session.endsAt),
+                })
+            }}</span>
         </div>
         <ul class="categories-list">
             <li
@@ -23,6 +29,9 @@
 </template>
 
 <script setup>
+const { t } = useI18n();
+const { formatSessionTime } = useTimeFormatter();
+
 const props = defineProps({
     session: {
         type: Object,
@@ -70,6 +79,7 @@ const getCategoryStyle = (colorKey) => {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 100%;
     height: 100%;
     padding: 24px;
     transition:
@@ -90,6 +100,15 @@ const getCategoryStyle = (colorKey) => {
     font-weight: 600;
     margin-bottom: 16px;
     max-width: 250px;
+}
+.session-time {
+    display: inline-block;
+    font-size: rem(14px);
+    padding: 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    border: 1px solid currentColor;
+    margin-bottom: 8px;
 }
 .speakers-list {
     list-style: none;
@@ -132,3 +151,11 @@ const getCategoryStyle = (colorKey) => {
         color var(--hover-transition);
 }
 </style>
+
+<i18n lang="json">
+{
+    "en": {
+        "{start} à {end}": "{start} to {end}"
+    }
+}
+</i18n>

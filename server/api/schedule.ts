@@ -52,7 +52,8 @@ export default defineEventHandler(async () => {
         speaker.speakerOnPlannings.map((session) => ({
             id: session.id,
             date: session.beginsAt.split(' ')[0], // Date
-            time: session.beginsAt.split(' ')[1], // Temps
+            startAt: session.beginsAt.split(' ')[1], // Temps de début
+            endsAt: session.endsAt.split(' ')[1], // Temps de fin
             title: session.title,
             categories: session.categories,
             place: session.place,
@@ -125,7 +126,7 @@ export default defineEventHandler(async () => {
 
                 // Trouver les sessions de ce créneau horaire
                 const sessionsInTimeslot = groupedSessions[date].filter(
-                    (session) => findTimeslot(session.time) === timeString,
+                    (session) => findTimeslot(session.startAt) === timeString,
                 );
 
                 // Valider s'il s'agit d'une conférence
@@ -141,7 +142,8 @@ export default defineEventHandler(async () => {
                             name: specialSession.place,
                             session: {
                                 title: specialSession.title,
-                                time: specialSession.time,
+                                startAt: specialSession.startAt,
+                                endsAt: specialSession.endsAt,
                                 categories: specialSession.categories.map((cat) => ({
                                     name: cat,
                                     color: categoryColorMap[cat],
@@ -166,7 +168,8 @@ export default defineEventHandler(async () => {
                             session: sessionInPlace
                                 ? {
                                       title: sessionInPlace.title,
-                                      time: sessionInPlace.time,
+                                      startAt: sessionInPlace.startAt,
+                                      endsAt: sessionInPlace.endsAt,
                                       categories: sessionInPlace.categories.map((cat) => ({
                                           name: cat,
                                           color: categoryColorMap[cat],

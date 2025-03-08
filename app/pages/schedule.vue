@@ -2,24 +2,26 @@
     <div>
         <SliceZone :slices="page?.data?.slices ?? []" :components="components" />
         <div class="page-container">
-            <ul class="date-tabs">
-                <li v-for="(date, i) in dates" :key="`date-${i}`">
-                    <button
-                        type="button"
-                        class="date-tab"
-                        :class="{ 'is-active': activeDate === i + 1 }"
-                        @click="selectDate(i + 1)"
-                    >
-                        {{ date }}
-                    </button>
-                </li>
-            </ul>
             <div v-if="!isLoading && error?.message">
                 {{ error?.message }}
             </div>
-            <div v-else-if="isLoading">{{ t('Loading...') }}</div>
+            <div v-else-if="isLoading">
+                <ScheduleLazyGrid />
+            </div>
             <div v-else class="schedule-grid">
                 <template v-if="data">
+                    <ul class="date-tabs">
+                        <li v-for="(date, i) in dates" :key="`date-${i}`">
+                            <button
+                                type="button"
+                                class="date-tab"
+                                :class="{ 'is-active': activeDate === i + 1 }"
+                                @click="selectDate(i + 1)"
+                            >
+                                {{ date }}
+                            </button>
+                        </li>
+                    </ul>
                     <div
                         v-for="(timeslot, i) in data[activeDate - 1].timeslots"
                         :key="`timeslot-${timeslot.time}`"
@@ -40,13 +42,18 @@
                                 class="session"
                             >
                                 <div
-                                    v-if="i === 0 || data[activeDate - 1].timeslots[i - 1].type !== 'regular'"
+                                    v-if="
+                                        i === 0 ||
+                                        timeslot.type === 'special' ||
+                                        data[activeDate - 1].timeslots[i - 1].type !== 'regular' ||
+                                        showPlace
+                                    "
                                     class="place"
                                 >
                                     {{ place.name }}
                                 </div>
                                 <div class="session-cell">
-                                    <SessionItem v-if="place.session" :session="place.session" />
+                                    <ScheduleSessionItem v-if="place.session" :session="place.session" />
                                     <div v-else class="to-be-anounced">{{ t('À déterminer') }}</div>
                                 </div>
                             </div>
@@ -61,10 +68,15 @@
 <script setup>
 import { components } from '~/slices';
 import { useRouter } from 'vue-router';
+import { useBreakpoints } from '@vueuse/core';
 
 const { t, locale } = useI18n();
 const router = useRouter();
 const prismic = usePrismic();
+const { formatSessionTime } = useTimeFormatter();
+const breakpoints = useBreakpoints({ lg: 1024 }, { ssrWidth: 1024 });
+
+const showPlace = breakpoints.smaller('lg');
 
 const { data: page } = useAsyncData('index', () => {
     return prismic.client.getSingle('program', { lang: `${locale.value}-ca` });
@@ -102,14 +114,6 @@ function selectDate(dateIndex) {
     router.push({ query: { d: dateIndex } });
 }
 
-function formatSessionTime(time) {
-    const dateTime = $luxon.DateTime.fromISO(time);
-    if (locale.value === 'fr') {
-        return dateTime.toFormat("HH'h'mm");
-    }
-    return dateTime.toFormat('HH:mm');
-}
-
 useSeoMeta({
     title: page.value?.data.meta_title,
     ogTitle: page.value?.data.meta_title,
@@ -122,6 +126,7 @@ useSeoMeta({
 <style lang="postcss" scoped>
 .page-container {
     max-width: 1240px;
+    min-height: 100vh;
     margin: auto;
     padding: 0 16px;
 }
@@ -135,13 +140,20 @@ useSeoMeta({
     list-style: none;
 }
 .date-tab {
+    font-size: rem(14px);
+    line-height: 1.25;
     color: var(--gray-900);
     background-color: transparent;
     border-radius: 6px;
-    padding: 10px 12px;
+    padding: 8px;
     line-height: 1.5;
     cursor: pointer;
     border: 2px solid transparent;
+    text-wrap: balance;
+    @media (--lg) {
+        font-size: rem(16px);
+        padding: 10px 12px;
+    }
     transition:
         background-color var(--hover-transition),
         color var(--hover-transition),
@@ -164,15 +176,35 @@ useSeoMeta({
     margin-bottom: 64px;
 }
 .timeslot {
-    display: grid;
-    grid-template-columns: 80px 1fr;
+    @media (--md) {
+        display: grid;
+        grid-template-columns: 80px 1fr;
+    }
+    @media (--lg) {
+        &.regular {
+            + .regular {
+                .timeslot-sessions {
+                    border-top: 0;
+                }
+            }
+            &:has(+ .special) {
+                margin-bottom: 24px;
+                .timeslot-sessions {
+                    border-bottom-left-radius: 8px;
+                    border-bottom-right-radius: 8px;
+                }
+            }
+        }
+    }
     &.special {
         margin-bottom: 24px;
-    }
-    &.regular {
+        .timeslot-sessions {
+            display: block;
+        }
         + .regular {
             .timeslot-sessions {
-                border-top: 0;
+                border-top-left-radius: 8px;
+                border-top-right-radius: 8px;
             }
         }
     }
@@ -190,15 +222,33 @@ useSeoMeta({
     }
 }
 .time {
+    display: block;
     font-weight: 600;
-    &.has-place {
+    @media (--md-down) {
+        margin-bottom: 16px;
+    }
+    @media (--md) {
         margin-top: 68px;
+    }
+    @media (--lg) {
+        margin-top: 0;
+        &.has-place {
+            margin-top: 68px;
+        }
     }
 }
 .timeslot-sessions {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
     border: 1px solid var(--gray-900);
+    margin-bottom: 24px;
+    overflow: hidden;
+    @media (--lg-down) {
+        border-radius: 8px;
+    }
+    @media (--lg) {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin-bottom: 0;
+    }
     .special & {
         border-radius: 8px;
     }
@@ -211,20 +261,32 @@ useSeoMeta({
 .session {
     display: flex;
     flex-direction: column;
-    border-right: 1px solid var(--gray-900);
+    border-bottom: 1px solid var(--gray-900);
+    @media (--lg) {
+        border-right: 1px solid var(--gray-900);
+        border-bottom: 0;
+    }
     &:last-child {
         border-right: 0;
+        border-bottom: 0;
     }
 }
 .session-cell {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    min-height: 250px;
     flex-grow: 1;
+    @media (--lg) {
+        justify-content: center;
+    }
 }
 .to-be-anounced {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--gray-300);
+    width: 100%;
+    min-height: 250px;
 }
 </style>
 
