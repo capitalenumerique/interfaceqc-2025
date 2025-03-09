@@ -18,7 +18,7 @@ const { locale, t } = useI18n();
 
 const prismic = usePrismic();
 
-const { data: page } = useAsyncData('index', () => {
+const { data: page } = await useAsyncData('index', () => {
     return prismic.client.getSingle('tickets', { lang: `${locale.value}-ca` });
 });
 

@@ -12,7 +12,7 @@ const { locale } = useI18n();
 
 const prismic = usePrismic();
 
-const { data: page } = useAsyncData('index', () => {
+const { data: page } = await useAsyncData('index', () => {
     return prismic.client.getSingle('home', {
         graphQuery: `{
           home {
