@@ -15,15 +15,23 @@ const prismic = usePrismic();
 const { data: page } = useAsyncData('index', () => {
     return prismic.client.getSingle('home', {
         graphQuery: `{
+          home {
             slices {
-                home_tickets {
-                    tickets {
-                        ...on ticket_types {
-                            ...ticket_typesFields
+              ...on home_tickets {
+                variation {
+                  ...on default {
+                    primary {
+                      tickets {
+                        ticket_type {
+                          ...ticket_typeFields
                         }
+                      }
                     }
+                  }
                 }
+              }
             }
+          }
         }`,
         lang: `${locale.value}-ca`,
     });
