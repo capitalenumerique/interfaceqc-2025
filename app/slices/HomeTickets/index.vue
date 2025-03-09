@@ -61,7 +61,7 @@ defineProps(getSliceComponentProps<Content.HomeTicketsSlice>(['slice', 'index', 
 .ticket-types-wrapper {
     margin: 40px auto;
     width: 100%;
-    max-width: 1272px;
+    max-width: 1368px;
     padding: 0 16px;
     @media (--lg) {
         margin: 64px auto;
