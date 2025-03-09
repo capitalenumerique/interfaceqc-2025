@@ -15,7 +15,7 @@ defineProps(getSliceComponentProps<Content.HomeTicketsSlice>(['slice', 'index', 
         </h2>
         <div class="ticket-types-wrapper">
             <div class="ticket-types">
-                <h3 class="ticket-types-title">{{ slice.primary.title }}</h3>
+                <h3 v-if="slice.primary.title" class="ticket-types-title">{{ slice.primary.title }}</h3>
                 <ul>
                     <li v-for="item in slice.primary.tickets" :key="item.ticket_type.uid">
                         <h4>{{ item.ticket_type.data.name }}</h4>

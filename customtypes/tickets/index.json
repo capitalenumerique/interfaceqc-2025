@@ -38,6 +38,9 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "home_tickets": {
+                            "type": "SharedSlice"
+                        },
                         "page_intro_header": {
                             "type": "SharedSlice"
                         }

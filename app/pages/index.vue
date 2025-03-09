@@ -17,6 +17,24 @@ const { data: page } = await useAsyncData('index', () => {
         graphQuery: `{
             home {
                 slices {
+                    ...on partners_grid {
+                       variation {
+                            ...on default {
+                                primary {
+                                    ...primaryFields
+                                }
+                            }
+                        }
+                    }
+                    ...on home_programming {
+                       variation {
+                            ...on default {
+                                primary {
+                                    ...primaryFields
+                                }
+                            }
+                        }
+                    }
                     ...on home_tickets {
                         variation {
                             ...on default {

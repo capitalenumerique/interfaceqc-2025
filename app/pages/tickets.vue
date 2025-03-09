@@ -1,25 +1,6 @@
 <template>
     <div>
         <SliceZone :slices="page?.data?.slices ?? []" :components="components" />
-        <ul>
-            <li v-for="item in page?.data?.tickets" :key="item.ticket_type.uid">
-                <h4>{{ item.ticket_type.data.name }}</h4>
-                <h4>{{ item.ticket_type.data.price }}</h4>
-                <ul>
-                    <li v-for="inclusion in item.ticket_type.data.inclusions" :key="inclusion.item">
-                        {{ inclusion.item }}
-                    </li>
-                </ul>
-                <h4>{{ item.ticket_type.data.link }}</h4>
-            </li>
-        </ul>
-        <p>
-            {{
-                t(
-                    'Tous les tarifs indiqués sont avant taxes. Les billets sont non-remboursables, mais peuvent être transférés à une autre personne avant le début de l’événement. Les tarifs sont en vigueur jusqu’au 20 mars inclusivement.',
-                )
-            }}
-        </p>
         <h2 class="home-tickets-title">
             <div class="container">{{ t('Termes et conditions') }}</div>
         </h2>
@@ -42,9 +23,29 @@ const { data: page } = await useAsyncData('index', () => {
         graphQuery: `{
             tickets {
                 ...ticketsFields
-                tickets {
-                    ticket_type {
-                        ...ticket_typeFields
+                slices {
+                    ...on page_intro_header {
+                       variation {
+                            ...on default {
+                                primary {
+                                    ...primaryFields
+                                }
+                            }
+                        }
+                    }
+                    ...on home_tickets {
+                        variation {
+                            ...on default {
+                                primary {
+                                    ...primaryFields
+                                    tickets {
+                                        ticket_type {
+                                            ...ticket_typeFields
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }

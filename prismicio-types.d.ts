@@ -290,7 +290,7 @@ export interface TicketsDocumentDataTicketsItem {
     ticket_type: prismic.ContentRelationshipField<'ticket_types'>;
 }
 
-type TicketsDocumentDataSlicesSlice = PageIntroHeaderSlice;
+type TicketsDocumentDataSlicesSlice = HomeTicketsSlice | PageIntroHeaderSlice;
 
 /**
  * Content for Tickets documents
