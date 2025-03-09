@@ -16,6 +16,12 @@
 import { components } from '~/slices';
 const { locale, t } = useI18n();
 
+defineI18nRoute({
+    paths: {
+        fr: '/billetterie',
+    },
+});
+
 const prismic = usePrismic();
 
 const { data: page } = await useAsyncData('index', () => {
