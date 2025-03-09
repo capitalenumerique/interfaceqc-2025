@@ -15,42 +15,65 @@
             "name": {
                 "type": "Text",
                 "config": {
-                    "label": "name",
+                    "label": "Name",
                     "placeholder": ""
                 }
             },
             "price": {
                 "type": "Number",
                 "config": {
-                    "label": "price",
+                    "label": "Price",
                     "placeholder": ""
                 }
             },
             "inclusions": {
                 "type": "Group",
                 "config": {
-                    "label": "inclusions",
+                    "label": "Inclusions",
                     "repeat": true,
                     "fields": {
                         "item": {
                             "type": "Text",
                             "config": {
-                                "label": "item",
+                                "label": "Items",
                                 "placeholder": ""
                             }
                         }
                     }
                 }
             },
+            "sharable": {
+                "type": "Boolean",
+                "config": {
+                    "label": "Sharable",
+                    "placeholder_false": "false",
+                    "placeholder_true": "true",
+                    "default_value": false
+                }
+            },
             "link": {
                 "type": "Link",
                 "config": {
-                    "label": "link",
+                    "label": "Link",
                     "placeholder": "",
                     "select": null,
                     "allowTargetBlank": false,
                     "allowText": false,
                     "repeat": false
+                }
+            },
+            "background_color": {
+                "type": "Color",
+                "config": {
+                    "label": "Background Color",
+                    "placeholder": ""
+                }
+            },
+            "text_color": {
+                "type": "Color",
+                "config": {
+                    "label": "Text Color",
+                    "placeholder": ""
                 }
             }
         }

@@ -197,11 +197,11 @@ export type ProgramDocument<Lang extends string = string> = prismic.PrismicDocum
 >;
 
 /**
- * Item in *Ticket types → inclusions*
+ * Item in *Ticket types → Inclusions*
  */
 export interface TicketTypesDocumentDataInclusionsItem {
     /**
-     * item field in *Ticket types → inclusions*
+     * Items field in *Ticket types → Inclusions*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -216,7 +216,7 @@ export interface TicketTypesDocumentDataInclusionsItem {
  */
 interface TicketTypesDocumentData {
     /**
-     * name field in *Ticket types*
+     * Name field in *Ticket types*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -227,7 +227,7 @@ interface TicketTypesDocumentData {
     name: prismic.KeyTextField;
 
     /**
-     * price field in *Ticket types*
+     * Price field in *Ticket types*
      *
      * - **Field Type**: Number
      * - **Placeholder**: *None*
@@ -238,7 +238,7 @@ interface TicketTypesDocumentData {
     price: prismic.NumberField;
 
     /**
-     * inclusions field in *Ticket types*
+     * Inclusions field in *Ticket types*
      *
      * - **Field Type**: Group
      * - **Placeholder**: *None*
@@ -249,7 +249,19 @@ interface TicketTypesDocumentData {
     inclusions: prismic.GroupField<Simplify<TicketTypesDocumentDataInclusionsItem>>;
 
     /**
-     * link field in *Ticket types*
+     * Sharable field in *Ticket types*
+     *
+     * - **Field Type**: Boolean
+     * - **Placeholder**: *None*
+     * - **Default Value**: false
+     * - **API ID Path**: ticket_types.sharable
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#boolean
+     */
+    sharable: prismic.BooleanField;
+
+    /**
+     * Link field in *Ticket types*
      *
      * - **Field Type**: Link
      * - **Placeholder**: *None*
@@ -258,6 +270,28 @@ interface TicketTypesDocumentData {
      * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
      */
     link: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+    /**
+     * Background Color field in *Ticket types*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: ticket_types.background_color
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    background_color: prismic.ColorField;
+
+    /**
+     * Text Color field in *Ticket types*
+     *
+     * - **Field Type**: Color
+     * - **Placeholder**: *None*
+     * - **API ID Path**: ticket_types.text_color
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/field#color
+     */
+    text_color: prismic.ColorField;
 }
 
 /**
@@ -379,11 +413,11 @@ export type TicketsDocument<Lang extends string = string> = prismic.PrismicDocum
 export type AllDocumentTypes = FaqDocument | HomeDocument | ProgramDocument | TicketTypesDocument | TicketsDocument;
 
 /**
- * Item in *HomeSchedule → Default → Primary → speakers*
+ * Item in *HomeSchedule → Default → Primary → Speakers*
  */
 export interface HomeProgrammingSliceDefaultPrimarySpeakersItem {
     /**
-     * speaker id field in *HomeSchedule → Default → Primary → speakers*
+     * Speaker ID field in *HomeSchedule → Default → Primary → Speakers*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -393,7 +427,7 @@ export interface HomeProgrammingSliceDefaultPrimarySpeakersItem {
     speaker_id: prismic.KeyTextField;
 
     /**
-     * first name field in *HomeSchedule → Default → Primary → speakers*
+     * First Name field in *HomeSchedule → Default → Primary → Speakers*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -403,7 +437,7 @@ export interface HomeProgrammingSliceDefaultPrimarySpeakersItem {
     first_name: prismic.KeyTextField;
 
     /**
-     * last_name field in *HomeSchedule → Default → Primary → speakers*
+     * Last Name field in *HomeSchedule → Default → Primary → Speakers*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -413,7 +447,7 @@ export interface HomeProgrammingSliceDefaultPrimarySpeakersItem {
     last_name: prismic.KeyTextField;
 
     /**
-     * job field in *HomeSchedule → Default → Primary → speakers*
+     * Job field in *HomeSchedule → Default → Primary → Speakers*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -423,7 +457,7 @@ export interface HomeProgrammingSliceDefaultPrimarySpeakersItem {
     job: prismic.KeyTextField;
 
     /**
-     * img field in *HomeSchedule → Default → Primary → speakers*
+     * Img field in *HomeSchedule → Default → Primary → Speakers*
      *
      * - **Field Type**: Image
      * - **Placeholder**: *None*
@@ -433,7 +467,7 @@ export interface HomeProgrammingSliceDefaultPrimarySpeakersItem {
     img: prismic.ImageField<never>;
 
     /**
-     * background color field in *HomeSchedule → Default → Primary → speakers*
+     * Background Color field in *HomeSchedule → Default → Primary → Speakers*
      *
      * - **Field Type**: Color
      * - **Placeholder**: *None*
@@ -443,7 +477,7 @@ export interface HomeProgrammingSliceDefaultPrimarySpeakersItem {
     background_color: prismic.ColorField;
 
     /**
-     * text color field in *HomeSchedule → Default → Primary → speakers*
+     * Text Color field in *HomeSchedule → Default → Primary → Speakers*
      *
      * - **Field Type**: Color
      * - **Placeholder**: *None*
@@ -458,7 +492,7 @@ export interface HomeProgrammingSliceDefaultPrimarySpeakersItem {
  */
 export interface HomeProgrammingSliceDefaultPrimary {
     /**
-     * description field in *HomeSchedule → Default → Primary*
+     * Description field in *HomeSchedule → Default → Primary*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -468,7 +502,7 @@ export interface HomeProgrammingSliceDefaultPrimary {
     description: prismic.KeyTextField;
 
     /**
-     * speakers field in *HomeSchedule → Default → Primary*
+     * Speakers field in *HomeSchedule → Default → Primary*
      *
      * - **Field Type**: Group
      * - **Placeholder**: *None*
@@ -506,11 +540,11 @@ type HomeProgrammingSliceVariation = HomeProgrammingSliceDefault;
 export type HomeProgrammingSlice = prismic.SharedSlice<'home_programming', HomeProgrammingSliceVariation>;
 
 /**
- * Item in *HomeTickets → Default → Primary → tickets*
+ * Item in *HomeTickets → Default → Primary → Tickets*
  */
 export interface HomeTicketsSliceDefaultPrimaryTicketsItem {
     /**
-     * ticket_type field in *HomeTickets → Default → Primary → tickets*
+     * Ticket Type field in *HomeTickets → Default → Primary → Tickets*
      *
      * - **Field Type**: Content Relationship
      * - **Placeholder**: *None*
@@ -525,7 +559,7 @@ export interface HomeTicketsSliceDefaultPrimaryTicketsItem {
  */
 export interface HomeTicketsSliceDefaultPrimary {
     /**
-     * title field in *HomeTickets → Default → Primary*
+     * Title field in *HomeTickets → Default → Primary*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
@@ -535,7 +569,7 @@ export interface HomeTicketsSliceDefaultPrimary {
     title: prismic.KeyTextField;
 
     /**
-     * tickets field in *HomeTickets → Default → Primary*
+     * Tickets field in *HomeTickets → Default → Primary*
      *
      * - **Field Type**: Group
      * - **Placeholder**: *None*

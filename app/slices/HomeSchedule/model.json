@@ -15,48 +15,48 @@
         "description": {
           "type": "Text",
           "config": {
-            "label": "description",
+            "label": "Description",
             "placeholder": ""
           }
         },
         "speakers": {
           "type": "Group",
           "config": {
-            "label": "speakers",
+            "label": "Speakers",
             "repeat": true,
             "fields": {
               "speaker_id": {
                 "type": "Text",
                 "config": {
-                  "label": "speaker id",
+                  "label": "Speaker ID",
                   "placeholder": ""
                 }
               },
               "first_name": {
                 "type": "Text",
                 "config": {
-                  "label": "first name",
+                  "label": "First Name",
                   "placeholder": ""
                 }
               },
               "last_name": {
                 "type": "Text",
                 "config": {
-                  "label": "last_name",
+                  "label": "Last Name",
                   "placeholder": ""
                 }
               },
               "job": {
                 "type": "Text",
                 "config": {
-                  "label": "job",
+                  "label": "Job",
                   "placeholder": ""
                 }
               },
               "img": {
                 "type": "Image",
                 "config": {
-                  "label": "img",
+                  "label": "Img",
                   "constraint": {
                     "width": 322,
                     "height": 375
@@ -67,14 +67,14 @@
               "background_color": {
                 "type": "Color",
                 "config": {
-                  "label": "background color",
+                  "label": "Background Color",
                   "placeholder": ""
                 }
               },
               "text_color": {
                 "type": "Color",
                 "config": {
-                  "label": "text color",
+                  "label": "Text Color",
                   "placeholder": ""
                 }
               }

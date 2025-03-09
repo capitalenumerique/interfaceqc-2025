@@ -15,20 +15,20 @@
         "title": {
           "type": "Text",
           "config": {
-            "label": "title",
+            "label": "Title",
             "placeholder": ""
           }
         },
         "tickets": {
           "type": "Group",
           "config": {
-            "label": "tickets",
+            "label": "Tickets",
             "repeat": true,
             "fields": {
               "ticket_type": {
                 "type": "Link",
                 "config": {
-                  "label": "ticket_type",
+                  "label": "Ticket Type",
                   "select": "document",
                   "repeat": false,
                   "customtypes": [
