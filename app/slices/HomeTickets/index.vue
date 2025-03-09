@@ -20,7 +20,11 @@ defineProps(getSliceComponentProps<Content.HomeTicketsSlice>(['slice', 'index', 
                     <li v-for="item in slice.primary.tickets" :key="item.ticket_type.uid">
                         <h4>{{ item.ticket_type.data.name }}</h4>
                         <h4>{{ item.ticket_type.data.price }}</h4>
-                        <h4>{{ item.ticket_type.data.inclusions }}</h4>
+                        <ul>
+                            <li v-for="inclusion in item.ticket_type.data.inclusions" :key="inclusion.item">
+                                {{ inclusion.item }}
+                            </li>
+                        </ul>
                         <h4>{{ item.ticket_type.data.link }}</h4>
                     </li>
                 </ul>
