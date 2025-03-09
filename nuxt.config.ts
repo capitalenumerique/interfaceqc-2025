@@ -124,6 +124,10 @@ export default defineNuxtConfig({
         format: ['webp'],
     },
 
+    experimental: {
+        inlineRouteRules: true,
+    },
+
     prismic: {
         endpoint: repositoryName,
     },

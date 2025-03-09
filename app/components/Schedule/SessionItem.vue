@@ -1,7 +1,11 @@
 <template>
     <div class="session-wrapper" :style="hoverColor">
         <div>
-            <h2 class="session-title">{{ session.title }}</h2>
+            <h2 class="session-title">
+                <NuxtLink :to="$localePath({ name: 'schedule-id', params: { id: session.id } })" class="session-link">
+                    {{ session.title }}
+                </NuxtLink>
+            </h2>
             <ul class="speakers-list">
                 <li v-for="(speaker, i) in session.speakers" :key="`speaker-${session.id}-${i}`" class="speaker-item">
                     <p class="speaker-name">{{ speaker.firstName }} {{ speaker.lastName }}</p>
@@ -76,6 +80,7 @@ const getCategoryStyle = (colorKey) => {
 
 <style lang="postcss" scoped>
 .session-wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -96,10 +101,23 @@ const getCategoryStyle = (colorKey) => {
     }
 }
 .session-title {
-    font-size: rem(24px);
-    font-weight: 600;
     margin-bottom: 16px;
     max-width: 250px;
+}
+.session-link {
+    font-size: rem(24px);
+    font-weight: 600;
+    text-decoration: none;
+    color: currentColor;
+    &::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
 }
 .session-time {
     display: inline-block;

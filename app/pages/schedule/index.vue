@@ -114,6 +114,13 @@ function selectDate(dateIndex) {
     router.push({ query: { d: dateIndex } });
 }
 
+defineI18nRoute({
+    paths: {
+        fr: '/programmation',
+        en: '/schedule',
+    },
+});
+
 useSeoMeta({
     title: page.value?.data.meta_title,
     ogTitle: page.value?.data.meta_title,

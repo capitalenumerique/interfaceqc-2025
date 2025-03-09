@@ -141,6 +141,7 @@ export default defineEventHandler(async () => {
                         {
                             name: specialSession.place,
                             session: {
+                                id: specialSession.id,
                                 title: specialSession.title,
                                 startAt: specialSession.startAt,
                                 endsAt: specialSession.endsAt,
@@ -167,6 +168,7 @@ export default defineEventHandler(async () => {
                             name: place,
                             session: sessionInPlace
                                 ? {
+                                      id: sessionInPlace.id,
                                       title: sessionInPlace.title,
                                       startAt: sessionInPlace.startAt,
                                       endsAt: sessionInPlace.endsAt,
