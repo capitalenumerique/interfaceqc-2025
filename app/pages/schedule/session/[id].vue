@@ -19,7 +19,7 @@ const { data: session } = await useAsyncData(`session-${sessionId}`, async () =>
 
 defineI18nRoute({
     paths: {
-        fr: '/programmation/[id]',
+        fr: '/programmation/conference/[id]',
     },
 });
 

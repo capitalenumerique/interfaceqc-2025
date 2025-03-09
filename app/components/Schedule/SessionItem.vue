@@ -2,9 +2,9 @@
     <div class="session-wrapper" :style="hoverColor">
         <div>
             <h2 class="session-title">
-                <NuxtLink :to="$localePath({ name: 'schedule-id', params: { id: session.id } })" class="session-link">
+                <NuxtLinkLocale :to="{ name: 'schedule-session-id', params: { id: session.id } }" class="session-link">
                     {{ session.title }}
-                </NuxtLink>
+                </NuxtLinkLocale>
             </h2>
             <ul class="speakers-list">
                 <li v-for="(speaker, i) in session.speakers" :key="`speaker-${session.id}-${i}`" class="speaker-item">
