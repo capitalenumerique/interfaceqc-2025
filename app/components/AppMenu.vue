@@ -1,6 +1,7 @@
 <template>
     <OnClickOutside
         ref="menu"
+        as="header"
         class="menu"
         :class="{ 'menu-opened': isAnimating }"
         @keydown.esc="onEscape"
@@ -11,9 +12,9 @@
                 <button class="btn-menu" type="button" :class="{ 'is-open': isOpen }" @click="isOpen = !isOpen">
                     <span class="sr-only">{{ t('Menu') }}</span>
                 </button>
-                <NuxtLinkLocale to="index" class="logo-link">
+                <NuxtLinkLocale to="index" class="logo-interface">
                     <span class="sr-only">{{ t('Retour à l’accueil') }}</span>
-                    <LogoInterface class="logo-interface" />
+                    <LogoInterface />
                 </NuxtLinkLocale>
             </div>
             <NuxtLinkLocale to="index" class="logo-interface-vertical">
@@ -292,12 +293,12 @@ const onEscape = () => {
         gap: 50px;
     }
 }
-.logo-link {
+.logo-interface {
     text-decoration: none;
     color: var(--gray-900);
-}
-.logo-interface {
-    height: 24px;
+    svg {
+        height: 24px;
+    }
     @media (--md) {
         display: none;
     }
