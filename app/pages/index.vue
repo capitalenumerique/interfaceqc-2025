@@ -16,6 +16,7 @@ const { data: page } = await useAsyncData('index', () => {
     return prismic.client.getSingle('home', {
         graphQuery: `{
             home {
+                ...homeFields
                 slices {
                     ...on partners_grid {
                        variation {
