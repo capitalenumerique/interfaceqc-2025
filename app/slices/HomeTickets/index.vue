@@ -17,8 +17,8 @@ defineProps(getSliceComponentProps<Content.HomeTicketsSlice>(['slice', 'index', 
         </h2>
         <div class="ticket-types-wrapper">
             <div class="ticket-types">
-                <div class="ticket-types-title-wrapper">
-                    <h3 v-if="slice.primary.title" class="ticket-types-title">
+                <div v-if="slice.primary.title" class="ticket-types-title-wrapper">
+                    <h3 class="ticket-types-title">
                         {{ slice.primary.title }}
                     </h3>
                     <IconStar v-if="slice.primary.title" class="icon-star" />
