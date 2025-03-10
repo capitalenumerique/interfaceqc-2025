@@ -83,11 +83,11 @@ function changeShape() {
     display: flex;
     justify-content: space-between;
     gap: 16px;
-    padding: 24px 32px;
+    padding: 32px 16px;
     @media (--lg) {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        padding: 24px 48px;
+        padding: 64px 48px;
     }
 }
 .header-text {
