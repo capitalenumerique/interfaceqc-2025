@@ -37,7 +37,7 @@ const { data: page } = await useAsyncData('index', () => {
 
 const { data, error, suspense, isLoading } = useSchedule();
 
-onServerPrefetch(suspense);
+await suspense;
 
 const { $luxon } = useNuxtApp();
 
@@ -55,18 +55,6 @@ const dates = computed(() => {
         .sort();
 });
 
-// const activeDate = ref(1);
-
-// watchEffect(() => {
-//     const dateParam = parseInt(router.currentRoute.value.query.d);
-//     activeDate.value = isNaN(dateParam) || dateParam < 1 || dateParam > dates.value.length ? 1 : dateParam;
-// });
-
-// function selectDate(dateIndex) {
-//     activeDate.value = dateIndex;
-//     router.push({ query: { d: dateIndex } });
-// }
-
 defineI18nRoute({
     paths: {
         fr: '/programmation',
@@ -75,7 +63,7 @@ defineI18nRoute({
 });
 
 defineRouteRules({
-    prerender: true,
+    prerender: false,
 });
 
 useSeoMeta({
@@ -147,8 +135,7 @@ useSeoMeta({
 {
     "en": {
         "Chargement": "Loading",
-        "La programmation est présentement indisponible, veuillez réessayer plus tard.": "The schedule is currently unavailable. Please try again later.",
-        "À déterminer": "To be announced"
+        "La programmation est présentement indisponible, veuillez réessayer plus tard.": "The schedule is currently unavailable. Please try again later."
     }
 }
 </i18n>

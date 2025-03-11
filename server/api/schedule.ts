@@ -52,7 +52,7 @@ export default defineEventHandler(async () => {
         speaker.speakerOnPlannings.map((session) => ({
             id: session.id,
             date: session.beginsAt.split(' ')[0], // Date
-            startAt: session.beginsAt.split(' ')[1], // Temps de début
+            beginsAt: session.beginsAt.split(' ')[1], // Temps de début
             endsAt: session.endsAt.split(' ')[1], // Temps de fin
             title: session.title,
             categories: session.categories,
@@ -126,7 +126,7 @@ export default defineEventHandler(async () => {
 
                 // Trouver les sessions de ce créneau horaire
                 const sessionsInTimeslot = groupedSessions[date].filter(
-                    (session) => findTimeslot(session.startAt) === timeString,
+                    (session) => findTimeslot(session.beginsAt) === timeString,
                 );
 
                 // Valider s'il s'agit d'une conférence
@@ -143,7 +143,7 @@ export default defineEventHandler(async () => {
                             session: {
                                 id: specialSession.id,
                                 title: specialSession.title,
-                                startAt: specialSession.startAt,
+                                beginsAt: specialSession.beginsAt,
                                 endsAt: specialSession.endsAt,
                                 categories: specialSession.categories.map((cat) => ({
                                     name: cat,
@@ -170,7 +170,7 @@ export default defineEventHandler(async () => {
                                 ? {
                                       id: sessionInPlace.id,
                                       title: sessionInPlace.title,
-                                      startAt: sessionInPlace.startAt,
+                                      beginsAt: sessionInPlace.beginsAt,
                                       endsAt: sessionInPlace.endsAt,
                                       categories: sessionInPlace.categories.map((cat) => ({
                                           name: cat,

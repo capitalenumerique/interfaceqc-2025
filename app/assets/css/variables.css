@@ -10,4 +10,5 @@
 
 :root {
     --hover-transition: 200ms ease-in-out;
+    --page-container-max-width: 1272px;
 }

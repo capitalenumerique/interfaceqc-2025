@@ -35,7 +35,7 @@ const { t } = useI18n();
     display: flex;
     margin: 0 auto;
     flex-direction: column;
-    max-width: 1272px;
+    max-width: var(--page-container-max-width);
     padding: 80px 16px;
     @media (--lg) {
         flex-direction: row;

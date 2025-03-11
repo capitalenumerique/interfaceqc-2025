@@ -1,12 +1,7 @@
 const useSession = (sessionId: string) => {
-    // Fetch function using our API route
-    const fetcher = async () => {
-        return await fetch(`/api/session?id=${sessionId}`).then((response) => response.json());
-    };
-
     const { data, error, suspense, isFetching } = useQuery({
         queryKey: ['session'],
-        queryFn: fetcher,
+        queryFn: () => $fetch(`/api/session?id=${sessionId}`),
         enabled: !!sessionId,
     });
 

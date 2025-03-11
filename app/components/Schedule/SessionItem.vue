@@ -2,7 +2,7 @@
     <div class="session-wrapper" :style="hoverColor">
         <div>
             <h2 class="session-title">
-                <NuxtLinkLocale :to="{ name: 'schedule-session-id', params: { id: session.id } }" class="session-link">
+                <NuxtLinkLocale :to="{ name: 'session-id', params: { id: session.id } }" class="session-link">
                     {{ session.title }}
                 </NuxtLinkLocale>
             </h2>
@@ -14,7 +14,7 @@
             </ul>
             <span class="session-time">{{
                 t('{start} à {end}', {
-                    start: formatSessionTime(session.startAt),
+                    start: formatSessionTime(session.beginsAt),
                     end: formatSessionTime(session.endsAt),
                 })
             }}</span>
@@ -53,17 +53,12 @@ const colorMap = {
     orange: { bg: 'var(--orange-300)', text: 'var(--blue-700)' },
 };
 
-const colorArray = Object.keys(colorMap);
-
 const hoverColor = computed(() => {
-    const colorKey =
-        props.session.categories.length > 0
-            ? props.session.categories[0].color
-            : colorArray[Math.floor(Math.random() * colorArray.length)];
+    const colorKey = props.session.categories?.[0]?.color || 'red';
     const colors = colorMap[colorKey] || colorMap.red;
     return {
-        '--hover-bg': colors.bg,
         '--hover-text': colors.text,
+        '--hover-bg': colors.bg,
     };
 });
 

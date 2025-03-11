@@ -28,6 +28,7 @@ export const GET_SESSION_BY_ID = gql`
                         value
                     }
                     description
+                    htmlDescription
                     categories
                     place
                     title

@@ -123,7 +123,7 @@ defineI18nRoute({
     }
 }
 .timeslot-sessions {
-    border: 1px solid var(--gray-900);
+    border: 1px solid var(--gray-500);
     margin-bottom: 24px;
     overflow: hidden;
     @media (--lg-down) {
@@ -141,14 +141,14 @@ defineI18nRoute({
 .place {
     padding: 24px;
     font-weight: 600;
-    border-bottom: 1px solid var(--gray-900);
+    border-bottom: 1px solid var(--gray-500);
 }
 .session {
     display: flex;
     flex-direction: column;
-    border-bottom: 1px solid var(--gray-900);
+    border-bottom: 1px solid var(--gray-500);
     @media (--lg) {
-        border-right: 1px solid var(--gray-900);
+        border-right: 1px solid var(--gray-500);
         border-bottom: 0;
     }
     &:last-child {
@@ -169,8 +169,16 @@ defineI18nRoute({
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--gray-300);
+    color: var(--gray-600);
     width: 100%;
     min-height: 250px;
 }
 </style>
+
+<i18n lang="json">
+{
+    "en": {
+        "À venir": "To be announced"
+    }
+}
+</i18n>

@@ -196,70 +196,6 @@ export type ProgramDocument<Lang extends string = string> = prismic.PrismicDocum
     Lang
 >;
 
-type SessionDocumentDataSlicesSlice = never;
-
-/**
- * Content for Session documents
- */
-interface SessionDocumentData {
-    /**
-     * Slice Zone field in *Session*
-     *
-     * - **Field Type**: Slice Zone
-     * - **Placeholder**: *None*
-     * - **API ID Path**: session.slices[]
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/field#slices
-     */
-    slices: prismic.SliceZone<SessionDocumentDataSlicesSlice> /**
-     * Meta Title field in *Session*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: A title of the page used for social media and search engines
-     * - **API ID Path**: session.meta_title
-     * - **Tab**: SEO & Metadata
-     * - **Documentation**: https://prismic.io/docs/field#key-text
-     */;
-    meta_title: prismic.KeyTextField;
-
-    /**
-     * Meta Description field in *Session*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: A brief summary of the page
-     * - **API ID Path**: session.meta_description
-     * - **Tab**: SEO & Metadata
-     * - **Documentation**: https://prismic.io/docs/field#key-text
-     */
-    meta_description: prismic.KeyTextField;
-
-    /**
-     * Meta Image field in *Session*
-     *
-     * - **Field Type**: Image
-     * - **Placeholder**: *None*
-     * - **API ID Path**: session.meta_image
-     * - **Tab**: SEO & Metadata
-     * - **Documentation**: https://prismic.io/docs/field#image
-     */
-    meta_image: prismic.ImageField<never>;
-}
-
-/**
- * Session document from Prismic
- *
- * - **API ID**: `session`
- * - **Repeatable**: `true`
- * - **Documentation**: https://prismic.io/docs/custom-types
- *
- * @typeParam Lang - Language API ID of the document.
- */
-export type SessionDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
-    Simplify<SessionDocumentData>,
-    'session',
-    Lang
->;
-
 type TicketsDocumentDataSlicesSlice = PageIntroHeaderSlice;
 
 /**
@@ -324,7 +260,7 @@ export type TicketsDocument<Lang extends string = string> = prismic.PrismicDocum
     Lang
 >;
 
-export type AllDocumentTypes = FaqDocument | HomeDocument | ProgramDocument | SessionDocument | TicketsDocument;
+export type AllDocumentTypes = FaqDocument | HomeDocument | ProgramDocument | TicketsDocument;
 
 /**
  * Item in *HomeSchedule → Default → Primary → speakers*
@@ -627,9 +563,6 @@ declare module '@prismicio/client' {
             ProgramDocument,
             ProgramDocumentData,
             ProgramDocumentDataSlicesSlice,
-            SessionDocument,
-            SessionDocumentData,
-            SessionDocumentDataSlicesSlice,
             TicketsDocument,
             TicketsDocumentData,
             TicketsDocumentDataSlicesSlice,
