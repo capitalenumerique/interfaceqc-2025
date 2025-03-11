@@ -1,0 +1,60 @@
+{
+  "id": "home_tickets",
+  "type": "SharedSlice",
+  "name": "HomeTickets",
+  "description": "HomeTickets",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "section_title": {
+          "type": "Text",
+          "config": {
+            "label": "Section Title",
+            "placeholder": ""
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "tickets": {
+          "type": "Group",
+          "config": {
+            "label": "Tickets",
+            "repeat": true,
+            "fields": {
+              "ticket_type": {
+                "type": "Link",
+                "config": {
+                  "label": "Ticket Type",
+                  "select": "document",
+                  "repeat": false,
+                  "customtypes": [
+                    "ticket_types"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "terms": {
+          "type": "Text",
+          "config": {
+            "label": "Terms",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

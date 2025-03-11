@@ -25,7 +25,7 @@ const next = () => {
 </script>
 
 <template>
-    <section :data-slice-type="slice.slice_type" :data-slice-variation="slice.variation">
+    <section :data-slice-type="slice.slice_type" :data-slice-variation="slice.variation" class="home-schedule">
         <SliceIntro>
             <template #title>
                 {{ t('La programmation') }}<br />
@@ -97,6 +97,9 @@ const next = () => {
 </template>
 
 <style lang="postcss" scoped>
+.home-schedule {
+    margin: 64px 0;
+}
 .swiper {
     padding: 30px 0;
     margin: -30px 0;

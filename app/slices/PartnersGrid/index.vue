@@ -37,9 +37,8 @@ defineProps(getSliceComponentProps<Content.PartnersGridSlice>(['slice', 'index',
 <style lang="postcss" scoped>
 .partners-section {
     position: relative;
-    max-width: 1240px;
-    margin: auto;
-    padding: 64px 16px;
+    max-width: 1272px;
+    margin: 64px auto;
 }
 .animation-container {
     position: absolute;
@@ -62,6 +61,7 @@ defineProps(getSliceComponentProps<Content.PartnersGridSlice>(['slice', 'index',
     padding: 0;
     margin: 0;
     justify-content: space-around;
+    padding: 0 16px;
     @media (--lg) {
         grid-template-columns: repeat(4, 1fr);
     }

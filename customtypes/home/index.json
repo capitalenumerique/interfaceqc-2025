@@ -11,6 +11,9 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "home_tickets": {
+                            "type": "SharedSlice"
+                        },
                         "partners_grid": {
                             "type": "SharedSlice"
                         },

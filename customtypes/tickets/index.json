@@ -6,11 +6,41 @@
     "status": true,
     "json": {
         "Main": {
+            "tickets": {
+                "type": "Group",
+                "config": {
+                    "label": "tickets",
+                    "repeat": true,
+                    "fields": {
+                        "ticket_type": {
+                            "type": "Link",
+                            "config": {
+                                "label": "ticket_type",
+                                "select": "document",
+                                "repeat": false,
+                                "customtypes": ["ticket_types"]
+                            }
+                        }
+                    }
+                }
+            },
+            "terms": {
+                "type": "StructuredText",
+                "config": {
+                    "label": "terms",
+                    "placeholder": "",
+                    "allowTargetBlank": true,
+                    "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                }
+            },
             "slices": {
                 "type": "Slices",
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "home_tickets": {
+                            "type": "SharedSlice"
+                        },
                         "page_intro_header": {
                             "type": "SharedSlice"
                         }

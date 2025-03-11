@@ -7,19 +7,19 @@ defineProps(getSliceComponentProps<Content.PageIntroHeaderSlice>(['slice', 'inde
 </script>
 
 <template>
-    <div class="page-header" :data-slice-type="slice.slice_type" :data-slice-variation="slice.variation">
+    <header class="page-header" :data-slice-type="slice.slice_type" :data-slice-variation="slice.variation">
         <h1 class="header-title">{{ slice.primary.title }}</h1>
         <div class="header-intro">
             <PrismicRichText :field="slice.primary.introduction" />
         </div>
-    </div>
+    </header>
 </template>
 
 <style lang="postcss" scoped>
 .page-header {
-    max-width: 1240px;
-    margin: auto;
-    padding: 64px 16px;
+    max-width: 1272px;
+    padding: 0 16px;
+    margin: 64px auto;
 }
 .header-title {
     font-size: rem(36px);

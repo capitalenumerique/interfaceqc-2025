@@ -2,9 +2,9 @@
     <div class="layout-wrapper">
         <div class="page-wrapper">
             <AppMenu />
-            <div class="content-wrapper">
+            <main class="content-wrapper">
                 <slot />
-            </div>
+            </main>
         </div>
         <AppFooter />
     </div>
@@ -12,6 +12,8 @@
 
 <style lang="postcss" scoped>
 .layout-wrapper {
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
 }
 .page-wrapper {

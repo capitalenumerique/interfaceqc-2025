@@ -33,10 +33,10 @@ const { t } = useI18n();
 <style lang="postcss" scoped>
 .newsletter-section {
     display: flex;
-    margin: 0 auto;
     flex-direction: column;
     max-width: 1272px;
-    padding: 80px 16px;
+    margin: 80px auto;
+    padding: 0 16px;
     @media (--lg) {
         flex-direction: row;
     }

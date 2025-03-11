@@ -12,8 +12,49 @@ const { locale } = useI18n();
 
 const prismic = usePrismic();
 
-const { data: page } = useAsyncData('index', () => {
-    return prismic.client.getSingle('home', { lang: `${locale.value}-ca` });
+const { data: page } = await useAsyncData('index', () => {
+    return prismic.client.getSingle('home', {
+        graphQuery: `{
+            home {
+                ...homeFields
+                slices {
+                    ...on partners_grid {
+                       variation {
+                            ...on default {
+                                primary {
+                                    ...primaryFields
+                                }
+                            }
+                        }
+                    }
+                    ...on home_programming {
+                       variation {
+                            ...on default {
+                                primary {
+                                    ...primaryFields
+                                }
+                            }
+                        }
+                    }
+                    ...on home_tickets {
+                        variation {
+                            ...on default {
+                                primary {
+                                    ...primaryFields
+                                    tickets {
+                                        ticket_type {
+                                            ...ticket_typeFields
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }`,
+        lang: `${locale.value}-ca`,
+    });
 });
 
 useSeoMeta({
