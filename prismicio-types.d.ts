@@ -559,6 +559,16 @@ export interface HomeTicketsSliceDefaultPrimaryTicketsItem {
  */
 export interface HomeTicketsSliceDefaultPrimary {
     /**
+     * Section Title field in *HomeTickets → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_tickets.default.primary.section_title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    section_title: prismic.KeyTextField;
+
+    /**
      * Title field in *HomeTickets → Default → Primary*
      *
      * - **Field Type**: Text
@@ -577,6 +587,16 @@ export interface HomeTicketsSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#group
      */
     tickets: prismic.GroupField<Simplify<HomeTicketsSliceDefaultPrimaryTicketsItem>>;
+
+    /**
+     * Terms field in *HomeTickets → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home_tickets.default.primary.terms
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    terms: prismic.KeyTextField;
 }
 
 /**

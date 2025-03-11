@@ -2,7 +2,7 @@
     <div>
         <SliceZone :slices="page?.data?.slices ?? []" :components="components" />
         <h2 class="home-tickets-title">
-            <div class="container">{{ t('Termes et conditions') }}</div>
+            <span class="container">{{ t('Termes et conditions') }}</span>
         </h2>
         <div class="container">
             <div class="content">
@@ -82,9 +82,11 @@ useSeoMeta({
     margin: 0;
 }
 .container {
+    display: block;
     max-width: 1272px;
     padding: 0 16px;
     margin: 0 auto;
+    width: 100%;
     .content {
         margin: 48px 0 96px;
         max-width: 768px;

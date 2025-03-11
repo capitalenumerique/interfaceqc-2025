@@ -12,8 +12,8 @@ defineProps(getSliceComponentProps<Content.HomeTicketsSlice>(['slice', 'index', 
 
 <template>
     <section class="home-tickets" :data-slice-type="slice.slice_type" :data-slice-variation="slice.variation">
-        <h2 class="home-tickets-title">
-            <div>{{ t('Réserve ta place') }}</div>
+        <h2 v-if="slice.primary.section_title" class="home-tickets-title">
+            <span>{{ slice.primary.section_title }}</span>
         </h2>
         <div class="ticket-types-wrapper">
             <div class="ticket-types">
@@ -68,12 +68,8 @@ defineProps(getSliceComponentProps<Content.HomeTicketsSlice>(['slice', 'index', 
                         </div>
                     </li>
                 </ul>
-                <p class="terms">
-                    {{
-                        t(
-                            'Tous les tarifs indiqués sont avant taxes. Les billets sont non-remboursables, mais peuvent être transférés à une autre personne avant le début de l’événement. Les tarifs sont en vigueur jusqu’au 20 mars inclusivement.',
-                        )
-                    }}
+                <p v-if="slice.primary.terms" class="terms">
+                    {{ slice.primary.terms }}
                 </p>
             </div>
         </div>
@@ -94,13 +90,14 @@ defineProps(getSliceComponentProps<Content.HomeTicketsSlice>(['slice', 'index', 
     border-top: 1px solid var(--gray-900);
     border-bottom: 1px solid var(--gray-900);
     margin: 0;
-    div {
+    span {
+        display: block;
         max-width: 1272px;
         padding: 0 16px;
         margin: 0 auto;
+        width: 100%;
     }
 }
-
 .ticket-types-wrapper {
     margin: 40px auto;
     width: 100%;
@@ -272,13 +269,11 @@ defineProps(getSliceComponentProps<Content.HomeTicketsSlice>(['slice', 'index', 
 <i18n lang="json">
 {
     "en": {
-        "Réserve ta place": "Reserve your place",
         "Sélectionner": "Select",
         "Inclusions": "Inclusions",
         "Tout ce que comprend le billet": "Everything included with the ticket",
         "Billet nominatif (ne peut pas être partagé)": "Nominative ticket (cannot be shared)",
-        "Billet non-nominatif (peut être partagé)": "Non-nominative ticket (can be shared)",
-        "Tous les tarifs indiqués sont avant taxes. Les billets sont non-remboursables, mais peuvent être transférés à une autre personne avant le début de l’événement. Les tarifs sont en vigueur jusqu’au 20 mars inclusivement.": "All prices indicated are before taxes.Tickets are non-reimburseable, but can be transferred to another person before the start of the event.The prices are in force until March 20 inclusive."
+        "Billet non-nominatif (peut être partagé)": "Non-nominative ticket (can be shared)"
     }
 }
 </i18n>
