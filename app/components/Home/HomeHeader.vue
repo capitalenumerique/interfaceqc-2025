@@ -32,7 +32,7 @@
             </div>
             <div class="event-infos infos-cta">
                 <PrimaryButton
-                    href="https://ti.to/cnum/interface-2025"
+                    to="https://ti.to/cnum/interface-2025"
                     target="_blank"
                     primary-color="green-800"
                     secondary-color="yellow-200"
@@ -84,9 +84,9 @@ function changeShape() {
     justify-content: space-between;
     gap: 16px;
     padding: 32px 16px;
-    @media (--lg) {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+    @media (--md) {
+        max-width: 1150px;
+        width: 70%;
         padding: 64px 48px;
     }
 }

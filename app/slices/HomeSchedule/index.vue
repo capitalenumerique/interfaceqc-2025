@@ -33,7 +33,7 @@ const next = () => {
             </template>
             <template #wysiwyg>{{ slice.primary.description }}</template>
             <template #cta>
-                <PrimaryButton href="schedule">{{ t('Voir la programmation complète') }}</PrimaryButton>
+                <PrimaryButton to="schedule">{{ t('Voir la programmation complète') }}</PrimaryButton>
             </template>
         </SliceIntro>
         <Swiper

@@ -21,7 +21,7 @@ defineProps(getSliceComponentProps<Content.PartnersGridSlice>(['slice', 'index',
             <template #title>{{ t('Partenaires') }}</template>
             <template #wysiwyg>{{ slice.primary.description }}</template>
             <template #cta>
-                <PrimaryButton href="mailto:info@capitalenumerique.com">{{ t('Devenir partenaire') }}</PrimaryButton>
+                <PrimaryButton to="mailto:info@capitalenumerique.com">{{ t('Devenir partenaire') }}</PrimaryButton>
             </template>
         </SliceIntro>
         <ul class="partners-list">

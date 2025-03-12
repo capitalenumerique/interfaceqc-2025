@@ -8,4 +8,6 @@ export const components = defineSliceZoneComponents({
     home_tickets: defineAsyncComponent(() => import('./HomeTickets/index.vue')),
     page_intro_header: defineAsyncComponent(() => import('./PageIntroHeader/index.vue')),
     partners_grid: defineAsyncComponent(() => import('./PartnersGrid/index.vue')),
+    text: defineAsyncComponent(() => import('./Text/index.vue')),
+    text_image: defineAsyncComponent(() => import('./TextImage/index.vue')),
 });

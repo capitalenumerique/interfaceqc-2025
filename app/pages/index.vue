@@ -36,6 +36,24 @@ const { data: page } = await useAsyncData('index', () => {
                             }
                         }
                     }
+                    ...on text {
+                       variation {
+                            ...on default {
+                                primary {
+                                    ...primaryFields
+                                }
+                            }
+                        }
+                    }
+                    ...on text_image {
+                       variation {
+                            ...on default {
+                                primary {
+                                    ...primaryFields
+                                }
+                            }
+                        }
+                    }
                     ...on home_tickets {
                         variation {
                             ...on default {
@@ -59,9 +77,7 @@ const { data: page } = await useAsyncData('index', () => {
 
 useSeoMeta({
     title: page.value?.data.meta_title,
-    ogTitle: page.value?.data.meta_title,
     description: page.value?.data.meta_description,
-    ogDescription: page.value?.data.meta_description,
     ogImage: computed(() => prismic.asImageSrc(page.value?.data.meta_image)),
 });
 </script>

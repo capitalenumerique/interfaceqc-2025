@@ -1,20 +1,12 @@
 <template>
     <div>
         <SliceZone :slices="page?.data?.slices ?? []" :components="components" />
-        <h2 class="home-tickets-title">
-            <span class="container">{{ t('Termes et conditions') }}</span>
-        </h2>
-        <div class="container">
-            <div class="content">
-                <PrismicRichText :field="page?.data?.terms" />
-            </div>
-        </div>
     </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { components } from '~/slices';
-const { locale, t } = useI18n();
+const { locale } = useI18n();
 
 defineI18nRoute({
     paths: {
@@ -24,7 +16,7 @@ defineI18nRoute({
 
 const prismic = usePrismic();
 
-const { data: page } = await useAsyncData('index', () => {
+const { data: page } = await useAsyncData('tickets', () => {
     return prismic.client.getSingle('tickets', {
         graphQuery: `{
             tickets {
@@ -53,6 +45,15 @@ const { data: page } = await useAsyncData('index', () => {
                             }
                         }
                     }
+                    ...on text {
+                       variation {
+                            ...on default {
+                                primary {
+                                    ...primaryFields
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }`,
@@ -62,34 +63,7 @@ const { data: page } = await useAsyncData('index', () => {
 
 useSeoMeta({
     title: page.value?.data.meta_title,
-    ogTitle: page.value?.data.meta_title,
     description: page.value?.data.meta_description,
-    ogDescription: page.value?.data.meta_description,
     ogImage: computed(() => prismic.asImageSrc(page.value?.data.meta_image)),
 });
 </script>
-
-<style lang="postcss" scoped>
-.home-tickets {
-    margin: 120px 0;
-}
-.home-tickets-title {
-    font-size: rem(18px);
-    font-weight: bold;
-    padding: 24px 0;
-    border-top: 1px solid var(--gray-900);
-    border-bottom: 1px solid var(--gray-900);
-    margin: 0;
-}
-.container {
-    display: block;
-    max-width: 1272px;
-    padding: 0 16px;
-    margin: 0 auto;
-    width: 100%;
-    .content {
-        margin: 48px 0 96px;
-        max-width: 768px;
-    }
-}
-</style>
