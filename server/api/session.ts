@@ -1,4 +1,5 @@
 import { GET_SESSION_BY_ID } from '~~/queries/get-session-by-id';
+import { getCategoryColor } from '~~/app/utils/categoryColors';
 import useSwapcardClient from '../useSwapcardClient';
 
 type Session = {
@@ -7,6 +8,7 @@ type Session = {
     endsAt: string;
     description: string;
     descriptionTranslations: { language: string; value: string }[];
+    htmlDescription: string;
     categories: string[];
     place: string;
     title: string;
@@ -36,32 +38,48 @@ type SessionResponse = {
 
 export default defineEventHandler(async (event) => {
     const query = getQuery(event);
-    const sessionId = query.id;
+    const sessionId = query.id as string;
 
     const response = (await useSwapcardClient({
         query: GET_SESSION_BY_ID,
         variables: { sessionId },
     })) as SessionResponse;
 
-    const filteredResponse: SessionResponse = {
-        data: {
-            eventPerson: {
-                nodes: response.data?.eventPerson?.nodes
-                    .map((person) => ({
-                        ...person,
-                        speakerOnPlannings: person.speakerOnPlannings
-                            .filter((session) => session.id === sessionId)
-                            .map((session) => ({
-                                ...session,
-                                date: session.beginsAt.split(' ')[0], // Extract Date
-                                beginsAt: session.beginsAt.split(' ')[1], // Extract Start Time
-                                endsAt: session.endsAt.split(' ')[1], // Extract End Time
-                            })),
-                    }))
-                    .filter((person) => person.speakerOnPlannings.length > 0),
-            },
-        },
-    };
+    const speaker: EventPerson[] = response.data.eventPerson.nodes;
 
-    return filteredResponse;
+    const filteredSpeaker = speaker
+        .map((person) => {
+            const session = person.speakerOnPlannings.find((s) => s.id === sessionId);
+            if (!session) return null;
+            return {
+                id: person.id,
+                firstName: person.firstName,
+                lastName: person.lastName,
+                jobTitle: person.jobTitle,
+                jobTitleTranslations: person.jobTitleTranslations,
+                photoUrl: person.photoUrl,
+                organization: person.organization,
+                biography: person.biography,
+                biographyTranslations: person.biographyTranslations,
+                session: {
+                    id: session.id,
+                    title: session.title,
+                    titleTranslations: session.titleTranslations,
+                    description: session.description,
+                    descriptionTranslations: session.descriptionTranslations,
+                    htmlDescription: session.htmlDescription,
+                    categories: session.categories.map((category) => ({
+                        name: category,
+                        colors: getCategoryColor(category),
+                    })),
+                    place: session.place,
+                    date: session.beginsAt.split(' ')[0],
+                    beginsAt: session.beginsAt.split(' ')[1],
+                    endsAt: session.endsAt.split(' ')[1],
+                },
+            };
+        })
+        .find((person) => person !== null);
+
+    return filteredSpeaker || {};
 });

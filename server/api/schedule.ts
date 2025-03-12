@@ -1,4 +1,5 @@
 import { GET_EVENT_BY_ID } from '~~/queries/get-event-by-id';
+import { getCategoryColor } from '~~/app/utils/categoryColors';
 import useSwapcardClient from '../useSwapcardClient';
 import { groupBy, uniqBy } from 'es-toolkit';
 
@@ -145,9 +146,9 @@ export default defineEventHandler(async () => {
                                 title: specialSession.title,
                                 beginsAt: specialSession.beginsAt,
                                 endsAt: specialSession.endsAt,
-                                categories: specialSession.categories.map((cat) => ({
-                                    name: cat,
-                                    color: categoryColorMap[cat],
+                                categories: specialSession.categories.map((category) => ({
+                                    name: category,
+                                    colors: getCategoryColor(category),
                                 })),
                                 type: specialSession.type,
                                 speakers: uniqBy(
@@ -172,9 +173,9 @@ export default defineEventHandler(async () => {
                                       title: sessionInPlace.title,
                                       beginsAt: sessionInPlace.beginsAt,
                                       endsAt: sessionInPlace.endsAt,
-                                      categories: sessionInPlace.categories.map((cat) => ({
-                                          name: cat,
-                                          color: categoryColorMap[cat],
+                                      categories: sessionInPlace.categories.map((category) => ({
+                                          name: category,
+                                          colors: getCategoryColor(category),
                                       })),
                                       type: sessionInPlace.type,
                                       speakers: uniqBy(

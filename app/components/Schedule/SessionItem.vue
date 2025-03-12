@@ -19,16 +19,7 @@
                 })
             }}</span>
         </div>
-        <ul class="categories-list">
-            <li
-                v-for="(category, j) in session.categories"
-                :key="`category-${session.id}-${j}`"
-                :style="getCategoryStyle(category.color)"
-                class="category-item"
-            >
-                {{ category.name }}
-            </li>
-        </ul>
+        <ScheduleSessionCategories :list-id="session.id" :categories="session.categories" />
     </div>
 </template>
 
@@ -43,34 +34,13 @@ const props = defineProps({
     },
 });
 
-const colorMap = {
-    red: { bg: 'var(--red-600)', text: 'var(--yellow-200)' },
-    yellow: { bg: 'var(--yellow-200)', text: 'var(--red-600)' },
-    pink: { bg: 'var(--pink-300)', text: 'var(--green-800)' },
-    blue: { bg: 'var(--blue-700)', text: 'var(--orange-300)' },
-    teal: { bg: 'var(--teal-600)', text: 'var(--color-white)' },
-    gray: { bg: 'var(--gray-900)', text: 'var(--pink-300)' },
-    orange: { bg: 'var(--orange-300)', text: 'var(--blue-700)' },
-};
-
 const hoverColor = computed(() => {
-    const colorKey = props.session.categories?.[0]?.color || 'red';
-    const colors = colorMap[colorKey] || colorMap.red;
+    const colors = props.session.categories?.[0]?.colors || { bg: 'var(--red-600)', text: 'var(--yellow-200)' };
     return {
         '--hover-text': colors.text,
         '--hover-bg': colors.bg,
     };
 });
-
-const getCategoryStyle = (colorKey) => {
-    const colors = colorMap[colorKey] || colorMap.red;
-    return {
-        '--category-bg': colors.bg,
-        '--category-text': colors.text,
-        '--hover-bg': hoverColor.value['--hover-text'],
-        '--hover-text': hoverColor.value['--hover-bg'],
-    };
-};
 </script>
 
 <style lang="postcss" scoped>
@@ -142,26 +112,6 @@ const getCategoryStyle = (colorKey) => {
 }
 .speaker-organization {
     margin: 0;
-}
-.categories-list {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 0;
-    margin: 0;
-}
-.category-item {
-    font-size: rem(14px);
-    padding: 8px;
-    border-radius: 6px;
-    font-weight: 700;
-    background-color: var(--category-bg);
-    color: var(--category-text);
-    transition:
-        background-color var(--hover-transition),
-        color var(--hover-transition);
 }
 </style>
 
