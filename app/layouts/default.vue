@@ -4,7 +4,7 @@
             <AppMenu />
             <PrimaryButton to="https://ti.to/cnum/interface-2025" target="_blank" class="cta">
                 <IconStarOutline class="icon-star-outline" />
-                {{ t('acheter mon billet') }}
+                {{ t('Acheter mon billet') }}
             </PrimaryButton>
             <main class="content-wrapper">
                 <slot />
@@ -68,6 +68,7 @@ const { t } = useI18n();
     z-index: 50;
     padding: 8px 12px;
     border-radius: 8px;
+    text-transform: lowercase;
     @media (--md) {
         position: absolute;
         top: 64px;
@@ -81,3 +82,11 @@ const { t } = useI18n();
     }
 }
 </style>
+
+<i18n lang="json">
+{
+    "en": {
+        "Acheter mon billet": "Buy my ticket"
+    }
+}
+</i18n>
