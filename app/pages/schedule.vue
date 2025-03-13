@@ -43,16 +43,14 @@ const { $luxon } = useNuxtApp();
 
 const dates = computed(() => {
     if (!data.value) return [];
-    return data.value
-        .map((entry) => {
-            const formattedDate = $luxon.DateTime.fromISO(entry.date).toLocaleString({
-                weekday: 'long',
-                day: 'numeric',
-                month: 'long',
-            });
-            return formattedDate;
-        })
-        .sort();
+    return data.value.map((entry) => {
+        const formattedDate = $luxon.DateTime.fromISO(entry.date).toLocaleString({
+            weekday: 'long',
+            day: 'numeric',
+            month: 'long',
+        });
+        return formattedDate;
+    });
 });
 
 defineI18nRoute({

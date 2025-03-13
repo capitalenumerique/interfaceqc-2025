@@ -1,5 +1,5 @@
 <template>
-    <div class="session-wrapper" :style="hoverColor">
+    <div class="session-wrapper" :style="hoverColors">
         <div>
             <h2 class="session-title">
                 <NuxtLinkLocale :to="{ name: 'session-id', params: { id: session.id } }" class="session-link">
@@ -19,7 +19,7 @@
                 })
             }}</span>
         </div>
-        <ScheduleSessionCategories :list-id="session.id" :categories="session.categories" />
+        <ScheduleSessionCategories :list-id="session.id" :categories="session.categories" :hover-colors="hoverColors" />
     </div>
 </template>
 
@@ -34,7 +34,7 @@ const props = defineProps({
     },
 });
 
-const hoverColor = computed(() => {
+const hoverColors = computed(() => {
     const colors = props.session.categories?.[0]?.colors || { bg: 'var(--red-600)', text: 'var(--yellow-200)' };
     return {
         '--hover-text': colors.text,
@@ -59,7 +59,7 @@ const hoverColor = computed(() => {
     &:focus-visible {
         background-color: var(--hover-bg);
         color: var(--hover-text);
-        .category-item {
+        :deep(.category-item) {
             background-color: var(--hover-bg);
             color: var(--hover-text);
         }
@@ -70,7 +70,7 @@ const hoverColor = computed(() => {
     max-width: 250px;
 }
 .session-link {
-    font-size: rem(24px);
+    font-size: rem(20px);
     font-weight: 600;
     text-decoration: none;
     color: currentColor;
@@ -99,18 +99,20 @@ const hoverColor = computed(() => {
     margin: 0 0 20px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
 }
 .speaker-item {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
 }
 .speaker-name {
+    font-size: rem(14px);
     font-weight: 700;
     margin: 0;
 }
 .speaker-organization {
+    font-size: rem(14px);
     margin: 0;
 }
 </style>

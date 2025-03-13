@@ -28,7 +28,7 @@
                     </div>
                     <div class="session-cell">
                         <ScheduleSessionItem v-if="place.session" :session="place.session" />
-                        <div v-else class="to-be-anounced">{{ t('À déterminer') }}</div>
+                        <div v-else class="to-be-anounced">{{ t('À venir') }}</div>
                     </div>
                 </div>
             </div>

@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-defineProps({
+const props = defineProps({
     listId: {
         type: String,
         required: true,
@@ -21,12 +21,18 @@ defineProps({
         type: Array,
         required: true,
     },
+    hoverColors: {
+        type: Object,
+        default: null,
+    },
 });
 
 const getCategoryStyle = (colors) => {
     return {
         '--category-bg': colors.bg,
         '--category-text': colors.text,
+        '--hover-text': props.hoverColors?.['--hover-bg'] || colors.bg,
+        '--hover-bg': props.hoverColors?.['--hover-text'] || colors.text,
     };
 };
 </script>

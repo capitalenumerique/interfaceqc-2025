@@ -48,24 +48,29 @@ export default defineEventHandler(async () => {
 
     const speakers: EventPerson[] = response.data.eventPerson.nodes;
 
+    // Forcer les dates vu les données erronnées de Swapcard
+    const allowedDates = ['2025-05-27', '2025-05-28', '2025-05-29'];
+
     // Réorganiser les sessions
     const sessions = speakers.flatMap((speaker) =>
-        speaker.speakerOnPlannings.map((session) => ({
-            id: session.id,
-            date: session.beginsAt.split(' ')[0], // Date
-            beginsAt: session.beginsAt.split(' ')[1], // Temps de début
-            endsAt: session.endsAt.split(' ')[1], // Temps de fin
-            title: session.title,
-            categories: session.categories,
-            place: session.place,
-            type: session.type,
-            speaker: {
-                id: speaker.id,
-                firstName: speaker.firstName,
-                lastName: speaker.lastName,
-                organization: speaker.organization,
-            } as Speaker,
-        })),
+        speaker.speakerOnPlannings
+            .filter((session) => allowedDates.includes(session.beginsAt.split(' ')[0])) // Keep only sessions on allowed dates
+            .map((session) => ({
+                id: session.id,
+                date: session.beginsAt.split(' ')[0], // Date
+                beginsAt: session.beginsAt.split(' ')[1], // Temps de début
+                endsAt: session.endsAt.split(' ')[1], // Temps de fin
+                title: session.title,
+                categories: session.categories,
+                place: session.place,
+                type: session.type,
+                speaker: {
+                    id: speaker.id,
+                    firstName: speaker.firstName,
+                    lastName: speaker.lastName,
+                    organization: speaker.organization,
+                } as Speaker,
+            })),
     );
 
     // Grouper les sessions par date
