@@ -2,11 +2,12 @@
     <div class="session-wrapper" :style="hoverColors">
         <div>
             <h2 class="session-title">
-                <NuxtLinkLocale :to="{ name: 'session-id', params: { id: session.id } }" class="session-link">
+                <template v-if="hasNoDetailPage">{{ session.title }}</template>
+                <NuxtLinkLocale v-else :to="{ name: 'session-id', params: { id: session.id } }" class="session-link">
                     {{ session.title }}
                 </NuxtLinkLocale>
             </h2>
-            <ul class="speakers-list">
+            <ul v-if="!hasNoDetailPage" class="speakers-list">
                 <li v-for="(speaker, i) in session.speakers" :key="`speaker-${session.id}-${i}`" class="speaker-item">
                     <p class="speaker-name">{{ speaker.firstName }} {{ speaker.lastName }}</p>
                     <p class="speaker-organization">{{ speaker.organization }}</p>
@@ -32,6 +33,11 @@ const props = defineProps({
         type: Object,
         required: true,
     },
+});
+
+const hasNoDetailPage = computed(() => {
+    const hasNoSpeaker = props.session.speakers.some((s) => s.id === 'RXZlbnRQZW9wbGVfMzY5OTE2MzM=');
+    return hasNoSpeaker;
 });
 
 const hoverColors = computed(() => {
