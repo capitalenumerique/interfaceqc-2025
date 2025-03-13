@@ -93,6 +93,7 @@ const onEnter = () => {
     appearance: none;
     background-color: transparent;
     color: var(--gray-900);
+    cursor: pointer;
     border: 1px solid var(--gray-900);
     transition: all var(--hover-transition);
     @media (--lg) {
