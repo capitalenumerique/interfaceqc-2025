@@ -47,7 +47,7 @@ import LogoInterfaceVertical from '@/assets/svg/logo-with-glyph-vertical.svg?com
 
 // import IconLemon from '@/assets/svg/shapes/lemon.svg?component';
 import IconStar from '@/assets/svg/shapes/star.svg?component';
-import IconSemiCircle from '@/assets/svg/shapes/half-circle.svg?component';
+import IconHalfCircle from '@/assets/svg/shapes/half-circle.svg?component';
 // import IconAsterisk from '@/assets/svg/shapes/asterisk.svg?component';
 // import IconTriangle from '@/assets/svg/shapes/triangle.svg?component';
 import IconGlyph from '@/assets/svg/shapes/glyph.svg?component';
@@ -76,7 +76,7 @@ const items = computed(() => [
     {
         label: t('Programmation'),
         path: 'schedule',
-        icon: IconSemiCircle,
+        icon: IconHalfCircle,
         color: 'red-500',
     },
     // {

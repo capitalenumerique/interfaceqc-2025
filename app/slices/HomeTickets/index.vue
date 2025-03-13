@@ -222,7 +222,7 @@ defineProps(getSliceComponentProps<Content.HomeTicketsSlice>(['slice', 'index', 
             flex-shrink: 0;
         }
     }
-    &:has(.ticket-type-link:hover) {
+    &:has(.ticket-type-link:hover, .ticket-type-link:focus-visible) {
         .top-section,
         .bottom-section {
             color: var(--textColor);

@@ -1,0 +1,25 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "saw",
+				"type": "Text"
+			},
+			"content": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Elit eu ex non sit veniam in consectetur officia. Velit aliqua consequat esse labore. Est dolore fugiat mollit cillum nostrud aliqua enim in deserunt anim id."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

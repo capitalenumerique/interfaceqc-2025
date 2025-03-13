@@ -68,7 +68,12 @@ export type FaqDocument<Lang extends string = string> = prismic.PrismicDocumentW
     Lang
 >;
 
-type HomeDocumentDataSlicesSlice = HomeTicketsSlice | PartnersGridSlice | HomeProgrammingSlice;
+type HomeDocumentDataSlicesSlice =
+    | TextSlice
+    | TextImageSlice
+    | HomeTicketsSlice
+    | PartnersGridSlice
+    | HomeProgrammingSlice;
 
 /**
  * Content for Home documents
@@ -309,49 +314,12 @@ export type TicketTypesDocument<Lang extends string = string> = prismic.PrismicD
     Lang
 >;
 
-/**
- * Item in *Tickets → tickets*
- */
-export interface TicketsDocumentDataTicketsItem {
-    /**
-     * ticket_type field in *Tickets → tickets*
-     *
-     * - **Field Type**: Content Relationship
-     * - **Placeholder**: *None*
-     * - **API ID Path**: tickets.tickets[].ticket_type
-     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-     */
-    ticket_type: prismic.ContentRelationshipField<'ticket_types'>;
-}
-
-type TicketsDocumentDataSlicesSlice = HomeTicketsSlice | PageIntroHeaderSlice;
+type TicketsDocumentDataSlicesSlice = TextSlice | HomeTicketsSlice | PageIntroHeaderSlice;
 
 /**
  * Content for Tickets documents
  */
 interface TicketsDocumentData {
-    /**
-     * tickets field in *Tickets*
-     *
-     * - **Field Type**: Group
-     * - **Placeholder**: *None*
-     * - **API ID Path**: tickets.tickets[]
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/field#group
-     */
-    tickets: prismic.GroupField<Simplify<TicketsDocumentDataTicketsItem>>;
-
-    /**
-     * terms field in *Tickets*
-     *
-     * - **Field Type**: Rich Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: tickets.terms
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-     */
-    terms: prismic.RichTextField;
-
     /**
      * Slice Zone field in *Tickets*
      *
@@ -776,6 +744,126 @@ type PartnersGridSliceVariation = PartnersGridSliceDefault;
  */
 export type PartnersGridSlice = prismic.SharedSlice<'partners_grid', PartnersGridSliceVariation>;
 
+/**
+ * Primary content in *Text → Default → Primary*
+ */
+export interface TextSliceDefaultPrimary {
+    /**
+     * Title field in *Text → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField;
+
+    /**
+     * Content field in *Text → Default → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text.default.primary.content
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    content: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Text Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextSliceDefault = prismic.SharedSliceVariation<'default', Simplify<TextSliceDefaultPrimary>, never>;
+
+/**
+ * Slice variation for *Text*
+ */
+type TextSliceVariation = TextSliceDefault;
+
+/**
+ * Text Shared Slice
+ *
+ * - **API ID**: `text`
+ * - **Description**: Text
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextSlice = prismic.SharedSlice<'text', TextSliceVariation>;
+
+/**
+ * Primary content in *TextImage → Default → Primary*
+ */
+export interface TextImageSliceDefaultPrimary {
+    /**
+     * Title field in *TextImage → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_image.default.primary.title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField;
+
+    /**
+     * CTA field in *TextImage → Default → Primary*
+     *
+     * - **Field Type**: Link
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_image.default.primary.cta
+     * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+     */
+    cta: prismic.LinkField<string, string, unknown, prismic.FieldState, never>;
+
+    /**
+     * Image 1 field in *TextImage → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_image.default.primary.image_1
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    image_1: prismic.ImageField<never>;
+
+    /**
+     * Image 2 field in *TextImage → Default → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_image.default.primary.image_2
+     * - **Documentation**: https://prismic.io/docs/field#image
+     */
+    image_2: prismic.ImageField<never>;
+}
+
+/**
+ * Default variation for TextImage Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextImageSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<TextImageSliceDefaultPrimary>,
+    never
+>;
+
+/**
+ * Slice variation for *TextImage*
+ */
+type TextImageSliceVariation = TextImageSliceDefault;
+
+/**
+ * TextImage Shared Slice
+ *
+ * - **API ID**: `text_image`
+ * - **Description**: TextImage
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TextImageSlice = prismic.SharedSlice<'text_image', TextImageSliceVariation>;
+
 declare module '@prismicio/client' {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
@@ -805,7 +893,6 @@ declare module '@prismicio/client' {
             TicketTypesDocumentDataInclusionsItem,
             TicketsDocument,
             TicketsDocumentData,
-            TicketsDocumentDataTicketsItem,
             TicketsDocumentDataSlicesSlice,
             AllDocumentTypes,
             HomeProgrammingSlice,
@@ -827,6 +914,14 @@ declare module '@prismicio/client' {
             PartnersGridSliceDefaultPrimary,
             PartnersGridSliceVariation,
             PartnersGridSliceDefault,
+            TextSlice,
+            TextSliceDefaultPrimary,
+            TextSliceVariation,
+            TextSliceDefault,
+            TextImageSlice,
+            TextImageSliceDefaultPrimary,
+            TextImageSliceVariation,
+            TextImageSliceDefault,
         };
     }
 }

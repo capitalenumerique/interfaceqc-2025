@@ -10,6 +10,31 @@ export default defineNuxtConfig({
         componentInspector: false,
     },
 
+    app: {
+        pageTransition: { name: 'page', mode: 'out-in' },
+        head: {
+            link: [
+                {
+                    href: '/favicon.png',
+                    rel: 'icon',
+                    type: 'image/png',
+                },
+                {
+                    href: '/favicon-dark.svg',
+                    rel: 'icon',
+                    type: 'image/svg+xml',
+                    media: '(prefers-color-scheme: dark)',
+                },
+                {
+                    href: '/favicon-light.svg',
+                    rel: 'icon',
+                    type: 'image/svg+xml',
+                    media: '(prefers-color-scheme: light)',
+                },
+            ],
+        },
+    },
+
     css: [
         'normalize.css/normalize.css',
         '@/assets/css/colors.css',
