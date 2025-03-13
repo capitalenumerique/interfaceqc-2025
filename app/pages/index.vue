@@ -54,6 +54,15 @@ const { data: page } = await useAsyncData('index', () => {
                             }
                         }
                     }
+                    ...on accordeons {
+                       variation {
+                            ...on default {
+                                primary {
+                                    ...primaryFields
+                                }
+                            }
+                        }
+                    }
                     ...on home_tickets {
                         variation {
                             ...on default {
