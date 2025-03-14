@@ -47,12 +47,12 @@ export default defineEventHandler(async (event) => {
 
     const speakers: EventPerson[] = response.data.eventPerson.nodes;
 
-    // Extract session info (assuming all speakers are linked to the same session ID)
+    // Extraire les informations de la session
     const session = speakers.flatMap((speaker) => speaker.speakerOnPlannings).find((s) => s.id === sessionId);
 
     if (!session) return {};
 
-    // Transform the data into the desired structure
+    // Remanier les données pour l'affichage
     return {
         id: session.id,
         title: session.title,
