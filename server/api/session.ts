@@ -45,41 +45,39 @@ export default defineEventHandler(async (event) => {
         variables: { sessionId },
     })) as SessionResponse;
 
-    const speaker: EventPerson[] = response.data.eventPerson.nodes;
+    const speakers: EventPerson[] = response.data.eventPerson.nodes;
 
-    const filteredSpeaker = speaker
-        .map((person) => {
-            const session = person.speakerOnPlannings.find((s) => s.id === sessionId);
-            if (!session) return null;
-            return {
-                id: person.id,
-                firstName: person.firstName,
-                lastName: person.lastName,
-                jobTitle: person.jobTitle,
-                jobTitleTranslations: person.jobTitleTranslations,
-                photoUrl: person.photoUrl,
-                organization: person.organization,
-                biography: person.biography,
-                biographyTranslations: person.biographyTranslations,
-                session: {
-                    id: session.id,
-                    title: session.title,
-                    titleTranslations: session.titleTranslations,
-                    description: session.description,
-                    descriptionTranslations: session.descriptionTranslations,
-                    htmlDescription: session.htmlDescription,
-                    categories: session.categories.map((category) => ({
-                        name: category,
-                        colors: getCategoryColor(category),
-                    })),
-                    place: session.place,
-                    date: session.beginsAt.split(' ')[0],
-                    beginsAt: session.beginsAt.split(' ')[1],
-                    endsAt: session.endsAt.split(' ')[1],
-                },
-            };
-        })
-        .find((person) => person !== null);
+    // Extract session info (assuming all speakers are linked to the same session ID)
+    const session = speakers.flatMap((speaker) => speaker.speakerOnPlannings).find((s) => s.id === sessionId);
 
-    return filteredSpeaker || {};
+    if (!session) return {};
+
+    // Transform the data into the desired structure
+    return {
+        id: session.id,
+        title: session.title,
+        titleTranslations: session.titleTranslations,
+        description: session.description,
+        descriptionTranslations: session.descriptionTranslations,
+        htmlDescription: session.htmlDescription,
+        categories: session.categories.map((category) => ({
+            name: category,
+            colors: getCategoryColor(category),
+        })),
+        place: session.place,
+        date: session.beginsAt.split(' ')[0],
+        beginsAt: session.beginsAt.split(' ')[1],
+        endsAt: session.endsAt.split(' ')[1],
+        speakers: speakers.map((person) => ({
+            id: person.id,
+            firstName: person.firstName,
+            lastName: person.lastName,
+            jobTitle: person.jobTitle,
+            jobTitleTranslations: person.jobTitleTranslations,
+            photoUrl: person.photoUrl,
+            organization: person.organization,
+            biography: person.biography,
+            biographyTranslations: person.biographyTranslations,
+        })),
+    };
 });

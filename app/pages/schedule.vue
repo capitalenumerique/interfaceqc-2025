@@ -3,7 +3,7 @@
         <SliceZone :slices="page?.data?.slices ?? []" :components="components" />
         <div class="page-container">
             <div v-if="!isLoading && error?.message">
-                {{ error?.message }}
+                {{ t('La programmation est présentement indisponible, veuillez réessayer plus tard.') }}
             </div>
             <div v-else-if="isLoading">
                 <ScheduleLazyGrid />
@@ -132,7 +132,6 @@ useSeoMeta({
 <i18n lang="json">
 {
     "en": {
-        "Chargement": "Loading",
         "La programmation est présentement indisponible, veuillez réessayer plus tard.": "The schedule is currently unavailable. Please try again later."
     }
 }

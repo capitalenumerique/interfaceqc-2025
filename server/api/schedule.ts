@@ -57,9 +57,9 @@ export default defineEventHandler(async () => {
             .filter((session) => allowedDates.includes(session.beginsAt.split(' ')[0])) // Keep only sessions on allowed dates
             .map((session) => ({
                 id: session.id,
-                date: session.beginsAt.split(' ')[0], // Date
-                beginsAt: session.beginsAt.split(' ')[1], // Temps de début
-                endsAt: session.endsAt.split(' ')[1], // Temps de fin
+                date: session.beginsAt.split(' ')[0],
+                beginsAt: session.beginsAt.split(' ')[1],
+                endsAt: session.endsAt.split(' ')[1],
                 title: session.title,
                 categories: session.categories,
                 place: session.place,
@@ -123,6 +123,7 @@ export default defineEventHandler(async () => {
     });
 
     // Ordonner les sessions par date et créneaux horaires
+    // @TODO: Rendre le code plus lisible, jtel donne Laurent :D
     const sortedResult = Object.keys(groupedSessions)
         .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
         .map((date) => ({

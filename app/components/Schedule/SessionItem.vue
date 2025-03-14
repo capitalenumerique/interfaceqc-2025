@@ -72,6 +72,8 @@ const hoverColors = computed(() => {
     }
 }
 .session-title {
+    font-size: rem(20px);
+    font-weight: 600;
     margin-bottom: 16px;
     max-width: 250px;
 }

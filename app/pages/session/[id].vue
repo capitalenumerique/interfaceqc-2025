@@ -7,29 +7,33 @@
         <div v-if="!isLoading && error?.message">
             {{ error?.message }}
         </div>
-        <div v-else-if="isLoading">{{ t('Chargement') }}...</div>
+        <div v-else-if="isLoading"><ScheduleLazySessionCard /></div>
         <div v-else class="session-wrapper">
             <div class="session-header">
-                <span class="session-date">{{ formatDate(data.session.date) }}</span>
+                <span class="session-date">{{ formatDate(data.date) }}</span>
                 <span class="session-time">{{
                     t('{start} à {end}', {
-                        start: formatSessionTime(data.session.beginsAt),
-                        end: formatSessionTime(data.session.endsAt),
+                        start: formatSessionTime(data.beginsAt),
+                        end: formatSessionTime(data.endsAt),
                     })
                 }}</span>
             </div>
-            <h1 class="session-title">{{ data.session.title }}</h1>
-            <div v-html="data.session.htmlDescription"></div>
-            <p class="session-place">{{ data.session.place }}</p>
-            <ScheduleSessionCategories :list-id="data.id" :categories="data.session.categories" />
-            <div class="speaker-wrapper">
-                <img v-if="data.photoUrl" class="speaker-photo" :src="data.photoUrl" alt="" />
-                <div>
-                    <h2 class="speaker-name">{{ data.firstName }} {{ data.lastName }}</h2>
-                    <p class="speaker-infos">{{ data.jobTitle }}, {{ data.organization }}</p>
-                    <p v-if="data.biography" class="speaker-biography">{{ data.biography }}</p>
-                </div>
-            </div>
+            <h1 class="session-title">{{ data.title }}</h1>
+            <div v-html="data.htmlDescription"></div>
+            <p class="session-place">{{ data.place }}</p>
+            <ScheduleSessionCategories :list-id="data.id" :categories="data.categories" />
+            <ul class="speakers-list">
+                <li v-for="speaker in data.speakers" :key="speaker.id">
+                    <div class="speaker-wrapper">
+                        <img v-if="speaker.photoUrl" class="speaker-photo" :src="speaker.photoUrl" alt="" />
+                        <div>
+                            <h2 class="speaker-name">{{ speaker.firstName }} {{ speaker.lastName }}</h2>
+                            <p class="speaker-infos">{{ speaker.jobTitle }}, {{ speaker.organization }}</p>
+                            <p v-if="speaker.biography" class="speaker-biography">{{ speaker.biography }}</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
@@ -125,11 +129,18 @@ defineRouteRules({
     font-weight: 600;
     margin: 24px 0;
 }
+.speakers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    list-style: none;
+    margin: 48px 0 0;
+    padding: 0;
+}
 .speaker-wrapper {
     display: flex;
     flex-direction: column;
     gap: 24px;
-    margin-top: 48px;
     @media (--lg) {
         flex-direction: row;
     }
@@ -151,7 +162,6 @@ defineRouteRules({
 <i18n lang="json">
 {
     "en": {
-        "Chargement": "Loading",
         "Retour à la programmation": "Go back to schedule",
         "{start} à {end}": "{start} to {end}"
     }
