@@ -1,7 +1,13 @@
 <script setup>
+const route = useRoute();
+const getRouteBaseName = useRouteBaseName();
 const i18nHead = useLocaleHead();
 
 useHead(() => ({
+    titleTemplate: (title) => {
+        if (getRouteBaseName(route) === 'index') return title;
+        return title ? `${title} | Interface` : 'Interface';
+    },
     htmlAttrs: {
         lang: i18nHead.value.htmlAttrs.lang,
     },
@@ -15,3 +21,14 @@ useHead(() => ({
         <NuxtPage />
     </NuxtLayout>
 </template>
+
+<style lang="postcss" scoped>
+.page-enter-active,
+.page-leave-active {
+    transition: opacity 500ms ease-in-out;
+}
+.page-enter-from,
+.page-leave-to {
+    opacity: 0;
+}
+</style>

@@ -126,7 +126,7 @@ const socials = [
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 48px 16px;
-    max-width: 1240px;
+    max-width: 1272px;
     margin: auto;
     gap: 48px 24px;
     @media (--md) {

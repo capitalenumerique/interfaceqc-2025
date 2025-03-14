@@ -32,7 +32,7 @@
             </div>
             <div class="event-infos infos-cta">
                 <PrimaryButton
-                    href="https://ti.to/cnum/interface-2025"
+                    to="https://ti.to/cnum/interface-2025"
                     target="_blank"
                     primary-color="green-800"
                     secondary-color="yellow-200"
@@ -74,16 +74,20 @@ function changeShape() {
 <style lang="postcss" scoped>
 .home-header {
     background-color: var(--beige-100);
+    margin: 0 auto 40px;
+    @media (--lg) {
+        margin: 0 auto 64px;
+    }
 }
 .header-top {
     display: flex;
     justify-content: space-between;
     gap: 16px;
-    padding: 24px 32px;
-    @media (--lg) {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        padding: 24px 48px;
+    padding: 32px 16px;
+    @media (--md) {
+        max-width: 1150px;
+        width: 70%;
+        padding: 64px 48px;
     }
 }
 .header-text {
@@ -129,12 +133,12 @@ function changeShape() {
     }
 }
 .event-infos-wrapper {
-    margin: 40px auto;
+    margin: 40px auto 0;
     width: 100%;
     max-width: var(--page-container-max-width);
     padding: 0 16px;
     @media (--lg) {
-        margin: 64px auto;
+        margin: 64px auto 0;
     }
 }
 .event-infos {

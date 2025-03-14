@@ -4,21 +4,66 @@
     </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { components } from '~/slices';
 const { locale } = useI18n();
 
+defineI18nRoute({
+    paths: {
+        fr: '/billetterie',
+    },
+});
+
 const prismic = usePrismic();
 
-const { data: page } = useAsyncData('index', () => {
-    return prismic.client.getSingle('tickets', { lang: `${locale.value}-ca` });
+const { data: page } = await useAsyncData('tickets', () => {
+    return prismic.client.getSingle('tickets', {
+        graphQuery: `{
+            tickets {
+                ...ticketsFields
+                slices {
+                    ...on page_intro_header {
+                       variation {
+                            ...on default {
+                                primary {
+                                    ...primaryFields
+                                }
+                            }
+                        }
+                    }
+                    ...on home_tickets {
+                        variation {
+                            ...on default {
+                                primary {
+                                    ...primaryFields
+                                    tickets {
+                                        ticket_type {
+                                            ...ticket_typeFields
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    ...on text {
+                       variation {
+                            ...on default {
+                                primary {
+                                    ...primaryFields
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }`,
+        lang: `${locale.value}-ca`,
+    });
 });
 
 useSeoMeta({
     title: page.value?.data.meta_title,
-    ogTitle: page.value?.data.meta_title,
     description: page.value?.data.meta_description,
-    ogDescription: page.value?.data.meta_description,
     ogImage: computed(() => prismic.asImageSrc(page.value?.data.meta_image)),
 });
 </script>

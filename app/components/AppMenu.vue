@@ -1,6 +1,7 @@
 <template>
     <OnClickOutside
         ref="menu"
+        as="header"
         class="menu"
         :class="{ 'menu-opened': isAnimating }"
         @keydown.esc="onEscape"
@@ -11,9 +12,9 @@
                 <button class="btn-menu" type="button" :class="{ 'is-open': isOpen }" @click="isOpen = !isOpen">
                     <span class="sr-only">{{ t('Menu') }}</span>
                 </button>
-                <NuxtLinkLocale to="index" class="logo-link">
+                <NuxtLinkLocale to="index" class="logo-interface">
                     <span class="sr-only">{{ t('Retour à l’accueil') }}</span>
-                    <LogoInterface class="logo-interface" />
+                    <LogoInterface />
                 </NuxtLinkLocale>
             </div>
             <NuxtLinkLocale to="index" class="logo-interface-vertical">
@@ -46,7 +47,7 @@ import LogoInterfaceVertical from '@/assets/svg/logo-with-glyph-vertical.svg?com
 
 // import IconLemon from '@/assets/svg/shapes/lemon.svg?component';
 import IconStar from '@/assets/svg/shapes/star.svg?component';
-import IconSemiCircle from '@/assets/svg/shapes/half-circle.svg?component';
+import IconHalfCircle from '@/assets/svg/shapes/half-circle.svg?component';
 // import IconAsterisk from '@/assets/svg/shapes/asterisk.svg?component';
 // import IconTriangle from '@/assets/svg/shapes/triangle.svg?component';
 import IconGlyph from '@/assets/svg/shapes/glyph.svg?component';
@@ -75,7 +76,7 @@ const items = computed(() => [
     {
         label: t('Programmation'),
         path: { name: 'schedule-day', params: { day: 1 } },
-        icon: IconSemiCircle,
+        icon: IconHalfCircle,
         color: 'red-500',
     },
     // {
@@ -292,12 +293,12 @@ const onEscape = () => {
         gap: 50px;
     }
 }
-.logo-link {
+.logo-interface {
     text-decoration: none;
     color: var(--gray-900);
-}
-.logo-interface {
-    height: 24px;
+    svg {
+        height: 24px;
+    }
     @media (--md) {
         display: none;
     }

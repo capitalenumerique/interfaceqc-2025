@@ -2,16 +2,27 @@
     <div class="layout-wrapper">
         <div class="page-wrapper">
             <AppMenu />
-            <div class="content-wrapper">
+            <PrimaryButton to="https://ti.to/cnum/interface-2025" target="_blank" class="cta">
+                <IconStarOutline class="icon-star-outline" />
+                {{ t('Acheter mon billet') }}
+            </PrimaryButton>
+            <main class="content-wrapper">
                 <slot />
-            </div>
+            </main>
         </div>
         <AppFooter />
     </div>
 </template>
 
+<script lang="ts" setup>
+import IconStarOutline from '@/assets/svg/star-outline.svg?component';
+const { t } = useI18n();
+</script>
+
 <style lang="postcss" scoped>
 .layout-wrapper {
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
 }
 .page-wrapper {
@@ -48,4 +59,34 @@
 .content-wrapper {
     min-width: 0;
 }
+.primary-button.cta {
+    display: flex;
+    gap: 6px;
+    position: fixed;
+    top: 17px;
+    right: 16px;
+    z-index: 50;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-transform: lowercase;
+    @media (--md) {
+        position: absolute;
+        top: 64px;
+        padding: 14px 18px;
+    }
+    @media (--xl) {
+        right: 64px;
+    }
+    .icon-star-outline {
+        width: 20px;
+    }
+}
 </style>
+
+<i18n lang="json">
+{
+    "en": {
+        "Acheter mon billet": "Buy my ticket"
+    }
+}
+</i18n>

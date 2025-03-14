@@ -1,7 +1,7 @@
 <template>
     <component
         :is="component"
-        :href="href"
+        :to="to"
         :class="{
             'is-outlined': outline,
             'is-small': small,
@@ -18,12 +18,13 @@
 
 <script lang="ts" setup>
 import { NuxtLinkLocale } from '#components';
+
 const props = defineProps({
     type: {
         type: String,
         default: 'button',
     },
-    href: {
+    to: {
         type: String,
         default: '',
     },
@@ -46,7 +47,7 @@ const props = defineProps({
 });
 
 const component = computed(() => {
-    if (props.href) return NuxtLinkLocale;
+    if (props.to) return NuxtLinkLocale;
     return 'button';
 });
 </script>

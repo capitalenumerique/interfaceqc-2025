@@ -11,6 +11,15 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "text": {
+                            "type": "SharedSlice"
+                        },
+                        "text_image": {
+                            "type": "SharedSlice"
+                        },
+                        "home_tickets": {
+                            "type": "SharedSlice"
+                        },
                         "partners_grid": {
                             "type": "SharedSlice"
                         },

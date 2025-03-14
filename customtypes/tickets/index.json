@@ -11,6 +11,12 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "text": {
+                            "type": "SharedSlice"
+                        },
+                        "home_tickets": {
+                            "type": "SharedSlice"
+                        },
                         "page_intro_header": {
                             "type": "SharedSlice"
                         }
