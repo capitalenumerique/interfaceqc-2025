@@ -45,7 +45,7 @@
 }
 .line,
 .line-title {
-    background-color: var(--gray-100);
+    background-color: var(--beige-200);
     height: 16px;
     width: 100%;
     margin-bottom: 8px;
@@ -72,7 +72,7 @@
     width: 128px;
     height: 128px;
     border-radius: 8px;
-    background-color: var(--gray-100);
+    background-color: var(--beige-200);
 }
 .speaker-bio {
     flex-grow: 1;
@@ -91,7 +91,7 @@
 .tag {
     height: 32px;
     width: 120px;
-    background-color: var(--gray-100);
+    background-color: var(--beige-200);
     border-radius: 6px;
 }
 @keyframes hintloading {

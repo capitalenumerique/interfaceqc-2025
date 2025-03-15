@@ -212,7 +212,7 @@ const emptyGrid = [
 }
 .line,
 .line-title {
-    background-color: var(--gray-100);
+    background-color: var(--beige-200);
     height: 16px;
     width: 100%;
     margin-bottom: 8px;
@@ -233,7 +233,7 @@ const emptyGrid = [
 .tag {
     height: 32px;
     width: 120px;
-    background-color: var(--gray-100);
+    background-color: var(--beige-200);
     border-radius: 6px;
     &.small {
         width: 100px;
