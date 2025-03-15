@@ -54,6 +54,24 @@ const { data: page } = await useAsyncData('tickets', () => {
                             }
                         }
                     }
+                    ...on text_image {
+                       variation {
+                            ...on default {
+                                primary {
+                                    ...primaryFields
+                                }
+                            }
+                        }
+                    }
+                    ...on accordions {
+                       variation {
+                            ...on default {
+                                primary {
+                                    ...primaryFields
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }`,

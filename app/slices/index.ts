@@ -4,6 +4,7 @@ import { defineAsyncComponent } from 'vue';
 import { defineSliceZoneComponents } from '@prismicio/vue';
 
 export const components = defineSliceZoneComponents({
+    accordions: defineAsyncComponent(() => import('./Accordions/index.vue')),
     home_programming: defineAsyncComponent(() => import('./HomeSchedule/index.vue')),
     home_tickets: defineAsyncComponent(() => import('./HomeTickets/index.vue')),
     page_intro_header: defineAsyncComponent(() => import('./PageIntroHeader/index.vue')),
