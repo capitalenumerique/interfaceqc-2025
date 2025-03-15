@@ -11,6 +11,12 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
+                        "accordions": {
+                            "type": "SharedSlice"
+                        },
+                        "text_image": {
+                            "type": "SharedSlice"
+                        },
                         "text": {
                             "type": "SharedSlice"
                         },

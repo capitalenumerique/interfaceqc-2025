@@ -4,7 +4,7 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type FaqDocumentDataSlicesSlice = PageIntroHeaderSlice;
+type FaqDocumentDataSlicesSlice = TextImageSlice | TextSlice | AccordionsSlice | PageIntroHeaderSlice;
 
 /**
  * Content for FAQ documents
@@ -69,6 +69,7 @@ export type FaqDocument<Lang extends string = string> = prismic.PrismicDocumentW
 >;
 
 type HomeDocumentDataSlicesSlice =
+    | AccordionsSlice
     | TextSlice
     | TextImageSlice
     | HomeTicketsSlice
@@ -314,7 +315,12 @@ export type TicketTypesDocument<Lang extends string = string> = prismic.PrismicD
     Lang
 >;
 
-type TicketsDocumentDataSlicesSlice = TextSlice | HomeTicketsSlice | PageIntroHeaderSlice;
+type TicketsDocumentDataSlicesSlice =
+    | AccordionsSlice
+    | TextImageSlice
+    | TextSlice
+    | HomeTicketsSlice
+    | PageIntroHeaderSlice;
 
 /**
  * Content for Tickets documents
@@ -379,6 +385,73 @@ export type TicketsDocument<Lang extends string = string> = prismic.PrismicDocum
 >;
 
 export type AllDocumentTypes = FaqDocument | HomeDocument | ProgramDocument | TicketTypesDocument | TicketsDocument;
+
+/**
+ * Item in *Accordions → Default → Primary → Accordions*
+ */
+export interface AccordionsSliceDefaultPrimaryAccordionsItem {
+    /**
+     * Title field in *Accordions → Default → Primary → Accordions*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: accordions.default.primary.accordions[].title
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    title: prismic.KeyTextField;
+
+    /**
+     * Content field in *Accordions → Default → Primary → Accordions*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: accordions.default.primary.accordions[].content
+     * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+     */
+    content: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Accordions → Default → Primary*
+ */
+export interface AccordionsSliceDefaultPrimary {
+    /**
+     * Accordions field in *Accordions → Default → Primary*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: accordions.default.primary.accordions[]
+     * - **Documentation**: https://prismic.io/docs/field#group
+     */
+    accordions: prismic.GroupField<Simplify<AccordionsSliceDefaultPrimaryAccordionsItem>>;
+}
+
+/**
+ * Default variation for Accordions Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AccordionsSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<AccordionsSliceDefaultPrimary>,
+    never
+>;
+
+/**
+ * Slice variation for *Accordions*
+ */
+type AccordionsSliceVariation = AccordionsSliceDefault;
+
+/**
+ * Accordions Shared Slice
+ *
+ * - **API ID**: `accordions`
+ * - **Description**: Accordions
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type AccordionsSlice = prismic.SharedSlice<'accordions', AccordionsSliceVariation>;
 
 /**
  * Item in *HomeSchedule → Default → Primary → Speakers*
@@ -895,6 +968,11 @@ declare module '@prismicio/client' {
             TicketsDocumentData,
             TicketsDocumentDataSlicesSlice,
             AllDocumentTypes,
+            AccordionsSlice,
+            AccordionsSliceDefaultPrimaryAccordionsItem,
+            AccordionsSliceDefaultPrimary,
+            AccordionsSliceVariation,
+            AccordionsSliceDefault,
             HomeProgrammingSlice,
             HomeProgrammingSliceDefaultPrimarySpeakersItem,
             HomeProgrammingSliceDefaultPrimary,
