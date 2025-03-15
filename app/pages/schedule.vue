@@ -17,7 +17,7 @@
                             </NuxtLinkLocale>
                         </li>
                     </ul>
-                    <NuxtPage />
+                    <NuxtPage :data="data" />
                 </template>
             </div>
         </div>

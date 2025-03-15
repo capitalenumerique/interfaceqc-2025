@@ -48,9 +48,12 @@ const breakpoints = useBreakpoints({ lg: 1024 }, { ssrWidth: 1024 });
 const showPlace = breakpoints.smaller('lg');
 const day = route.params.day;
 
-const { data, suspense } = useSchedule();
-
-await suspense();
+defineProps({
+    data: {
+        type: Array,
+        default: () => [],
+    },
+});
 
 defineI18nRoute({
     paths: {
