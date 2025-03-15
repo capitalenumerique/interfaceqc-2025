@@ -73,9 +73,9 @@ useSeoMeta({
 
 <style lang="postcss" scoped>
 .page-container {
-    max-width: 1240px;
+    max-width: var(--page-container-max-width);
     min-height: 100vh;
-    margin: auto;
+    margin: 64px auto;
     padding: 0 16px;
 }
 .date-tabs {

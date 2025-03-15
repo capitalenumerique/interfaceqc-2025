@@ -25,7 +25,14 @@
             <ul class="speakers-list">
                 <li v-for="speaker in data.speakers" :key="speaker.id">
                     <div class="speaker-wrapper">
-                        <img v-if="speaker.photoUrl" class="speaker-photo" :src="speaker.photoUrl" alt="" />
+                        <img
+                            v-if="speaker.photoUrl"
+                            class="speaker-photo"
+                            width="128"
+                            height="128"
+                            :src="speaker.photoUrl"
+                            alt=""
+                        />
                         <div>
                             <h2 class="speaker-name">{{ speaker.firstName }} {{ speaker.lastName }}</h2>
                             <p class="speaker-infos">{{ speaker.jobTitle }}, {{ speaker.organization }}</p>
@@ -148,6 +155,8 @@ defineRouteRules({
 .speaker-photo {
     width: 128px;
     height: 128px;
+    background: var(--beige-200);
+    border-radius: 8px;
 }
 .speaker-name {
     font-size: rem(18px);
