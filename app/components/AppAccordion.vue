@@ -1,12 +1,18 @@
 <template>
     <li class="accordion-item" :class="{ 'is-open': isOpen || isAnimating }">
-        <button class="accordion-trigger" @click="isOpen = !isOpen">
+        <button
+            :id="triggerId"
+            :aria-expanded="isOpen"
+            :aria-controls="contentId"
+            class="accordion-trigger"
+            @click="isOpen = !isOpen"
+        >
             {{ title }}
             <IconPlus v-if="!isOpen" />
             <IconMinus v-else />
         </button>
         <Transition name="collapse" @enter="onEnter" @after-leave="isAnimating = false">
-            <div v-show="isOpen" class="accordion-content-wrapper">
+            <div v-show="isOpen" :id="contentId" :aria-labelledby="triggerId" class="accordion-content-wrapper">
                 <div ref="content" class="accordion-content">
                     <slot />
                 </div>
@@ -23,6 +29,8 @@ defineProps<{
     title: string;
 }>();
 
+const triggerId = useId();
+const contentId = useId();
 const isOpen = ref(false);
 const isAnimating = ref(false);
 const maxHeight = ref('0px');
@@ -95,7 +103,10 @@ const onEnter = () => {
     color: var(--gray-900);
     cursor: pointer;
     border: 1px solid var(--gray-900);
-    transition: all var(--hover-transition);
+    transition:
+        background var(--hover-transition),
+        color var(--hover-transition),
+        border var(--hover-transition);
     @media (--lg) {
         font-size: rem(20px);
         padding: 24px;
@@ -113,7 +124,10 @@ const onEnter = () => {
     padding: 16px;
     margin-top: -1px;
     border: 1px solid var(--gray-900);
-    transition: all var(--hover-transition);
+    transition:
+        background var(--hover-transition),
+        color var(--hover-transition),
+        border var(--hover-transition);
     font-weight: 500;
     font-size: rem(16px);
     @media (--lg) {
