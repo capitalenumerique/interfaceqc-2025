@@ -63,6 +63,11 @@ export default defineNuxtConfig({
     future: {
         compatibilityVersion: 4,
     },
+
+    experimental: {
+        inlineRouteRules: true,
+    },
+
     compatibilityDate: '2024-04-03',
 
     vite: {
@@ -147,10 +152,6 @@ export default defineNuxtConfig({
         provider: 'prismic',
         quality: 70,
         format: ['webp'],
-    },
-
-    experimental: {
-        inlineRouteRules: true,
     },
 
     prismic: {
