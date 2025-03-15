@@ -1,5 +1,5 @@
 const useSchedule = () => {
-    const { data, error, suspense, isFetching } = useQuery({
+    const { data, error, suspense, isLoading } = useQuery({
         queryKey: ['schedule'],
         queryFn: () => $fetch('/api/schedule'),
     });
@@ -8,7 +8,7 @@ const useSchedule = () => {
         data,
         error,
         suspense,
-        isLoading: isFetching,
+        isLoading,
     };
 };
 
