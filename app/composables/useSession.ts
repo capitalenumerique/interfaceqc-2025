@@ -1,15 +1,14 @@
 const useSession = (sessionId: string) => {
-    const { data, error, suspense, isFetching } = useQuery({
+    const { data, error, suspense, isLoading } = useQuery({
         queryKey: ['session', sessionId],
         queryFn: () => $fetch(`/api/session?id=${sessionId}`),
-        enabled: !!sessionId,
     });
 
     return {
         data,
         error,
         suspense,
-        isLoading: isFetching,
+        isLoading,
     };
 };
 
