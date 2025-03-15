@@ -3,7 +3,7 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"accordeons": {
+			"accordions": {
 				"__TYPE__": "GroupContentType",
 				"value": [
 					{
@@ -13,7 +13,7 @@
 								"title",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "face",
+									"value": "toy",
 									"type": "Text"
 								}
 							],
@@ -25,7 +25,7 @@
 										{
 											"type": "paragraph",
 											"content": {
-												"text": "Ea occaecat voluptate veniam aliqua esse velit occaecat aute occaecat ad occaecat tempor. Nulla quis consequat officia incididunt aliquip qui anim. Deserunt ea aute excepteur ea."
+												"text": "Id ex aute sunt ad aliquip do culpa proident do magna Lorem elit cupidatat."
 											}
 										}
 									]

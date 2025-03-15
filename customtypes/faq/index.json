@@ -17,7 +17,7 @@
                         "text": {
                             "type": "SharedSlice"
                         },
-                        "accordeons": {
+                        "accordions": {
                             "type": "SharedSlice"
                         },
                         "page_intro_header": {

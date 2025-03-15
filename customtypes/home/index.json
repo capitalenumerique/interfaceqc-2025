@@ -11,7 +11,7 @@
                 "fieldset": "Slice Zone",
                 "config": {
                     "choices": {
-                        "accordeons": {
+                        "accordions": {
                             "type": "SharedSlice"
                         },
                         "text": {

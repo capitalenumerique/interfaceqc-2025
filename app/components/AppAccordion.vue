@@ -1,13 +1,13 @@
 <template>
-    <li class="accordeon-item" :class="{ 'is-open': isOpen || isAnimating }">
-        <button class="accordeon-trigger" @click="isOpen = !isOpen">
+    <li class="accordion-item" :class="{ 'is-open': isOpen || isAnimating }">
+        <button class="accordion-trigger" @click="isOpen = !isOpen">
             {{ title }}
             <IconPlus v-if="!isOpen" />
             <IconMinus v-else />
         </button>
         <Transition name="collapse" @enter="onEnter" @after-leave="isAnimating = false">
-            <div v-show="isOpen" class="accordeon-content-wrapper">
-                <div ref="content" class="accordeon-content">
+            <div v-show="isOpen" class="accordion-content-wrapper">
+                <div ref="content" class="accordion-content">
                     <slot />
                 </div>
             </div>
@@ -36,7 +36,7 @@ const onEnter = () => {
 </script>
 
 <style lang="postcss" scoped>
-.accordeon-item {
+.accordion-item {
     &:nth-child(7n + 1) {
         --backgroundColor: var(--yellow-DEFAULT);
         --textColor: var(--gray-900);
@@ -66,20 +66,20 @@ const onEnter = () => {
         --textColor: var(--beige-DEFAULT);
     }
     &.is-open {
-        .accordeon-trigger,
-        .accordeon-content {
+        .accordion-trigger,
+        .accordion-content {
             background-color: var(--backgroundColor);
             color: var(--textColor);
             border-color: transparent;
         }
     }
 }
-.accordeon-content-wrapper {
+.accordion-content-wrapper {
     overflow: hidden;
     max-height: v-bind(maxHeight);
     border-radius: 20px;
 }
-.accordeon-trigger {
+.accordion-trigger {
     display: flex;
     gap: 20px;
     align-items: center;
@@ -109,7 +109,7 @@ const onEnter = () => {
         }
     }
 }
-.accordeon-content {
+.accordion-content {
     padding: 16px;
     margin-top: -1px;
     border: 1px solid var(--gray-900);

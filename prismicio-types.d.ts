@@ -4,7 +4,7 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type FaqDocumentDataSlicesSlice = TextImageSlice | TextSlice | AccordeonsSlice | PageIntroHeaderSlice;
+type FaqDocumentDataSlicesSlice = TextImageSlice | TextSlice | AccordionsSlice | PageIntroHeaderSlice;
 
 /**
  * Content for FAQ documents
@@ -69,7 +69,7 @@ export type FaqDocument<Lang extends string = string> = prismic.PrismicDocumentW
 >;
 
 type HomeDocumentDataSlicesSlice =
-    | AccordeonsSlice
+    | AccordionsSlice
     | TextSlice
     | TextImageSlice
     | HomeTicketsSlice
@@ -316,7 +316,7 @@ export type TicketTypesDocument<Lang extends string = string> = prismic.PrismicD
 >;
 
 type TicketsDocumentDataSlicesSlice =
-    | AccordeonsSlice
+    | AccordionsSlice
     | TextImageSlice
     | TextSlice
     | HomeTicketsSlice
@@ -387,71 +387,71 @@ export type TicketsDocument<Lang extends string = string> = prismic.PrismicDocum
 export type AllDocumentTypes = FaqDocument | HomeDocument | ProgramDocument | TicketTypesDocument | TicketsDocument;
 
 /**
- * Item in *Accordeons → Default → Primary → Accordeons*
+ * Item in *Accordions → Default → Primary → Accordions*
  */
-export interface AccordeonsSliceDefaultPrimaryAccordeonsItem {
+export interface AccordionsSliceDefaultPrimaryAccordionsItem {
     /**
-     * Title field in *Accordeons → Default → Primary → Accordeons*
+     * Title field in *Accordions → Default → Primary → Accordions*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: accordeons.default.primary.accordeons[].title
+     * - **API ID Path**: accordions.default.primary.accordions[].title
      * - **Documentation**: https://prismic.io/docs/field#key-text
      */
     title: prismic.KeyTextField;
 
     /**
-     * Content field in *Accordeons → Default → Primary → Accordeons*
+     * Content field in *Accordions → Default → Primary → Accordions*
      *
      * - **Field Type**: Rich Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: accordeons.default.primary.accordeons[].content
+     * - **API ID Path**: accordions.default.primary.accordions[].content
      * - **Documentation**: https://prismic.io/docs/field#rich-text-title
      */
     content: prismic.RichTextField;
 }
 
 /**
- * Primary content in *Accordeons → Default → Primary*
+ * Primary content in *Accordions → Default → Primary*
  */
-export interface AccordeonsSliceDefaultPrimary {
+export interface AccordionsSliceDefaultPrimary {
     /**
-     * Accordeons field in *Accordeons → Default → Primary*
+     * Accordions field in *Accordions → Default → Primary*
      *
      * - **Field Type**: Group
      * - **Placeholder**: *None*
-     * - **API ID Path**: accordeons.default.primary.accordeons[]
+     * - **API ID Path**: accordions.default.primary.accordions[]
      * - **Documentation**: https://prismic.io/docs/field#group
      */
-    accordeons: prismic.GroupField<Simplify<AccordeonsSliceDefaultPrimaryAccordeonsItem>>;
+    accordions: prismic.GroupField<Simplify<AccordionsSliceDefaultPrimaryAccordionsItem>>;
 }
 
 /**
- * Default variation for Accordeons Slice
+ * Default variation for Accordions Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type AccordeonsSliceDefault = prismic.SharedSliceVariation<
+export type AccordionsSliceDefault = prismic.SharedSliceVariation<
     'default',
-    Simplify<AccordeonsSliceDefaultPrimary>,
+    Simplify<AccordionsSliceDefaultPrimary>,
     never
 >;
 
 /**
- * Slice variation for *Accordeons*
+ * Slice variation for *Accordions*
  */
-type AccordeonsSliceVariation = AccordeonsSliceDefault;
+type AccordionsSliceVariation = AccordionsSliceDefault;
 
 /**
- * Accordeons Shared Slice
+ * Accordions Shared Slice
  *
- * - **API ID**: `accordeons`
- * - **Description**: Accordeons
+ * - **API ID**: `accordions`
+ * - **Description**: Accordions
  * - **Documentation**: https://prismic.io/docs/slice
  */
-export type AccordeonsSlice = prismic.SharedSlice<'accordeons', AccordeonsSliceVariation>;
+export type AccordionsSlice = prismic.SharedSlice<'accordions', AccordionsSliceVariation>;
 
 /**
  * Item in *HomeSchedule → Default → Primary → Speakers*
@@ -968,11 +968,11 @@ declare module '@prismicio/client' {
             TicketsDocumentData,
             TicketsDocumentDataSlicesSlice,
             AllDocumentTypes,
-            AccordeonsSlice,
-            AccordeonsSliceDefaultPrimaryAccordeonsItem,
-            AccordeonsSliceDefaultPrimary,
-            AccordeonsSliceVariation,
-            AccordeonsSliceDefault,
+            AccordionsSlice,
+            AccordionsSliceDefaultPrimaryAccordionsItem,
+            AccordionsSliceDefaultPrimary,
+            AccordionsSliceVariation,
+            AccordionsSliceDefault,
             HomeProgrammingSlice,
             HomeProgrammingSliceDefaultPrimarySpeakersItem,
             HomeProgrammingSliceDefaultPrimary,

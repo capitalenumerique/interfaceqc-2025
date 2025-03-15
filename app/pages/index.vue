@@ -54,7 +54,7 @@ const { data: page } = await useAsyncData('index', () => {
                             }
                         }
                     }
-                    ...on accordeons {
+                    ...on accordions {
                        variation {
                             ...on default {
                                 primary {

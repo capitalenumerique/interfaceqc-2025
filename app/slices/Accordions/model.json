@@ -1,8 +1,8 @@
 {
-  "id": "accordeons",
+  "id": "accordions",
   "type": "SharedSlice",
-  "name": "Accordeons",
-  "description": "Accordeons",
+  "name": "Accordions",
+  "description": "Accordions",
   "variations": [
     {
       "id": "default",
@@ -12,10 +12,10 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "accordeons": {
+        "accordions": {
           "type": "Group",
           "config": {
-            "label": "Accordeons",
+            "label": "Accordions",
             "repeat": true,
             "fields": {
               "title": {

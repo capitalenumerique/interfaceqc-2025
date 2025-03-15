@@ -63,7 +63,7 @@ const { data: page } = await useAsyncData('tickets', () => {
                             }
                         }
                     }
-                    ...on accordeons {
+                    ...on accordions {
                        variation {
                             ...on default {
                                 primary {
