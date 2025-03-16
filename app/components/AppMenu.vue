@@ -75,7 +75,7 @@ const items = computed(() => [
     },
     {
         label: t('Programmation'),
-        path: { name: 'schedule-day', params: { day: 1 } },
+        path: { name: 'schedule' },
         icon: IconHalfCircle,
         color: 'red-500',
     },
@@ -274,7 +274,7 @@ const onEscape = () => {
         color: var(--green-700);
         translate: -100%;
     }
-    &.router-link-exact-active,
+    &.router-link-active,
     &:hover {
         font-weight: 600;
         padding-left: 24px;

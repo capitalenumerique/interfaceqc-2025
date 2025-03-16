@@ -28,6 +28,13 @@
 import { components } from '~/slices';
 import { NuxtLinkLocale } from '#components';
 
+definePageMeta({
+    localeRedirect: {
+        name: 'schedule-day',
+        params: { day: 1 },
+    },
+});
+
 const { locale } = useI18n();
 const prismic = usePrismic();
 
