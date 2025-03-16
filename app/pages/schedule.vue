@@ -9,7 +9,7 @@
                 <ScheduleLazyGrid />
             </div>
             <div v-else class="schedule-grid">
-                <template v-if="data">
+                <template v-if="dates.length">
                     <ul class="date-tabs">
                         <li v-for="(date, i) in dates" :key="`date-${i}`">
                             <NuxtLinkLocale class="date-tab" :to="{ name: 'schedule-day', params: { day: i + 1 } }">

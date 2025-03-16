@@ -78,6 +78,26 @@ defineI18nRoute({
 defineRouteRules({
     prerender: false,
 });
+
+const seoTitle = computed(() => data.value?.title || '');
+const seoDescription = computed(() => {
+    const fullDescription = data.value?.description || '';
+    if (fullDescription.length <= 150) return fullDescription;
+    const sentences = fullDescription.match(/[^.!?]+[.!?]+/g) || [fullDescription];
+    let result = '';
+    for (const sentence of sentences) {
+        if ((result + sentence).length > 150) break;
+        result += sentence;
+    }
+    return result.trim();
+});
+const seoOgImage = computed(() => data.value?.speakers?.[0]?.photoUrl || '');
+
+useSeoMeta({
+    title: seoTitle,
+    description: seoDescription,
+    ogImage: seoOgImage,
+});
 </script>
 
 <style lang="postcss" scoped>

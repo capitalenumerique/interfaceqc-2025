@@ -11,8 +11,9 @@
                 :class="{
                     'has-place': i === 0 || data[day - 1].timeslots[i - 1].type !== 'regular',
                 }"
-                >{{ formatSessionTime(timeslot.time) }}</span
             >
+                {{ formatSessionTime(timeslot.time) }}
+            </span>
             <div class="timeslot-sessions">
                 <div v-for="place in timeslot.places" :key="`session-${timeslot.time}-${place.name}`" class="session">
                     <div

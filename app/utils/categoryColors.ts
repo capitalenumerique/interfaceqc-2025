@@ -1,4 +1,6 @@
-const CATEGORY_COLORS: Record<string, object> = {
+type CategoryColor = { bg: string; text: string };
+
+const CATEGORY_COLORS: Record<string, CategoryColor> = {
     'Art numérique': { bg: 'var(--yellow-200)', text: 'var(--red-600)' },
     'Communication et marketing': { bg: 'var(--blue-700)', text: 'var(--orange-300)' },
     'Design': { bg: 'var(--pink-300)', text: 'var(--green-800)' },
@@ -9,6 +11,6 @@ const CATEGORY_COLORS: Record<string, object> = {
     'Keynote': { bg: 'var(--red-600)', text: 'var(--yellow-200)' },
 };
 
-export function getCategoryColor(category: string): object {
+export function getCategoryColor(category: string): CategoryColor {
     return CATEGORY_COLORS[category] || { bg: 'var(--red-600)', text: 'var(--yellow-200)' };
 }

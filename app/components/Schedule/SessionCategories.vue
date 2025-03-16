@@ -1,8 +1,8 @@
 <template>
     <ul class="categories-list">
         <li
-            v-for="(category, j) in categories"
-            :key="`category-${listId}-${j}`"
+            v-for="(category, i) in categories"
+            :key="`category-${listId}-${i}`"
             :style="getCategoryStyle(category.colors)"
             class="category-item"
         >
