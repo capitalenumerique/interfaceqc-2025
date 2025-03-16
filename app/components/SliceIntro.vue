@@ -55,7 +55,7 @@
             margin-left: 0px;
         }
     }
-    .primary-button {
+    :deep(.primary-button) {
         text-transform: lowercase;
     }
 }
