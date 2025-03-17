@@ -1,3 +1,34 @@
+<script setup lang="ts">
+import type { Content } from '@prismicio/client';
+import { useBreakpoints } from '@vueuse/core';
+import IconAsterisk from '@/assets/svg/shapes/asterisk.svg?component';
+import IconHexagon from '@/assets/svg/shapes/hexagon.svg?component';
+import IconLemon from '@/assets/svg/shapes/lemon.svg?component';
+import IconStar from '@/assets/svg/shapes/star.svg?component';
+import IconLogo from '@/assets/svg/logo.svg?component';
+
+const { t } = useI18n();
+const activeIndex = ref(0);
+const shapes = [IconAsterisk, IconLemon, IconStar, IconHexagon];
+const shapesColors = ['--orange-400', '--red-500', '--green-700', '--red-500'];
+const backgroundColors = ['--blue-700', '--pink-300', '--teal-500', '--yellow-200'];
+
+const breakpoints = useBreakpoints({ lg: 1024 }, { ssrWidth: 1024 });
+const showMarquee = breakpoints.smaller('lg');
+
+function changeShape() {
+    if (activeIndex.value < shapes.length - 1) {
+        activeIndex.value++;
+    } else {
+        activeIndex.value = 0;
+    }
+}
+
+// The array passed to `getSliceComponentProps` is purely optional.
+// Consider it as a visual hint for you when templating your slice.
+defineProps(getSliceComponentProps<Content.HomeHeaderSlice>(['slice', 'index', 'slices', 'context']));
+</script>
+
 <template>
     <section class="home-header">
         <div class="header-top">
@@ -22,13 +53,7 @@
         <div class="event-infos-wrapper">
             <div class="event-infos">
                 <h2 class="infos-title">{{ t('Qu’est-ce que l’événement?') }}</h2>
-                <p class="infos-text">
-                    {{
-                        t(
-                            'Attends-toi à trois journées de conférences sur des sujets tels que le marketing, le design, le développement, l’intelligence artificielle, la technocréativité, les communications et des sujets innovants.',
-                        )
-                    }}
-                </p>
+                <p class="infos-text">{{ slice.primary.home_header_text }}</p>
             </div>
             <div class="event-infos infos-cta">
                 <PrimaryButton
@@ -44,32 +69,6 @@
         </div>
     </section>
 </template>
-
-<script setup>
-import { useBreakpoints } from '@vueuse/core';
-import IconAsterisk from '@/assets/svg/shapes/asterisk.svg?component';
-import IconHexagon from '@/assets/svg/shapes/hexagon.svg?component';
-import IconLemon from '@/assets/svg/shapes/lemon.svg?component';
-import IconStar from '@/assets/svg/shapes/star.svg?component';
-import IconLogo from '@/assets/svg/logo.svg?component';
-
-const { t } = useI18n();
-const activeIndex = ref(0);
-const shapes = [IconAsterisk, IconLemon, IconStar, IconHexagon];
-const shapesColors = ['--orange-400', '--red-500', '--green-700', '--red-500'];
-const backgroundColors = ['--blue-700', '--pink-300', '--teal-500', '--yellow-200'];
-
-const breakpoints = useBreakpoints({ lg: 1024 }, { ssrWidth: 1024 });
-const showMarquee = breakpoints.smaller('lg');
-
-function changeShape() {
-    if (activeIndex.value < shapes.length - 1) {
-        activeIndex.value++;
-    } else {
-        activeIndex.value = 0;
-    }
-}
-</script>
 
 <style lang="postcss" scoped>
 .home-header {
@@ -185,7 +184,6 @@ function changeShape() {
         "27 au 29 <br>mai 2025": "May 27 to 29 <br>2025",
         "Terminal de croisière <br>Port de Québec": "Cruise Terminal <br>Port of Québec",
         "Qu’est-ce que l’événement?": "What is the event?",
-        "Attends-toi à trois journées de conférences sur des sujets tels que le marketing, le design, le développement, l’intelligence artificielle, la technocréativité, les communications et des sujets innovants.": "Expect three days of conferences on topics such as marketing, design, development, artificial intelligence, technocreativity, communications, and innovative subjects.",
         "Participer": "Participate"
     }
 }

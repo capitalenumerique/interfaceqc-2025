@@ -69,6 +69,7 @@ export type FaqDocument<Lang extends string = string> = prismic.PrismicDocumentW
 >;
 
 type HomeDocumentDataSlicesSlice =
+    | HomeHeaderSlice
     | AccordionsSlice
     | TextSlice
     | TextImageSlice
@@ -452,6 +453,48 @@ type AccordionsSliceVariation = AccordionsSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type AccordionsSlice = prismic.SharedSlice<'accordions', AccordionsSliceVariation>;
+
+/**
+ * Primary content in *HomeHeader → Default → Primary*
+ */
+export interface HomeHeaderSliceDefaultPrimary {
+    /**
+     * Home header text field in *HomeHeader → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: Qu'est-ce que l'événement?
+     * - **API ID Path**: home_header.default.primary.home_header_text
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    home_header_text: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for HomeHeader Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomeHeaderSliceDefault = prismic.SharedSliceVariation<
+    'default',
+    Simplify<HomeHeaderSliceDefaultPrimary>,
+    never
+>;
+
+/**
+ * Slice variation for *HomeHeader*
+ */
+type HomeHeaderSliceVariation = HomeHeaderSliceDefault;
+
+/**
+ * HomeHeader Shared Slice
+ *
+ * - **API ID**: `home_header`
+ * - **Description**: HomeHeader
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HomeHeaderSlice = prismic.SharedSlice<'home_header', HomeHeaderSliceVariation>;
 
 /**
  * Item in *HomeSchedule → Default → Primary → Speakers*
@@ -973,6 +1016,10 @@ declare module '@prismicio/client' {
             AccordionsSliceDefaultPrimary,
             AccordionsSliceVariation,
             AccordionsSliceDefault,
+            HomeHeaderSlice,
+            HomeHeaderSliceDefaultPrimary,
+            HomeHeaderSliceVariation,
+            HomeHeaderSliceDefault,
             HomeProgrammingSlice,
             HomeProgrammingSliceDefaultPrimarySpeakersItem,
             HomeProgrammingSliceDefaultPrimary,

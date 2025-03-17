@@ -3,7 +3,11 @@
         <div class="newsletter-text-wrapper">
             <h2 class="newsletter-title">{{ t('Infolettre') }}</h2>
             <p class="newsletter-text">
-                {{ t('Pour tout savoir, l’infolettre est le secret le moins bien gardé.') }}
+                {{
+                    t(
+                        'Pour des nouveautés, des promotions, du contenu exclusif et une bonne dose d’Interface, abonne-toi à notre infolettre!',
+                    )
+                }}
             </p>
         </div>
         <form
@@ -101,7 +105,7 @@ const { t } = useI18n();
     font-size: rem(30px);
     margin: 0;
     @media (--lg) {
-        font-size: rem(48px);
+        font-size: rem(40px);
     }
 }
 .email-input {
@@ -119,7 +123,7 @@ const { t } = useI18n();
 {
     "en": {
         "Infolettre": "Newsletter",
-        "Pour tout savoir, l’infolettre est le secret le moins bien gardé.": "To know everything, the newsletter is the worst-kept secret.",
+        "Pour des nouveautés, des promotions, du contenu exclusif et une bonne dose d’Interface, abonne-toi à notre infolettre!": "For news, promotions, exclusive content and a healthy dose of Interface, subscribe to our newsletter!",
         "Adresse courriel": "Email address",
         "adresse{'@'}exemple.com": "email{'@'}example.com",
         "m’inscrire": "register"

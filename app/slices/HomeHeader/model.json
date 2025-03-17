@@ -1,0 +1,26 @@
+{
+  "id": "home_header",
+  "type": "SharedSlice",
+  "name": "HomeHeader",
+  "description": "HomeHeader",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "home_header_text": {
+          "type": "Text",
+          "config": {
+            "label": "Home header text",
+            "placeholder": "Qu'est-ce que l'événement?"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
