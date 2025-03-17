@@ -36,6 +36,7 @@ defineProps(getSliceComponentProps<Content.TextImageSlice>(['slice', 'index', 's
     @media (--lg) {
         align-items: flex-end;
         flex-direction: row;
+        margin: 100px auto;
     }
 }
 .content {

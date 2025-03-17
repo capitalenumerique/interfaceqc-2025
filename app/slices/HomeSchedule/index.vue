@@ -99,6 +99,9 @@ const next = () => {
 <style lang="postcss" scoped>
 .home-schedule {
     margin: 64px 0;
+    @media (--lg) {
+        margin: 100px 0;
+    }
 }
 .swiper {
     padding: 30px 0;

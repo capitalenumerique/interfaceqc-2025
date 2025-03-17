@@ -8,11 +8,11 @@
                         <a href="mailto:info@interfaceqc.com">{{ t("info{'@'}interfaceqc.com") }}</a>
                     </li>
                     <!-- @TODO: Ajout les vrais liens lorsque les pages existeront -->
-                    <li>
+                    <!-- <li>
                         <a href="#">{{ t('Partenaires') }}</a>
-                    </li>
+                    </li> -->
                     <li>
-                        <a href="#">{{ t('Faq') }}</a>
+                        <NuxtLinkLocale to="faq">{{ t('Faq') }}</NuxtLinkLocale>
                     </li>
                 </ul>
             </div>
@@ -62,7 +62,8 @@
             </div>
             <ul class="organizers">
                 <li>
-                    <a href="https://capitalenumerique.com/" target="_blank">
+                    <a class="organizer-link" href="https://capitalenumerique.com/" target="_blank">
+                        <span class="support-label">{{ t('supporté par') }}</span>
                         <img src="@/assets/img/capitale-numerique.png" :alt="t('Capitale Numérique')" />
                     </a>
                 </li>
@@ -197,9 +198,10 @@ const socials = [
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
+    flex-wrap: wrap;
     gap: 48px;
     @media (--md) {
-        padding: 40px;
+        padding: 32px;
         flex-direction: row;
     }
 }
@@ -224,6 +226,18 @@ const socials = [
         order: -1;
     }
 }
+.organizer-link {
+    color: var(--color-white);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: right;
+}
+.support-label {
+    padding-right: 12px;
+    font-size: rem(12px);
+}
 </style>
 
 <i18n lang="json">
@@ -233,6 +247,7 @@ const socials = [
         "Faq": "Faq",
         "Politique de confidentialité": "Privacy policy",
         "Édition {year}": "{year} edition",
+        "supporté par": "supported by",
         "© Interface - Québec {n}. Tous droits réservés.": "© Interface - Québec {n}. All rights reserved."
     }
 }

@@ -79,6 +79,9 @@ defineProps(getSliceComponentProps<Content.HomeTicketsSlice>(['slice', 'index', 
 <style lang="postcss" scoped>
 .home-tickets {
     margin: 64px 0;
+    @media (--lg) {
+        margin: 100px 0;
+    }
 }
 .home-tickets-title {
     font-size: rem(18px);
