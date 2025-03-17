@@ -16,7 +16,9 @@
   },
   "dependencies": {
     "@hebilicious/vue-query-nuxt": "^0.3.0",
+    "@nuxt/scripts": "0.11.2",
     "@tanstack/vue-query": "^5.66.9",
+    "@unhead/vue": "^2.0.0-rc.8",
     "es-toolkit": "^1.32.0",
     "focus-trap": "^7.6.4",
     "graphql": "^16.10.0",
