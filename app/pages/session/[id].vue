@@ -52,7 +52,7 @@ const { formatSessionTime } = useTimeFormatter();
 const { t } = useI18n();
 
 const route = useRoute();
-const sessionId = route.params.id;
+const sessionId = route.params.id.split('-').pop();
 
 const { data, error, suspense, isLoading } = useSession(sessionId);
 

@@ -3,7 +3,11 @@
         <div>
             <h2 class="session-title">
                 <template v-if="hasNoDetailPage">{{ session.title }}</template>
-                <NuxtLinkLocale v-else :to="{ name: 'session-id', params: { id: session.id } }" class="session-link">
+                <NuxtLinkLocale
+                    v-else
+                    :to="{ name: 'session-id', params: { id: `${sessionSlug}-${session.id}` } }"
+                    class="session-link"
+                >
                     {{ session.title }}
                 </NuxtLinkLocale>
             </h2>
@@ -34,6 +38,8 @@ const props = defineProps({
         required: true,
     },
 });
+
+const sessionSlug = useSlug(props.session.title);
 
 const hasNoDetailPage = computed(() => {
     const hasNoSpeaker = props.session.speakers.some((s) => s.id === 'RXZlbnRQZW9wbGVfMzY5OTE2MzM=');

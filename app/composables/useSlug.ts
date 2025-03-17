@@ -1,4 +1,4 @@
-export default function useSlug(text: string | null | undefined): string | null {
+const useSlug = (text: string | null | undefined): string | null => {
     if (!text || typeof text !== 'string') {
         return null;
     }
@@ -14,4 +14,6 @@ export default function useSlug(text: string | null | undefined): string | null 
         .replace(/[^a-z0-9 -]/g, '')
         .replace(/\s+/g, '-')
         .replace(/-+/g, '-');
-}
+};
+
+export default useSlug;
