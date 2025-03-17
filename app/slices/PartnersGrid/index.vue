@@ -39,6 +39,9 @@ defineProps(getSliceComponentProps<Content.PartnersGridSlice>(['slice', 'index',
     position: relative;
     max-width: var(--page-container-max-width);
     margin: 64px auto;
+    @media (--lg) {
+        margin: 100px auto;
+    }
 }
 .animation-container {
     position: absolute;
