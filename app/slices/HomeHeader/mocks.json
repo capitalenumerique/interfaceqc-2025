@@ -1,0 +1,14 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"home_header_text": {
+				"__TYPE__": "FieldContent",
+				"value": "farm",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

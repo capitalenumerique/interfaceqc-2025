@@ -1,6 +1,5 @@
 <template>
     <div>
-        <HomeHeader />
         <SliceZone :slices="page?.data?.slices ?? []" :components="components" />
         <NewsletterSection />
     </div>
@@ -18,6 +17,15 @@ const { data: page } = await useAsyncData('index', () => {
             home {
                 ...homeFields
                 slices {
+                    ...on home_header {
+                       variation {
+                            ...on default {
+                                primary {
+                                    ...primaryFields
+                                }
+                            }
+                        }
+                    }
                     ...on partners_grid {
                        variation {
                             ...on default {
