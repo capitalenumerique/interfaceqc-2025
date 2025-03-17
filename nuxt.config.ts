@@ -11,6 +11,7 @@ export default defineNuxtConfig({
         '@nuxt/image',
         '@vueuse/nuxt',
         '@hebilicious/vue-query-nuxt',
+        '@nuxt/scripts',
     ],
 
     devtools: {
@@ -156,5 +157,12 @@ export default defineNuxtConfig({
 
     prismic: {
         endpoint: repositoryName,
+    },
+    scripts: {
+        registry: {
+            googleTagManager: {
+                id: 'GTM-N9L2KH72',
+            },
+        },
     },
 });
