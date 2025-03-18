@@ -103,6 +103,7 @@ const { t } = useI18n();
 }
 .newsletter-text {
     font-size: rem(30px);
+    font-weight: 600;
     margin: 0;
     @media (--lg) {
         font-size: rem(40px);
