@@ -173,15 +173,11 @@ defineProps(getSliceComponentProps<Content.HomeTicketsSlice>(['slice', 'index', 
     }
     &.is-even {
         @media (--lg) {
-            max-width: none;
-            margin-bottom: 56px;
             grid-template-columns: repeat(2, 1fr);
         }
     }
     &.is-odd {
         @media (--lg) {
-            max-width: none;
-            margin-bottom: 56px;
             grid-template-columns: repeat(3, 1fr);
         }
     }
