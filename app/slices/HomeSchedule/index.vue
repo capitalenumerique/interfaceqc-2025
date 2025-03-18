@@ -73,7 +73,7 @@ const next = () => {
                     '--textColor': speaker.text_color,
                 }"
             >
-                <NuxtLinkLocale to="index">
+                <NuxtLinkLocale :to="{ name: 'session-id', params: { id: speaker.speaker_id } }">
                     <PrismicImage :field="speaker.img" />
                     <div class="slide-content">
                         <h3 class="speaker-title">
