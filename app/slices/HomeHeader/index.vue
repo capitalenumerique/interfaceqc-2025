@@ -128,6 +128,7 @@ defineProps(getSliceComponentProps<Content.HomeHeaderSlice>(['slice', 'index', '
     @media (--lg) {
         margin: auto;
         width: var(--page-container-max-width);
+        height: auto;
         padding: 0 16px;
     }
 }
