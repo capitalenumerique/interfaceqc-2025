@@ -97,7 +97,7 @@ defineProps(getSliceComponentProps<Content.HomeHeaderSlice>(['slice', 'index', '
     }
 }
 .bouncing-animation-zone {
-    height: 30vh;
+    height: 38vh;
     @media (--lg) {
         height: 50vh;
     }
@@ -106,8 +106,8 @@ defineProps(getSliceComponentProps<Content.HomeHeaderSlice>(['slice', 'index', '
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 180px;
-    height: 180px;
+    width: 150px;
+    height: 150px;
     border-radius: 20px;
     @media (--lg) {
         width: 250px;
@@ -122,7 +122,7 @@ defineProps(getSliceComponentProps<Content.HomeHeaderSlice>(['slice', 'index', '
     display: block;
     margin-left: 50px;
     fill: var(--gray-900);
-    width: 860px;
+    height: 150px;
     max-width: 100%;
     z-index: 1;
     @media (--lg) {
