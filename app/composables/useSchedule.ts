@@ -1,4 +1,4 @@
-const useSchedule = () => {
+export default function () {
     const { data, error, suspense, isLoading } = useQuery({
         queryKey: ['schedule'],
         queryFn: () => $fetch('/api/schedule'),
@@ -10,6 +10,4 @@ const useSchedule = () => {
         suspense,
         isLoading,
     };
-};
-
-export default useSchedule;
+}
