@@ -13,12 +13,10 @@ export default defineNuxtConfig({
         '@hebilicious/vue-query-nuxt',
         '@nuxt/scripts',
     ],
-
     devtools: {
         enabled: true,
         componentInspector: false,
     },
-
     app: {
         pageTransition: { name: 'page', mode: 'out-in' },
         head: {
@@ -43,14 +41,12 @@ export default defineNuxtConfig({
             ],
         },
     },
-
     css: [
         'normalize.css/normalize.css',
         '@/assets/css/colors.css',
         '@/assets/css/variables.css',
         '@/assets/css/app.css',
     ],
-
     runtimeConfig: {
         public: {
             commitTag: process.env.COMMIT_TAG || process.env.NUXT_ENV_CURRENT_GIT_TAG,
@@ -60,17 +56,13 @@ export default defineNuxtConfig({
         swapcardToken: process.env.NUXT_SWAPCARD_AUTH_TOKEN,
         swapcardEventId: process.env.NUXT_SWAPCARD_EVENT_ID,
     },
-
     future: {
         compatibilityVersion: 4,
     },
-
     experimental: {
         inlineRouteRules: true,
     },
-
     compatibilityDate: '2024-04-03',
-
     vite: {
         plugins: [
             ViteSvgLoader({
@@ -92,7 +84,6 @@ export default defineNuxtConfig({
             }),
         ],
     },
-
     postcss: {
         plugins: {
             '@csstools/postcss-global-data': {
@@ -113,7 +104,6 @@ export default defineNuxtConfig({
             },
         },
     },
-
     eslint: {
         checker: true,
         config: {
@@ -122,7 +112,6 @@ export default defineNuxtConfig({
             },
         },
     },
-
     i18n: {
         baseUrl: 'https://interfaceqc.com',
         strategy: 'prefix_except_default',
@@ -148,13 +137,11 @@ export default defineNuxtConfig({
             redirectOn: 'root', // recommended
         },
     },
-
     image: {
         provider: 'prismic',
         quality: 70,
         format: ['webp'],
     },
-
     prismic: {
         endpoint: repositoryName,
     },

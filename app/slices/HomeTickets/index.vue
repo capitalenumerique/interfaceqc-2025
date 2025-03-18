@@ -23,7 +23,13 @@ defineProps(getSliceComponentProps<Content.HomeTicketsSlice>(['slice', 'index', 
                     </h3>
                     <IconStar v-if="slice.primary.title" class="icon-star" />
                 </div>
-                <ul class="ticket-types-list">
+                <ul
+                    class="ticket-types-list"
+                    :class="{
+                        'is-even': slice.primary.tickets.length % 2 === 0,
+                        'is-odd': slice.primary.tickets.length % 2 === 1,
+                    }"
+                >
                     <li
                         v-for="item in slice.primary.tickets"
                         :key="item.ticket_type.uid"
@@ -164,7 +170,16 @@ defineProps(getSliceComponentProps<Content.HomeTicketsSlice>(['slice', 'index', 
     @media (--lg) {
         max-width: none;
         margin-bottom: 56px;
-        grid-template-columns: repeat(3, 1fr);
+    }
+    &.is-even {
+        @media (--lg) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    &.is-odd {
+        @media (--lg) {
+            grid-template-columns: repeat(3, 1fr);
+        }
     }
 }
 .ticket-type {

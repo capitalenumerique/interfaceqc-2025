@@ -9,7 +9,7 @@ export default {
                 style: 'currency',
                 currency: 'CAD',
                 currencyDisplay: 'narrowSymbol',
-                notation: 'compact',
+                maximumFractionDigits: 0,
             },
         },
         'fr': {
@@ -17,7 +17,7 @@ export default {
                 style: 'currency',
                 currency: 'CAD',
                 currencyDisplay: 'narrowSymbol',
-                notation: 'compact',
+                maximumFractionDigits: 0,
             },
         },
     },

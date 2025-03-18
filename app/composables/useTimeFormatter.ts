@@ -1,4 +1,4 @@
-export function useTimeFormatter() {
+export default function () {
     const { locale } = useI18n();
 
     const { $luxon } = useNuxtApp();
