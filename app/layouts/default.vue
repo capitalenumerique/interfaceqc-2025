@@ -3,8 +3,7 @@
         <div class="page-wrapper">
             <AppMenu />
             <PrimaryButton to="https://ti.to/cnum/interface-2025" target="_blank" class="cta">
-                <!-- TODO: Update icon for a ticket ? -->
-                <IconStarOutline class="icon-star-outline" />
+                <IconTickets class="icon-star-outline" />
                 <span>{{ t('Acheter mon billet') }}</span>
                 <span>{{ t('Billets') }}</span>
             </PrimaryButton>
@@ -17,7 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-import IconStarOutline from '@/assets/svg/star-outline.svg?component';
+import IconTickets from '@/assets/svg/tickets.svg?component';
 const { t } = useI18n();
 </script>
 
@@ -63,7 +62,7 @@ const { t } = useI18n();
 }
 .primary-button.cta {
     display: flex;
-    gap: 6px;
+    gap: 8px;
     position: fixed;
     top: 17px;
     right: 16px;
@@ -80,7 +79,8 @@ const { t } = useI18n();
         right: 64px;
     }
     .icon-star-outline {
-        width: 20px;
+        margin: -2px;
+        width: 22px;
     }
 }
 .cta {
