@@ -65,9 +65,9 @@ defineProps(getSliceComponentProps<Content.HomeTicketsSlice>(['slice', 'index', 
                                 </li>
                                 <li>
                                     {{
-                                        item.ticket_type.data.nominatif
-                                            ? t('Billet nominatif (ne peut pas être partagé)')
-                                            : t('Billet non-nominatif (peut être partagé)')
+                                        item.ticket_type.data.sharable
+                                            ? t('Billet non-nominatif (peut être partagé)')
+                                            : t('Billet nominatif (ne peut pas être partagé)')
                                     }}
                                 </li>
                             </ul>
