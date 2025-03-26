@@ -5,9 +5,8 @@
             <PrimaryButton to="https://ti.to/cnum/interface-2025" target="_blank" class="cta">
                 <!-- TODO: Update icon for a ticket ? -->
                 <IconStarOutline class="icon-star-outline" />
-                {{ t('Billeterie') }}
-                <!-- {{ t('Acheter') }}
-                <span>{{ t('mon billet') }}</span> -->
+                <span>{{ t('Acheter mon billet') }}</span>
+                <span>{{ t('Billets') }}</span>
             </PrimaryButton>
             <main class="content-wrapper">
                 <slot />
@@ -84,22 +83,29 @@ const { t } = useI18n();
         width: 20px;
     }
 }
-/* .cta {
+.cta {
     span {
-        display: none;
-        @media (min-width: 375px) {
+        &:first-of-type {
+            display: none;
+            @media (min-width: 375px) {
+                display: inline;
+            }
+        }
+        &:last-of-type {
             display: inline;
+            @media (min-width: 375px) {
+                display: none;
+            }
         }
     }
-} */
+}
 </style>
 
 <i18n lang="json">
 {
     "en": {
-        "Billeterie": "Tickets",
-        "Acheter": "Buy",
-        "mon billet": "my ticket"
+        "Acheter mon billet": "Buy my ticket",
+        "Billets": "tickets"
     }
 }
 </i18n>
