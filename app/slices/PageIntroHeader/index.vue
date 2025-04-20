@@ -31,7 +31,6 @@ defineProps(getSliceComponentProps<Content.PageIntroHeaderSlice>(['slice', 'inde
     }
 }
 .header-intro {
-    max-width: 600px;
     font-size: rem(18px);
     color: var(--gray-700);
     @media (--lg) {

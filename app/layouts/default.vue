@@ -2,7 +2,7 @@
     <div class="layout-wrapper">
         <div class="page-wrapper">
             <AppMenu />
-            <PrimaryButton to="https://ti.to/cnum/interface-2025" target="_blank" class="cta">
+            <PrimaryButton to="https://ti.to/cnum/interface-2025" target="_blank" class="btn-cta">
                 <IconTickets class="icon-star-outline" />
                 <span>{{ t('Acheter mon billet') }}</span>
                 <span>{{ t('Billets') }}</span>
@@ -60,7 +60,7 @@ const { t } = useI18n();
 .content-wrapper {
     min-width: 0;
 }
-.primary-button.cta {
+.primary-button.btn-cta {
     display: flex;
     gap: 8px;
     position: fixed;
@@ -73,6 +73,8 @@ const { t } = useI18n();
     @media (--md) {
         position: absolute;
         top: 64px;
+    }
+    @media (--lg) {
         padding: 14px 18px;
     }
     @media (--xl) {
@@ -83,7 +85,7 @@ const { t } = useI18n();
         width: 22px;
     }
 }
-.cta {
+.btn-cta {
     span {
         &:first-of-type {
             display: none;
