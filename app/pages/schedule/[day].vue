@@ -9,9 +9,7 @@
             <span
                 class="time"
                 :class="{
-                    'has-place':
-                        data[day - 1].timeslots[i].type !== 'regular' ||
-                        data[day - 1].timeslots[i - 1].type !== 'regular',
+                    'has-place': timeslot.type !== 'regular' || data[day - 1].timeslots[i - 1]?.type !== 'regular',
                 }"
             >
                 {{ formatSessionTime(timeslot.time) }}
@@ -22,7 +20,7 @@
                         v-if="
                             i === 0 ||
                             timeslot.type === 'special' ||
-                            data[day - 1].timeslots[i - 1].type !== 'regular' ||
+                            data[day - 1].timeslots[i - 1]?.type !== 'regular' ||
                             showPlace
                         "
                         class="place"
