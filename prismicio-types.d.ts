@@ -4,7 +4,7 @@ import type * as prismic from '@prismicio/client';
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type AboutUsDocumentDataSlicesSlice = VolunteersSlice | Text2ColumnsSlice | PageIntroHeaderSlice;
+type AboutUsDocumentDataSlicesSlice = TextImageSlice | VolunteersSlice | Text2ColumnsSlice | PageIntroHeaderSlice;
 
 /**
  * Content for About Us documents
@@ -642,7 +642,7 @@ interface VolunteersDocumentData {
         | 'Comité communications'
         | 'Comité logistique'
         | 'Comité délégations'
-        | 'Capitale Numérique'
+        | 'Comité XP conférenciers'
     >;
 }
 
@@ -1277,6 +1277,16 @@ export interface TextImageSliceDefaultPrimary {
      * - **Documentation**: https://prismic.io/docs/field#key-text
      */
     title: prismic.KeyTextField;
+
+    /**
+     * Text field in *TextImage → Default → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: text_image.default.primary.text
+     * - **Documentation**: https://prismic.io/docs/field#key-text
+     */
+    text: prismic.KeyTextField;
 
     /**
      * CTA field in *TextImage → Default → Primary*

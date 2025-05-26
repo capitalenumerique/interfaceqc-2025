@@ -13,13 +13,20 @@ defineProps(getSliceComponentProps<Content.TextImageSlice>(['slice', 'index', 's
             <h2 class="content-title">
                 {{ slice.primary.title }}
             </h2>
+            <p v-if="slice.primary.text">{{ slice.primary.text }}</p>
             <div v-if="slice.primary.cta.url" class="content-cta">
                 <PrimaryButton :to="slice.primary.cta.url">{{ slice.primary.cta.text }}</PrimaryButton>
                 <IconHalfCircle class="icon-half-circle" />
             </div>
         </div>
         <div class="images-wrapper">
-            <PrismicImage :field="slice.primary.image_2" class="image-2" width="160" height="200" />
+            <PrismicImage
+                v-if="slice.primary.image_2"
+                :field="slice.primary.image_2"
+                class="image-2"
+                width="160"
+                height="200"
+            />
             <PrismicImage :field="slice.primary.image_1" class="image-1" width="360" height="450" />
         </div>
     </section>

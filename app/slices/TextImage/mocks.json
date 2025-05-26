@@ -55,13 +55,18 @@
 				"type": "Text"
 			},
 			"cta": {
-				"__TYPE__": "LinkContent",
 				"key": "42d67994-72ec-41ed-8f07-039d44112c02",
+				"__TYPE__": "LinkContent",
 				"value": {
 					"__TYPE__": "ExternalLink",
 					"url": "https://slicemachine.dev",
 					"text": "gift"
 				}
+			},
+			"text": {
+				"__TYPE__": "FieldContent",
+				"value": "harbor",
+				"type": "Text"
 			}
 		},
 		"items": []
