@@ -183,28 +183,51 @@ export default defineEventHandler(async () => {
                         // Conférences par défaut
                         places = uniquePlaces.map((place) => {
                             const sessionInPlace = sessionsInTimeslot.find((session) => session.place === place);
-                            return {
-                                name: place,
-                                session: sessionInPlace
-                                    ? {
-                                          id: sessionInPlace.id,
-                                          title: sessionInPlace.title,
-                                          beginsAt: sessionInPlace.beginsAt,
-                                          endsAt: sessionInPlace.endsAt,
-                                          categories: sessionInPlace.categories.map((category) => ({
-                                              name: category,
-                                              colors: getCategoryColor(category),
-                                          })),
-                                          type: sessionInPlace.type,
-                                          speakers: uniqBy(
-                                              groupedSessions[date]
-                                                  .filter((s) => s.title === sessionInPlace.title)
-                                                  .map((s) => s.speaker),
-                                              (speaker) => speaker.id,
-                                          ),
-                                      }
-                                    : null,
-                            };
+                            if (sessionInPlace) {
+                                return {
+                                    name: place,
+                                    session: sessionInPlace
+                                        ? {
+                                              id: sessionInPlace.id,
+                                              title: sessionInPlace.title,
+                                              beginsAt: sessionInPlace.beginsAt,
+                                              endsAt: sessionInPlace.endsAt,
+                                              categories: sessionInPlace.categories.map((category) => ({
+                                                  name: category,
+                                                  colors: getCategoryColor(category),
+                                              })),
+                                              type: sessionInPlace.type,
+                                              speakers: uniqBy(
+                                                  groupedSessions[date]
+                                                      .filter((s) => s.title === sessionInPlace.title)
+                                                      .map((s) => s.speaker),
+                                                  (speaker) => speaker.id,
+                                              ),
+                                          }
+                                        : null,
+                                };
+                            } else {
+                                // Affichage différent pour le créneau de 13h
+                                if (timeString === '13:00:00') {
+                                    return {
+                                        name: place,
+                                        session: {
+                                            id: `lunch-${place}`,
+                                            title: 'Heure de dîner',
+                                            beginsAt: '13:00:00',
+                                            endsAt: '14:00:00',
+                                            categories: [],
+                                            type: 'Lunch',
+                                            speakers: [],
+                                        },
+                                    };
+                                } else {
+                                    return {
+                                        name: place,
+                                        session: null,
+                                    };
+                                }
+                            }
                         });
                         type = 'regular';
                     }
