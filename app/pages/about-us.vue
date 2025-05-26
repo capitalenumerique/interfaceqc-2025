@@ -54,6 +54,15 @@ const { data: page } = await useAsyncData('about_us', () => {
                             }
                         }
                     }
+                    ...on text_image {
+                       variation {
+                            ...on default {
+                                primary {
+                                    ...primaryFields
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }`,

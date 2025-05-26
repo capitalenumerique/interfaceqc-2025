@@ -20,13 +20,7 @@ defineProps(getSliceComponentProps<Content.TextImageSlice>(['slice', 'index', 's
             </div>
         </div>
         <div class="images-wrapper">
-            <PrismicImage
-                v-if="slice.primary.image_2"
-                :field="slice.primary.image_2"
-                class="image-2"
-                width="160"
-                height="200"
-            />
+            <PrismicImage :field="slice.primary.image_2" class="image-2" width="160" height="200" />
             <PrismicImage :field="slice.primary.image_1" class="image-1" width="360" height="450" />
         </div>
     </section>
