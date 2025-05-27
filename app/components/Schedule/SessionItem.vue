@@ -40,7 +40,12 @@ const { t } = useI18n();
 const { formatSessionTime } = useTimeFormatter();
 const sessionSlug = useSlug(props.session.title);
 
-const hasDetails = computed(() => props.session.speakers.every((s) => s.id !== 'RXZlbnRQZW9wbGVfMzgyMTc4NjI='));
+const hasDetails = computed(() => {
+    return (
+        props.session.speakers.every((s) => s.id !== 'RXZlbnRQZW9wbGVfMzgyMTc4NjI=') &&
+        ['Conférence', 'Keynote'].includes(props.session.type)
+    );
+});
 
 const hoverColors = computed(() => {
     const colors = props.session.categories?.[0]?.colors || { bg: 'var(--red-600)', text: 'var(--yellow-200)' };

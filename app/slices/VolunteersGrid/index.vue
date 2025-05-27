@@ -22,8 +22,8 @@ const sortOrder = [
     'Comité communications',
     'Comité logistique',
     'Comité délégations',
+    'Comité XP conférenciers',
     'Autres comités',
-    'Capitale Numérique',
 ];
 
 const sortedCategories = Object.fromEntries(
