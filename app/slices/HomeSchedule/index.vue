@@ -129,6 +129,7 @@ const next = () => {
     width: 48px;
     height: 48px;
     color: var(--gray-900);
+    cursor: pointer;
     transition: scale 300ms ease-in-out;
     &:hover,
     &:focus-visible {
