@@ -1,3 +1,5 @@
+@custom-media --xs-down (max-width: 479px);
+@custom-media --xs (min-width: 480px);
 @custom-media --sm-down (max-width: 639px);
 @custom-media --sm (min-width: 640px);
 @custom-media --md-down (max-width: 767px);

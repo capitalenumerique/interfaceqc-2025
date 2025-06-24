@@ -1,5 +1,14 @@
 <template>
     <div class="layout-wrapper">
+        <div class="announcement-bar">
+            <div class="announcement-content">
+                <span>{{ t("Vous consultez l’édition 2025 de l'événement.") }}</span>
+                <a :href="'https://interfaceqc.com/'" class="external-link">
+                    <span>{{ t('Voir la plus récente') }}</span>
+                    <IconExternal class="icon-external" />
+                </a>
+            </div>
+        </div>
         <div class="page-wrapper">
             <AppMenu />
             <PrimaryButton to="https://ti.to/cnum/interface-2025" target="_blank" class="btn-cta">
@@ -17,10 +26,53 @@
 
 <script lang="ts" setup>
 import IconTickets from '@/assets/svg/tickets.svg?component';
+import IconExternal from '@/assets/svg/external.svg?component';
 const { t } = useI18n();
 </script>
 
 <style lang="postcss" scoped>
+.announcement-bar {
+    z-index: 1;
+    background-color: var(--gray-900);
+    color: var(--beige-100);
+    padding: 6px 12px;
+    font-size: 14px;
+    text-align: center;
+    border-bottom: 1px solid var(--gray-900);
+}
+.announcement-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    @media (--xs-down) {
+        display: flex;
+        flex-direction: column;
+    }
+}
+.external-link {
+    margin-top: 2px;
+    color: var(--textColor);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    font-size: rem(14px);
+    transition: color 0.2s ease;
+    &:hover,
+    &:focus {
+        color: var(--yellow-200);
+    }
+    span {
+        margin-top: -2px;
+    }
+    .icon-external {
+        width: 12px;
+        height: 12px;
+        margin: 6px 0;
+        margin-left: 4px;
+    }
+}
 .layout-wrapper {
     display: flex;
     flex-direction: column;
@@ -29,7 +81,6 @@ const { t } = useI18n();
 .page-wrapper {
     position: relative;
     flex-grow: 1;
-    margin-top: 72px;
     z-index: 10;
     background: var(--beige-100);
     @media (--md) {
@@ -64,17 +115,15 @@ const { t } = useI18n();
 .primary-button.btn-cta {
     display: flex;
     gap: 8px;
-    position: fixed;
-    top: 17px;
-    right: 16px;
+    position: absolute;
+    right: 32px;
+    top: 32px;
     z-index: 50;
     padding: 8px 12px;
     border-radius: 8px;
     text-transform: lowercase;
-    @media (--md) {
-        position: absolute;
-        right: 32px;
-        top: 32px;
+    @media (--md-down) {
+        display: none;
     }
     @media (--lg) {
         padding: 14px 18px;
@@ -110,7 +159,9 @@ const { t } = useI18n();
 {
     "en": {
         "Acheter mon billet": "Buy my ticket",
-        "Billets": "tickets"
+        "Billets": "tickets",
+        "Vous consultez l’édition 2025 de l'événement.": "You’re viewing the 2025 edition of the event.",
+        "Voir la plus récente": "View the latest"
     }
 }
 </i18n>
