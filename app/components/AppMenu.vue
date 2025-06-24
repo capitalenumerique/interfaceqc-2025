@@ -54,11 +54,8 @@ import IconLemon from '@/assets/svg/shapes/lemon.svg?component';
 import IconStar from '@/assets/svg/shapes/star.svg?component';
 import IconHalfCircle from '@/assets/svg/shapes/half-circle.svg?component';
 import IconAsterisk from '@/assets/svg/shapes/asterisk.svg?component';
-// import IconTriangle from '@/assets/svg/shapes/triangle.svg?component';
 import IconGlyph from '@/assets/svg/shapes/glyph.svg?component';
-// import IconHexagon from '@/assets/svg/shapes/hexagon.svg?component';
 import IconCircle from '@/assets/svg/shapes/circle.svg?component';
-// import IconPlus from '@/assets/svg/shapes/plus.svg?component';
 import IconTickets from '@/assets/svg/tickets.svg?component';
 
 const { t } = useI18n();
@@ -92,30 +89,12 @@ const items = computed(() => [
         icon: IconAsterisk,
         color: 'green-DEFAULT',
     },
-    // {
-    //     label: t('Participer'),
-    //     path: 'participate',
-    //     icon: IconAsterisk,
-    //     color: 'green-DEFAULT',
-    // },
-    // {
-    //     label: t('Médiathèque'),
-    //     path: 'media-library',
-    //     icon: IconTriangle,
-    //     color: 'teal-DEFAULT',
-    // },
     {
         label: t('À propos'),
         path: 'about-us',
         icon: IconLemon,
         color: 'teal-DEFAULT',
     },
-    // {
-    //     label: t('Contact'),
-    //     path: 'contact-us',
-    //     icon: IconHexagon,
-    //     color: 'orange-DEFAULT',
-    // },
     {
         label: t('Faq'),
         path: 'faq',
@@ -180,7 +159,7 @@ const onEscape = () => {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 0 32px;
+    padding: 0 16px 0 32px;
     height: 72px;
     gap: 40px;
     @media (--md) {
@@ -303,6 +282,7 @@ const onEscape = () => {
     display: flex;
     flex-direction: row;
     align-items: center;
+    flex-grow: 1;
     @media (--md) {
         flex-direction: column;
         gap: 50px;
@@ -389,10 +369,8 @@ const onEscape = () => {
 .primary-button.btn-cta {
     display: flex;
     gap: 8px;
-    position: absolute;
-    top: 17px;
-    right: 16px;
     z-index: 50;
+    margin-left: auto;
     padding: 8px 12px;
     border-radius: 8px;
     text-transform: lowercase;
