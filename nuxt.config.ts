@@ -1,5 +1,4 @@
 import { repositoryName } from './slicemachine.config.json';
-import redirects from './redirects.json';
 import ViteSvgLoader from 'vite-svg-loader';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -21,6 +20,7 @@ export default defineNuxtConfig({
             },
         },
     },
+    ssr: false,
     devtools: {
         enabled: true,
     },
@@ -68,12 +68,17 @@ export default defineNuxtConfig({
         swapcardEventId: process.env.NUXT_SWAPCARD_EVENT_ID,
     },
     routeRules: {
-        ...redirects,
+        // ...redirects,
+        // Pre-render everything during generate
+        '/**': { prerender: true },
     },
     future: {
         compatibilityVersion: 4,
     },
     compatibilityDate: '2024-04-03',
+    nitro: {
+        preset: 'static',
+    },
     vite: {
         plugins: [
             ViteSvgLoader({
