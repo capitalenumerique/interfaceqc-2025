@@ -1,5 +1,4 @@
 import { repositoryName } from './slicemachine.config.json';
-import redirects from './redirects.json';
 import ViteSvgLoader from 'vite-svg-loader';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
@@ -66,9 +65,6 @@ export default defineNuxtConfig({
         },
         swapcardToken: process.env.NUXT_SWAPCARD_AUTH_TOKEN,
         swapcardEventId: process.env.NUXT_SWAPCARD_EVENT_ID,
-    },
-    routeRules: {
-        ...redirects,
     },
     future: {
         compatibilityVersion: 4,
