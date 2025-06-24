@@ -68,7 +68,6 @@ export default defineNuxtConfig({
         swapcardEventId: process.env.NUXT_SWAPCARD_EVENT_ID,
     },
     routeRules: {
-        // ...redirects,
         // Pre-render everything during generate
         '/**': { prerender: true },
     },
