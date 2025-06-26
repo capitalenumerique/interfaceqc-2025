@@ -1,5 +1,12 @@
 <template>
     <div class="layout-wrapper">
+        <AnnouncementBar>
+            <span>{{ t("Vous consultez l’édition 2025 de l'événement.") }}</span>
+            <a href="https://interfaceqc.com/" target="_blank">
+                <span>{{ t('Voir la plus récente') }}</span>
+                <IconExternal class="icon-external" />
+            </a>
+        </AnnouncementBar>
         <div class="page-wrapper">
             <AppMenu />
             <PrimaryButton to="https://ti.to/cnum/interface-2025" target="_blank" class="btn-cta">
@@ -17,6 +24,7 @@
 
 <script lang="ts" setup>
 import IconTickets from '@/assets/svg/tickets.svg?component';
+import IconExternal from '@/assets/svg/external.svg?component';
 const { t } = useI18n();
 </script>
 
@@ -29,7 +37,6 @@ const { t } = useI18n();
 .page-wrapper {
     position: relative;
     flex-grow: 1;
-    margin-top: 72px;
     z-index: 10;
     background: var(--beige-100);
     @media (--md) {
@@ -64,17 +71,15 @@ const { t } = useI18n();
 .primary-button.btn-cta {
     display: flex;
     gap: 8px;
-    position: fixed;
-    top: 17px;
-    right: 16px;
+    position: absolute;
+    right: 32px;
+    top: 32px;
     z-index: 50;
     padding: 8px 12px;
     border-radius: 8px;
     text-transform: lowercase;
-    @media (--md) {
-        position: absolute;
-        right: 32px;
-        top: 32px;
+    @media (--md-down) {
+        display: none;
     }
     @media (--lg) {
         padding: 14px 18px;
@@ -110,7 +115,9 @@ const { t } = useI18n();
 {
     "en": {
         "Acheter mon billet": "Buy my ticket",
-        "Billets": "tickets"
+        "Billets": "tickets",
+        "Vous consultez l’édition 2025 de l'événement.": "You’re viewing the 2025 edition of the event.",
+        "Voir la plus récente": "View the latest"
     }
 }
 </i18n>

@@ -16,6 +16,11 @@
                     <span class="sr-only">{{ t('Retour à l’accueil') }}</span>
                     <LogoInterface />
                 </NuxtLinkLocale>
+                <PrimaryButton to="https://ti.to/cnum/interface-2025" target="_blank" class="btn-cta">
+                    <IconTickets class="icon-star-outline" />
+                    <span>{{ t('Acheter mon billet') }}</span>
+                    <span>{{ t('Billets') }}</span>
+                </PrimaryButton>
             </div>
             <NuxtLinkLocale to="index" class="logo-interface-vertical">
                 <LogoInterfaceVertical />
@@ -49,11 +54,9 @@ import IconLemon from '@/assets/svg/shapes/lemon.svg?component';
 import IconStar from '@/assets/svg/shapes/star.svg?component';
 import IconHalfCircle from '@/assets/svg/shapes/half-circle.svg?component';
 import IconAsterisk from '@/assets/svg/shapes/asterisk.svg?component';
-// import IconTriangle from '@/assets/svg/shapes/triangle.svg?component';
 import IconGlyph from '@/assets/svg/shapes/glyph.svg?component';
-// import IconHexagon from '@/assets/svg/shapes/hexagon.svg?component';
 import IconCircle from '@/assets/svg/shapes/circle.svg?component';
-// import IconPlus from '@/assets/svg/shapes/plus.svg?component';
+import IconTickets from '@/assets/svg/tickets.svg?component';
 
 const { t } = useI18n();
 const isOpen = ref(false);
@@ -86,30 +89,12 @@ const items = computed(() => [
         icon: IconAsterisk,
         color: 'green-DEFAULT',
     },
-    // {
-    //     label: t('Participer'),
-    //     path: 'participate',
-    //     icon: IconAsterisk,
-    //     color: 'green-DEFAULT',
-    // },
-    // {
-    //     label: t('Médiathèque'),
-    //     path: 'media-library',
-    //     icon: IconTriangle,
-    //     color: 'teal-DEFAULT',
-    // },
     {
         label: t('À propos'),
         path: 'about-us',
         icon: IconLemon,
         color: 'teal-DEFAULT',
     },
-    // {
-    //     label: t('Contact'),
-    //     path: 'contact-us',
-    //     icon: IconHexagon,
-    //     color: 'orange-DEFAULT',
-    // },
     {
         label: t('Faq'),
         path: 'faq',
@@ -145,7 +130,7 @@ const onEscape = () => {
 
 <style lang="postcss" scoped>
 .menu {
-    position: fixed;
+    position: sticky;
     top: 0;
     width: 100%;
     max-height: 100vh;
@@ -156,7 +141,6 @@ const onEscape = () => {
     background-color: var(--beige-100);
     z-index: 10;
     @media (--md) {
-        position: sticky;
         flex-direction: row;
         right: auto;
         bottom: 0;
@@ -175,7 +159,7 @@ const onEscape = () => {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 0 32px;
+    padding: 0 16px 0 32px;
     height: 72px;
     gap: 40px;
     @media (--md) {
@@ -298,6 +282,7 @@ const onEscape = () => {
     display: flex;
     flex-direction: row;
     align-items: center;
+    flex-grow: 1;
     @media (--md) {
         flex-direction: column;
         gap: 50px;
@@ -381,6 +366,38 @@ const onEscape = () => {
         }
     }
 }
+.primary-button.btn-cta {
+    display: flex;
+    gap: 8px;
+    z-index: 50;
+    margin-left: auto;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-transform: lowercase;
+    @media (--md) {
+        display: none;
+    }
+    .icon-star-outline {
+        margin: -2px;
+        width: 22px;
+    }
+}
+.btn-cta {
+    span {
+        &:first-of-type {
+            display: none;
+            @media (min-width: 375px) {
+                display: inline;
+            }
+        }
+        &:last-of-type {
+            display: inline;
+            @media (min-width: 375px) {
+                display: none;
+            }
+        }
+    }
+}
 .collapse-enter-active,
 .collapse-leave-active {
     transition: max-height 500ms ease;
@@ -402,6 +419,8 @@ const onEscape = () => {
 {
     "en": {
         "Menu": "Menu",
+        "Acheter mon billet": "Buy my ticket",
+        "Billets": "tickets",
         "Retour à l’accueil": "Back to homepage",
         "Accueil": "Home",
         "Billetterie": "Tickets",
