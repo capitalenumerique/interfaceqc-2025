@@ -22,5 +22,30 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 4px;
+
+    :deep(a) {
+        margin-top: 2px;
+        color: var(--textColor);
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        display: inline-flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: rem(14px);
+        transition: color 0.2s ease;
+        &:hover,
+        &:focus {
+            color: var(--yellow-200);
+        }
+        span {
+            margin-top: -2px;
+        }
+        .icon-external {
+            width: 12px;
+            height: 12px;
+            margin: 6px 0;
+            margin-left: 4px;
+        }
+    }
 }
 </style>

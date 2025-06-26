@@ -2,7 +2,7 @@
     <div class="layout-wrapper">
         <AnnouncementBar>
             <span>{{ t("Vous consultez l’édition 2025 de l'événement.") }}</span>
-            <a class="external-link" href="https://interfaceqc.com/" target="_blank">
+            <a href="https://interfaceqc.com/" target="_blank">
                 <span>{{ t('Voir la plus récente') }}</span>
                 <IconExternal class="icon-external" />
             </a>
@@ -29,30 +29,6 @@ const { t } = useI18n();
 </script>
 
 <style lang="postcss" scoped>
-.external-link {
-    margin-top: 2px;
-    color: var(--textColor);
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    display: inline-flex;
-    align-items: center;
-    font-weight: 500;
-    font-size: rem(14px);
-    transition: color 0.2s ease;
-    &:hover,
-    &:focus {
-        color: var(--yellow-200);
-    }
-    span {
-        margin-top: -2px;
-    }
-    .icon-external {
-        width: 12px;
-        height: 12px;
-        margin: 6px 0;
-        margin-left: 4px;
-    }
-}
 .layout-wrapper {
     display: flex;
     flex-direction: column;
