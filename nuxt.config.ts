@@ -66,10 +66,6 @@ export default defineNuxtConfig({
         swapcardToken: process.env.NUXT_SWAPCARD_AUTH_TOKEN,
         swapcardEventId: process.env.NUXT_SWAPCARD_EVENT_ID,
     },
-    routeRules: {
-        // Pre-render everything during generate
-        '/**': { prerender: true },
-    },
     future: {
         compatibilityVersion: 4,
     },
