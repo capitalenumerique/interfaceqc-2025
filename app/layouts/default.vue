@@ -93,8 +93,6 @@ const { t } = useI18n();
         margin: -2px;
         width: 22px;
     }
-}
-.btn-cta {
     span {
         &:first-of-type {
             display: none;
