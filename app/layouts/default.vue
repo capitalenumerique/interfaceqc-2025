@@ -1,14 +1,12 @@
 <template>
     <div class="layout-wrapper">
-        <div class="announcement-bar">
-            <div class="announcement-content">
-                <span>{{ t("Vous consultez l’édition 2025 de l'événement.") }}</span>
-                <a :href="'https://interfaceqc.com/'" class="external-link">
-                    <span>{{ t('Voir la plus récente') }}</span>
-                    <IconExternal class="icon-external" />
-                </a>
-            </div>
-        </div>
+        <AnnouncementBar>
+            <span>{{ t("Vous consultez l’édition 2025 de l'événement.") }}</span>
+            <a class="external-link" href="https://interfaceqc.com/" target="_blank">
+                <span>{{ t('Voir la plus récente') }}</span>
+                <IconExternal class="icon-external" />
+            </a>
+        </AnnouncementBar>
         <div class="page-wrapper">
             <AppMenu />
             <PrimaryButton to="https://ti.to/cnum/interface-2025" target="_blank" class="btn-cta">
@@ -31,24 +29,6 @@ const { t } = useI18n();
 </script>
 
 <style lang="postcss" scoped>
-.announcement-bar {
-    z-index: 1;
-    background-color: var(--gray-900);
-    color: var(--beige-100);
-    padding: 6px 12px;
-    font-size: 14px;
-    text-align: center;
-    border-bottom: 1px solid var(--gray-900);
-}
-.announcement-content {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    @media (--xs-down) {
-        display: flex;
-        flex-direction: column;
-    }
-}
 .external-link {
     margin-top: 2px;
     color: var(--textColor);
