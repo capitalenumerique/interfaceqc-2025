@@ -69,11 +69,6 @@ export default defineNuxtConfig({
     future: {
         compatibilityVersion: 4,
     },
-    experimental: {
-        // Optimizes HTML payload size by extracting data into a payload.json file
-        // which can be used instead of rerunning the composables (i.e useFetch, useAsyncData)
-        payloadExtraction: true,
-    },
     compatibilityDate: '2024-04-03',
     nitro: {
         preset: 'static',
