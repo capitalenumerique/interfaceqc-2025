@@ -117,9 +117,9 @@ const { t } = useI18n();
     "en": {
         "Acheter mon billet": "Buy my ticket",
         "Billets": "tickets",
-        "https://interfaceqc.com/": "https://interfaceqc.com/en/",
         "Vous consultez l’édition 2025 de l'événement.": "You’re viewing the 2025 edition of the event.",
-        "Voir la plus récente": "View the latest"
+        "Voir la plus récente": "View the latest",
+        "https://interfaceqc.com/": "https://interfaceqc.com/en/"
     }
 }
 </i18n>
