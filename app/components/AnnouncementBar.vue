@@ -15,6 +15,7 @@
     font-size: 14px;
     text-align: center;
     border-bottom: 1px solid var(--gray-900);
+    grid-column: 1 / span 2;
 }
 .announcement-content {
     display: inline-flex;
@@ -22,9 +23,7 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 4px;
-
     :deep(a) {
-        margin-top: 2px;
         color: var(--textColor);
         text-decoration: underline;
         text-underline-offset: 4px;
@@ -33,18 +32,15 @@
         font-weight: 500;
         font-size: rem(14px);
         transition: color 0.2s ease;
+        gap: 4px;
         &:hover,
         &:focus {
             color: var(--yellow-200);
         }
-        span {
-            margin-top: -2px;
-        }
-        .icon-external {
+        svg {
             width: 12px;
             height: 12px;
             margin: 6px 0;
-            margin-left: 4px;
         }
     }
 }

@@ -1,20 +1,20 @@
 <template>
     <div class="layout-wrapper">
-        <AnnouncementBar>
-            <span>{{ t("Vous consultez l’édition 2025 de l'événement.") }}</span>
-            <a href="https://interfaceqc.com/" target="_blank">
-                <span>{{ t('Voir la plus récente') }}</span>
-                <IconExternal class="icon-external" />
-            </a>
-        </AnnouncementBar>
         <div class="page-wrapper">
+            <AnnouncementBar>
+                {{ t("Vous consultez l’édition 2025 de l'événement.") }}
+                <a :href="t('https://interfaceqc.com/')" target="_blank">
+                    <span>{{ t('Voir la plus récente') }}</span>
+                    <IconExternal />
+                </a>
+            </AnnouncementBar>
             <AppMenu />
-            <PrimaryButton to="https://ti.to/cnum/interface-2025" target="_blank" class="btn-cta">
-                <IconTickets class="icon-star-outline" />
-                <span>{{ t('Acheter mon billet') }}</span>
-                <span>{{ t('Billets') }}</span>
-            </PrimaryButton>
             <main class="content-wrapper">
+                <PrimaryButton to="https://ti.to/cnum/interface-2025" target="_blank" class="btn-cta">
+                    <IconTickets />
+                    <span>{{ t('Acheter mon billet') }}</span>
+                    <span>{{ t('Billets') }}</span>
+                </PrimaryButton>
                 <slot />
             </main>
         </div>
@@ -66,6 +66,7 @@ const { t } = useI18n();
     }
 }
 .content-wrapper {
+    position: relative;
     min-width: 0;
 }
 .primary-button.btn-cta {
@@ -88,12 +89,10 @@ const { t } = useI18n();
     @media (--xl) {
         right: 64px;
     }
-    .icon-star-outline {
+    svg {
         margin: -2px;
         width: 22px;
     }
-}
-.btn-cta {
     span {
         &:first-of-type {
             display: none;
@@ -117,7 +116,8 @@ const { t } = useI18n();
         "Acheter mon billet": "Buy my ticket",
         "Billets": "tickets",
         "Vous consultez l’édition 2025 de l'événement.": "You’re viewing the 2025 edition of the event.",
-        "Voir la plus récente": "View the latest"
+        "Voir la plus récente": "View the latest",
+        "https://interfaceqc.com/": "https://interfaceqc.com/en/"
     }
 }
 </i18n>
