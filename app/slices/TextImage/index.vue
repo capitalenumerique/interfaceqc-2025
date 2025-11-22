@@ -20,8 +20,20 @@ defineProps(getSliceComponentProps<Content.TextImageSlice>(['slice', 'index', 's
             </div>
         </div>
         <div class="images-wrapper">
-            <PrismicImage :field="slice.primary.image_2" class="image-2" width="160" height="200" />
-            <PrismicImage :field="slice.primary.image_1" class="image-1" width="360" height="450" />
+            <NuxtImg
+                class="image-2"
+                :src="slice.primary.image_2.url.split('?')[0]"
+                :alt="slice.primary.image_2.alt"
+                width="160"
+                height="200"
+            />
+            <NuxtImg
+                class="image-1"
+                :src="slice.primary.image_1.url.split('?')[0]"
+                :alt="slice.primary.image_1.alt"
+                width="360"
+                height="450"
+            />
         </div>
     </section>
 </template>
@@ -86,9 +98,9 @@ defineProps(getSliceComponentProps<Content.TextImageSlice>(['slice', 'index', 's
     }
 }
 .images-wrapper {
-    display: flex;
+    display: grid;
+    grid-template-columns: 4fr 9fr;
     align-items: flex-end;
-    justify-content: space-between;
     gap: 24px;
     width: 100%;
     margin-right: -16px;
@@ -100,15 +112,9 @@ defineProps(getSliceComponentProps<Content.TextImageSlice>(['slice', 'index', 's
     }
     img {
         flex-shrink: 0;
-    }
-    .image-1 {
-        width: 66%;
-        height: auto;
-    }
-    .image-2 {
-        width: 30%;
-        height: auto;
         border-radius: 12px;
+        width: 100%;
+        height: auto;
     }
 }
 </style>

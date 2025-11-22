@@ -73,7 +73,7 @@ const next = () => {
                 }"
             >
                 <NuxtLinkLocale :to="speaker.session_url">
-                    <PrismicImage :field="speaker.img" />
+                    <NuxtImg :src="speaker.img.url.split('?')[0]" :alt="speaker.img.alt" width="322" height="375" />
                     <div class="slide-content">
                         <h3 class="speaker-title">
                             {{ speaker.first_name }}<br />

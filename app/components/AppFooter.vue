@@ -38,7 +38,7 @@
                 <img
                     class="quebec-city-logo"
                     src="@/assets/img/ville-quebec.svg"
-                    :alt="t('Ville de Québec l’accent d’Amérique')"
+                    :alt="t('Ville de Québec, l’accent d’Amérique')"
                 />
                 <p class="quebec-city-text">
                     {{
@@ -293,6 +293,9 @@ const socials = [
 <i18n lang="json">
 {
     "en": {
+        "Capitale Numérique": "Capitale Numérique",
+        "Interface": "Interface",
+        "Ville de Québec, l’accent d’Amérique": "Québec City, l’accent d’Amérique",
         "Partenaires": "Partners",
         "Faq": "Faq",
         "Politique de confidentialité": "Privacy policy",

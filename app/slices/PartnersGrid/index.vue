@@ -43,10 +43,11 @@ const sortedCategories = Object.fromEntries(
                 <ul class="partners-group">
                     <li v-for="(item, index) in category" :key="index" class="partner-item">
                         <a :href="item.partner.data.website.url" target="_blank">
-                            <img
+                            <NuxtImg
                                 class="partner-logo"
-                                :src="item.partner.data.logo.url"
+                                :src="item.partner.data.logo.url.split('?')[0]"
                                 :alt="item.partner.data.logo.alt"
+                                width="200"
                             />
                         </a>
                     </li>

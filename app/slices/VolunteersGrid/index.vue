@@ -104,10 +104,13 @@ const mapping = [
                                 </div>
                             </div>
 
-                            <PrismicImage
+                            <NuxtImg
                                 v-if="item.volunteer.data.img"
                                 class="volunteer-img"
-                                :field="item.volunteer.data.img"
+                                :src="item.volunteer.data.img.url.split('?')[0]"
+                                :alt="item.volunteer.data.img.alt"
+                                width="282"
+                                height="282"
                             />
                             <div v-else class="shape-container">
                                 <IconGlyph class="shape" />
