@@ -140,11 +140,7 @@ export default defineNuxtConfig({
                 language: 'en-CA',
             },
         ],
-        detectBrowserLanguage: {
-            useCookie: true,
-            cookieKey: 'i18n_redirected',
-            redirectOn: 'root', // recommended
-        },
+        detectBrowserLanguage: false,
     },
     image: {
         provider: 'ipx',
