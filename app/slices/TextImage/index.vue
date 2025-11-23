@@ -114,7 +114,6 @@ defineProps(getSliceComponentProps<Content.TextImageSlice>(['slice', 'index', 's
         flex-shrink: 0;
         border-radius: 12px;
         width: 100%;
-        height: auto;
     }
 }
 </style>
